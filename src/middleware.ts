@@ -1,11 +1,5 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import {
-  checkRateLimit,
-  getClientIp,
-  RATE_LIMIT_CONFIGS,
-  type RateLimitConfig,
-} from "@/lib/rateLimit";
 
 // Signatures of known aggressive scrapers and automated vulnerability scanners
 const BLOCKED_USER_AGENTS = [
@@ -26,12 +20,9 @@ const BLOCKED_USER_AGENTS = [
 ];
 
 export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
   const userAgent = (request.headers.get("user-agent") || "").toLowerCase();
-  const { ip: clientIp, isUnknown } = getClientIp(request.headers);
 
-
-  // 2. Block known malicious vulnerability scanners and automated exploitation bots
+  // Block known malicious vulnerability scanners and automated exploitation bots
   const isMaliciousScanner = BLOCKED_USER_AGENTS.some((bot) => userAgent.includes(bot));
 
   if (isMaliciousScanner) {
@@ -42,36 +33,6 @@ export function middleware(request: NextRequest) {
         headers: { "Content-Type": "application/json" },
       }
     );
-  }
-
-  // 3. Apply Rate Limiting to API routes
-  if (pathname.startsWith("/api/")) {
-    const limitConfig: RateLimitConfig = isUnknown
-      ? RATE_LIMIT_CONFIGS.unknownPool
-      : pathname.startsWith("/api/suggest")
-      ? RATE_LIMIT_CONFIGS.suggest
-      : RATE_LIMIT_CONFIGS.api;
-
-    const rateKey = `${clientIp}:${pathname.split("/").slice(0, 3).join("/")}`;
-    const rateCheck = checkRateLimit(rateKey, limitConfig);
-
-    if (!rateCheck.success) {
-      return new NextResponse(
-        JSON.stringify({
-          error: "Too many requests. Please slow down and try again later.",
-          retryAfter: rateCheck.retryAfterSeconds,
-        }),
-        {
-          status: 429,
-          headers: {
-            "Content-Type": "application/json",
-            "Retry-After": String(rateCheck.retryAfterSeconds || 60),
-            "X-RateLimit-Limit": String(rateCheck.limit),
-            "X-RateLimit-Remaining": "0",
-          },
-        }
-      );
-    }
   }
 
   return NextResponse.next();

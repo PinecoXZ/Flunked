@@ -1,6 +1,7 @@
 /**
- * In-memory sliding window rate limiter with automatic stale window cleanup.
- * Prevents DDoS, brute-force login attempts, scraping, and endpoint abuse.
+ * Distributed and in-memory sliding window rate limiter.
+ * Prevents DDoS, brute-force attempts, scraping, and endpoint abuse.
+ * Uses atomic Lua script on Upstash Redis REST with Web Crypto HMAC IP anonymization.
  */
 
 interface RateLimitRecord {
@@ -14,19 +15,14 @@ export interface RateLimitConfig {
   blockDurationMs?: number;
 }
 
-/**
- * ⚠️ SERVERLESS LIMITATION:
- * This in-memory rate limiter works correctly in `next dev` and long-running
- * Node.js servers, but does NOT share state across Vercel serverless function
- * invocations. Each cold start gets a fresh Map.
- *
- * For production at scale, replace `rateLimitStore` with:
- * - Upstash Redis (@upstash/ratelimit) — recommended for Vercel
- * - Vercel KV
- * - Redis via ioredis
- *
- * The checkRateLimit() interface remains the same regardless of backend.
- */
+export interface RateLimitResult {
+  success: boolean;
+  limit: number;
+  remaining: number;
+  resetMs: number;
+  retryAfterSeconds?: number;
+}
+
 const rateLimitStore = new Map<string, RateLimitRecord>();
 
 // Preset configurations for different risk tiers
@@ -62,16 +58,37 @@ export const RATE_LIMIT_CONFIGS = {
   },
 } as const;
 
-export interface RateLimitResult {
-  success: boolean;
-  limit: number;
-  remaining: number;
-  resetMs: number;
-  retryAfterSeconds?: number;
+/**
+ * HMAC-SHA256 IP anonymization using standard Web Crypto API.
+ * Never throws, never logs raw IP, returns null when salt is missing.
+ */
+export async function hashIp(ip: string, salt: string | undefined): Promise<string | null> {
+  if (!salt) {
+    console.error("[CRITICAL] RATE_LIMIT_SALT is missing. Skipping rate limiting and failing open.");
+    return null; // NEVER store raw or partial IP!
+  }
+  try {
+    const enc = new TextEncoder();
+    const key = await crypto.subtle.importKey(
+      "raw",
+      enc.encode(salt),
+      { name: "HMAC", hash: "SHA-256" },
+      false,
+      ["sign"]
+    );
+    const signature = await crypto.subtle.sign("HMAC", key, enc.encode(ip));
+    return Array.from(new Uint8Array(signature))
+      .map((b) => b.toString(16).padStart(2, "0"))
+      .join("")
+      .slice(0, 32);
+  } catch (err) {
+    console.error("[CRITICAL] Failed to compute HMAC for IP:", err);
+    return null;
+  }
 }
 
 /**
- * Check and record a request against a rate limit window.
+ * Check and record a request against an in-memory rate limit window.
  */
 export function checkRateLimit(identifier: string, config: RateLimitConfig): RateLimitResult {
   const now = Date.now();
@@ -130,6 +147,98 @@ export function checkRateLimit(identifier: string, config: RateLimitConfig): Rat
 }
 
 /**
+ * Distributed rate limiter with Upstash Redis and in-memory fallback.
+ * Uses atomic Lua script on Upstash Redis REST endpoint.
+ * Fails open if Redis is down or salt is missing, logging an alert without throwing.
+ */
+export async function checkDistributedRateLimit(
+  ip: string,
+  path: string,
+  config: RateLimitConfig
+): Promise<RateLimitResult> {
+  const salt = process.env.RATE_LIMIT_SALT;
+  const hashedIp = await hashIp(ip, salt);
+
+  // If salt is missing or hashing failed, fail open immediately (never store raw IP)
+  if (!hashedIp) {
+    return {
+      success: true,
+      limit: config.maxRequests,
+      remaining: 1,
+      resetMs: 0,
+    };
+  }
+
+  const rateKey = `rl:${hashedIp}:${path}`;
+  const upstashUrl = process.env.UPSTASH_REDIS_REST_URL;
+  const upstashToken = process.env.UPSTASH_REDIS_REST_TOKEN;
+
+  // Use Upstash Redis when configured
+  if (upstashUrl && upstashToken) {
+    try {
+      const windowSeconds = Math.ceil(config.windowMs / 1000);
+      const luaScript = `
+        local current = redis.call('INCR', KEYS[1])
+        if tonumber(current) == 1 then
+          redis.call('EXPIRE', KEYS[1], ARGV[1])
+        end
+        return current
+      `.trim();
+
+      const response = await fetch(`${upstashUrl.replace(/\/$/, "")}`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${upstashToken}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(["EVAL", luaScript, "1", rateKey, String(windowSeconds)]),
+      });
+
+      if (!response.ok) {
+        console.error(`[ALERT] Upstash Redis returned non-200 status: ${response.status}. Failing open.`);
+        return {
+          success: true,
+          limit: config.maxRequests,
+          remaining: config.maxRequests,
+          resetMs: 0,
+        };
+      }
+
+      const data = await response.json();
+      const currentCount = typeof data.result === "number" ? data.result : parseInt(data.result, 10) || 1;
+
+      if (currentCount > config.maxRequests) {
+        return {
+          success: false,
+          limit: config.maxRequests,
+          remaining: 0,
+          resetMs: config.windowMs,
+          retryAfterSeconds: windowSeconds,
+        };
+      }
+
+      return {
+        success: true,
+        limit: config.maxRequests,
+        remaining: Math.max(0, config.maxRequests - currentCount),
+        resetMs: config.windowMs,
+      };
+    } catch (error) {
+      console.error("[ALERT] Upstash Redis rate limiter unreachable, failing open:", error);
+      return {
+        success: true,
+        limit: config.maxRequests,
+        remaining: config.maxRequests,
+        resetMs: 0,
+      };
+    }
+  }
+
+  // Fallback to local in-memory store for development/testing
+  return checkRateLimit(rateKey, config);
+}
+
+/**
  * Re-export getClientIp from canonical ip.ts helper.
  */
 export { getClientIp } from "./ip";
@@ -144,15 +253,14 @@ if (typeof setInterval !== "undefined") {
       }
       if (
         record.timestamps.length === 0 ||
-        record.timestamps[record.timestamps.length - 1] < now - 15 * 60 * 1000
+        record.timestamps[record.timestamps.length - 1] < now - 600000
       ) {
         rateLimitStore.delete(key);
       }
     }
-  }, 60 * 1000);
+  }, 60000);
 
-  // Don't keep Node process alive just for the cleanup timer
-  if (cleanupTimer.unref) {
+  if (typeof cleanupTimer === "object" && "unref" in cleanupTimer) {
     cleanupTimer.unref();
   }
 }

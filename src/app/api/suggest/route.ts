@@ -2,9 +2,31 @@ import { NextResponse } from "next/server";
 import { validateSuggestion } from "@/lib/sanitize";
 import { serverLogger } from "@/lib/logger";
 import { getClientIp } from "@/lib/ip";
+import { checkDistributedRateLimit, RATE_LIMIT_CONFIGS } from "@/lib/rateLimit";
 
 export async function POST(request: Request) {
-  const { ip } = getClientIp(request.headers);
+  const { ip, isUnknown } = getClientIp(request.headers);
+
+  // 1. Enforce distributed rate limiting directly in Node.js route handler
+  const rateConfig = isUnknown ? RATE_LIMIT_CONFIGS.unknownPool : RATE_LIMIT_CONFIGS.suggest;
+  const rateCheck = await checkDistributedRateLimit(ip, "/api/suggest", rateConfig);
+
+  if (!rateCheck.success) {
+    return NextResponse.json(
+      {
+        error: "Too many requests. Please slow down and try again later.",
+        retryAfter: rateCheck.retryAfterSeconds,
+      },
+      {
+        status: 429,
+        headers: {
+          "Retry-After": String(rateCheck.retryAfterSeconds || 60),
+          "X-RateLimit-Limit": String(rateCheck.limit),
+          "X-RateLimit-Remaining": "0",
+        },
+      }
+    );
+  }
 
   try {
     const contentType = request.headers.get("content-type") || "";
