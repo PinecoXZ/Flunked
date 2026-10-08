@@ -8,6 +8,9 @@
  * 5. Unsafe File Uploads
  */
 
+import { z } from "zod";
+import { POPULAR_CAMPUSES } from "@/data/campuses";
+
 // Regex patterns to detect malicious injection attempts
 const EXPLICIT_SQLI_PATTERN =
   /(\b(UNION\s+SELECT|DROP\s+TABLE|ALTER\s+TABLE|DELETE\s+FROM|INSERT\s+INTO|CREATE\s+TABLE|EXEC\s*\(|--|\/\*)\b|'\s*OR\s+'?1'?\s*=\s*'?1)/i;
@@ -121,3 +124,36 @@ export function validateSuggestion(
     },
   };
 }
+
+/**
+ * Defends against CSV / Google Sheets formula injection.
+ * Checks for characters (=, +, -, @, \t, \r) at start of string before trimming.
+ * Prefixes matched values with a single quote (') so spreadsheet treats them as literal text.
+ */
+export function sanitizeForSheets(value: string): string {
+  if (!value) return "";
+  // Check the first character of the raw string BEFORE trimming whitespace so \t and \r are caught
+  if (/^[=+\-@\t\r]/.test(value)) {
+    return `'${value.trim()}`;
+  }
+  const trimmed = value.trim();
+  if (/^[=+\-@\t\r]/.test(trimmed)) {
+    return `'${trimmed}`;
+  }
+  return trimmed;
+}
+
+export const suggestSchema = z
+  .object({
+    category: z.enum(["academics", "attendance", "placements", "lifestyle", "other"]).default("academics"),
+    campus: z
+      .string()
+      .trim()
+      .refine(
+        (val) => val === "" || POPULAR_CAMPUSES.includes(val) || val === "Other",
+        { message: "Campus must be a recognized campus from allowlist or 'Other'" }
+      ),
+    idea: z.string().trim().min(1, "Idea cannot be empty").max(500, "Idea cannot exceed 500 characters"),
+  })
+  .strict();
+

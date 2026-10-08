@@ -4,12 +4,14 @@ import { useState } from "react";
 import Link from "next/link";
 import { Send, CheckCircle2, Lightbulb, AlertCircle } from "lucide-react";
 import { CATEGORIES, ToolCategory } from "@/data/tools";
+import { POPULAR_CAMPUSES } from "@/data/campuses";
 import { cn } from "@/lib/utils";
 
 export function SuggestForm() {
   const [idea, setIdea] = useState("");
   const [category, setCategory] = useState<ToolCategory>("academics");
   const [campus, setCampus] = useState("");
+  const [honeypot, setHoneypot] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -31,6 +33,7 @@ export function SuggestForm() {
           idea: idea.trim(),
           category,
           campus: campus.trim(),
+          _honeypot: honeypot,
         }),
       });
 
@@ -89,6 +92,7 @@ export function SuggestForm() {
               onClick={() => {
                 setSubmitted(false);
                 setIdea("");
+                setHoneypot("");
               }}
               className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-white hover:bg-flunked-bg border-2 border-black text-xs font-mono font-black text-black transition-all shadow-neo-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-neo active:translate-x-[1px] active:translate-y-[1px] active:shadow-none cursor-pointer"
             >
@@ -107,6 +111,20 @@ export function SuggestForm() {
           onSubmit={handleSubmit}
           className="p-6 sm:p-8 rounded-2xl bg-white border-2 border-black shadow-neo space-y-6"
         >
+          {/* Honeypot field for bot mitigation - hidden from real users */}
+          <div className="hidden" aria-hidden="true" style={{ display: "none" }}>
+            <label htmlFor="website-field">Leave this empty</label>
+            <input
+              id="website-field"
+              type="text"
+              name="_honeypot"
+              tabIndex={-1}
+              autoComplete="off"
+              value={honeypot}
+              onChange={(e) => setHoneypot(e.target.value)}
+            />
+          </div>
+
           {errorMessage && (
             <div className="p-3.5 rounded-xl bg-[#FFF0F0] border-2 border-flunked-danger flex items-center gap-2.5 text-xs font-bold text-flunked-danger">
               <AlertCircle className="w-4 h-4 flex-shrink-0" />
@@ -166,14 +184,20 @@ export function SuggestForm() {
               Your College / University{" "}
               <span className="text-black/40 font-normal font-sans">(optional)</span>
             </label>
-            <input
+            <select
               id="campus-name"
-              type="text"
               value={campus}
               onChange={(e) => setCampus(e.target.value)}
-              placeholder="e.g. VIT, SRM, BITS Pilani, IIT"
-              className="w-full px-4 py-3 rounded-xl bg-flunked-bg border-2 border-black text-black placeholder:text-black/40 text-sm font-sans focus:outline-none focus:ring-2 focus:ring-flunked-yellow transition-all font-medium"
-            />
+              className="w-full px-4 py-3 rounded-xl bg-flunked-bg border-2 border-black text-black text-sm font-sans focus:outline-none focus:ring-2 focus:ring-flunked-yellow transition-all font-medium cursor-pointer"
+            >
+              <option value="">Select your college / university (optional)</option>
+              {POPULAR_CAMPUSES.map((c) => (
+                <option key={c} value={c}>
+                  {c}
+                </option>
+              ))}
+              <option value="Other">Other</option>
+            </select>
           </div>
 
           {/* Submit Button */}

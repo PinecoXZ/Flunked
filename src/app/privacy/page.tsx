@@ -264,6 +264,22 @@ export default function PrivacyPage() {
                     and volumetric DDoS defense. IP logs are automatically rotated and purged.
                   </p>
                 </div>
+
+                {/* Community Tool Suggestions Processing */}
+                <div className="p-4 rounded-xl bg-flunked-bg border-2 border-black shadow-neo-sm space-y-2">
+                  <div className="flex items-center gap-2 font-mono text-xs font-black text-black uppercase">
+                    <FileText className="w-3.5 h-3.5 text-black" />
+                    <span>Community Tool Suggestions Processing</span>
+                  </div>
+                  <p className="text-xs sm:text-sm text-black/80">
+                    When you submit a tool suggestion, your selected campus category and idea text
+                    are forwarded to Google Sheets (Google is the data processor) using a secure
+                    server-to-server webhook. To prevent denial-of-service abuse, your IP address is
+                    salted with a secret key, hashed with HMAC-SHA256, and stored temporarily in
+                    Upstash Redis for 10 minutes before expiring. No accounts or persistent user
+                    profiles are created.
+                  </p>
+                </div>
               </div>
             </div>
           </section>
