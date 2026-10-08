@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { POPULAR_CAMPUSES } from "@/data/campuses";
+import { safeRedirect } from "@/lib/redirect";
 
 interface LoginFormProps {
   onSuccess?: () => void;
@@ -25,7 +26,7 @@ export function LoginForm({ onSuccess, redirectTo, className }: LoginFormProps) 
   const router = useRouter();
   const searchParams = useSearchParams();
   const queryRedirect = searchParams.get("redirect");
-  const targetRedirect = redirectTo || queryRedirect || "/";
+  const targetRedirect = safeRedirect(redirectTo || queryRedirect);
 
   const { login, user } = useAuth();
 
