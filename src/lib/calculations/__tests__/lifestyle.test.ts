@@ -39,6 +39,13 @@ describe("solveExpenseSplit", () => {
     expect(r.settlements.length).toBe(0);
   });
 
+  it("handles 1 participant with 0 total expenses", () => {
+    const r = solveExpenseSplit(["Solo Student"], []);
+    expect(r.totalSpent).toBe(0);
+    expect(r.settlements).toEqual([]);
+    expect(r.perPersonSpent["Solo Student"]).toBe(0);
+  });
+
   it("generates WhatsApp summary", () => {
     const r = solveExpenseSplit(
       ["A", "B"],

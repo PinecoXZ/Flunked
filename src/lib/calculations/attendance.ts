@@ -7,6 +7,7 @@ export interface BunkResult {
   currentPercentage: number;
   targetPercentage: number;
   canBunk: boolean;
+  isReachable?: boolean;
   classesCount: number;
   headline: string;
   verdict: string;
@@ -24,6 +25,7 @@ export function calculateBunk(held: number, attended: number, target: number = 7
       currentPercentage: 100,
       targetPercentage: safeTarget,
       canBunk: true,
+      isReachable: true,
       classesCount: 0,
       headline: "No classes held yet.",
       verdict: "Semester hasn't started yet. You have a clean slate.",
@@ -52,6 +54,7 @@ export function calculateBunk(held: number, attended: number, target: number = 7
       currentPercentage,
       targetPercentage: safeTarget,
       canBunk: true,
+      isReachable: true,
       classesCount,
       headline,
       verdict,
@@ -59,9 +62,23 @@ export function calculateBunk(held: number, attended: number, target: number = 7
       shareText: `My attendance is ${currentPercentage}% (Target: ${safeTarget}%). I can bunk ${classesCount} more classes! Calculated on Flunked.online`,
     };
   } else {
+    if (safeTarget === 100 && safeAttended < safeHeld) {
+      return {
+        currentPercentage,
+        targetPercentage: 100,
+        canBunk: false,
+        isReachable: false,
+        classesCount: 0,
+        headline: "100% attendance is not reachable.",
+        verdict: "You missed a class. It is mathematically impossible to reach 100%.",
+        status: "critical",
+        shareText: `My attendance is ${currentPercentage}%. 100% is no longer reachable this semester. Calculated on Flunked.online`,
+      };
+    }
     const denominator = 100 - safeTarget;
     const numerator = safeTarget * safeHeld - 100 * safeAttended;
-    const classesNeeded = denominator > 0 ? Math.ceil(numerator / denominator) : 999;
+    // Guard against division by zero; never produce Infinity or NaN
+    const classesNeeded = denominator > 0 ? Math.ceil(numerator / denominator) : 0;
     const classesCount = Math.max(1, classesNeeded);
 
     const status: "danger" | "critical" = currentPercentage < 70 ? "critical" : "danger";
@@ -72,6 +89,7 @@ export function calculateBunk(held: number, attended: number, target: number = 7
       currentPercentage,
       targetPercentage: safeTarget,
       canBunk: false,
+      isReachable: true,
       classesCount,
       headline,
       verdict,

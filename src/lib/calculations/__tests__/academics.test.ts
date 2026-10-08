@@ -86,6 +86,21 @@ describe("calculateGradeToPass", () => {
     expect(r.status).toBe("critical");
     expect(r.requiredFinalsPct).toBeGreaterThan(100);
   });
+
+  it("handles target grade already achieved (marks needed <= 0)", () => {
+    const r = calculateGradeToPass(50, 50, 50, 40);
+    expect(r.status).toBe("safe");
+    expect(r.headline).toBe("Already Passed");
+    expect(r.metricDisplay).toBe("0%");
+    expect(r.neededFromFinals).toBeLessThanOrEqual(0);
+  });
+
+  it("handles subjects with zero total credits gracefully", () => {
+    const r = calculateCgpa([{ name: "Audit Course", gradePoint: 10, credits: 0 }]);
+    expect(r.cgpa).toBe(0);
+    expect(r.totalCredits).toBe(0);
+    expect(r.percentage).toBe(0);
+  });
 });
 
 describe("calculateBacklogRecovery", () => {

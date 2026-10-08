@@ -324,7 +324,14 @@ export function BunkCalculator() {
         breakdown={[
           { label: "Held", value: numHeld },
           { label: "Attended", value: safeAttended },
-          { label: result.canBunk ? "Safe Skips" : "Needed", value: result.classesCount },
+          {
+            label: result.canBunk
+              ? "Safe Skips"
+              : result.isReachable === false
+              ? "Status"
+              : "Needed",
+            value: result.isReachable === false ? "Not reachable" : result.classesCount,
+          },
         ]}
       >
         {/* Additional contextual breakdown */}
@@ -346,7 +353,9 @@ export function BunkCalculator() {
                 result.canBunk ? "text-[#00A843]" : "text-[#FF3333]"
               }`}
             >
-              {result.classesCount} lecture{result.classesCount !== 1 ? "s" : ""}
+              {result.isReachable === false
+                ? "Not reachable"
+                : `${result.classesCount} lecture${result.classesCount !== 1 ? "s" : ""}`}
             </div>
           </div>
         </div>

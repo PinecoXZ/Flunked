@@ -37,6 +37,38 @@ describe("calculateBunk", () => {
     const r = calculateBunk(100, 80);
     expect(r.targetPercentage).toBe(75);
   });
+
+  it("handles target 100% with 0 classes held gracefully", () => {
+    const r = calculateBunk(0, 0, 100);
+    expect(r.currentPercentage).toBe(100);
+    expect(r.canBunk).toBe(true);
+    expect(r.classesCount).toBe(0);
+    expect(r.status).toBe("safe");
+  });
+
+  it("handles target 100% when attendance is below 100% as impossible/unreachable state (never 999)", () => {
+    const r = calculateBunk(10, 8, 100);
+    expect(r.isReachable).toBe(false);
+    expect(r.canBunk).toBe(false);
+    expect(r.classesCount).toBe(0);
+    expect(r.headline).toBe("100% attendance is not reachable.");
+    expect(r.verdict).toContain("mathematically impossible to reach 100%");
+    expect(r.status).toBe("critical");
+  });
+
+  it("handles negative inputs gracefully via Math.max safety clamping", () => {
+    const r = calculateBunk(-10, -5, 75);
+    expect(r.currentPercentage).toBe(100);
+    expect(r.canBunk).toBe(true);
+    expect(r.classesCount).toBe(0);
+  });
+
+  it("handles extreme numbers (100,000 classes) without overflow or NaN", () => {
+    const r = calculateBunk(100000, 70000, 75);
+    expect(Number.isFinite(r.classesCount)).toBe(true);
+    expect(r.classesCount).toBe(20000);
+    expect(r.canBunk).toBe(false);
+  });
 });
 
 describe("attendOrSkipDecider", () => {

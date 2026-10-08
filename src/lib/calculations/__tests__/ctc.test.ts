@@ -30,4 +30,17 @@ describe("calculateCtcInHand", () => {
     const withBonus = calculateCtcInHand(1200000, 200000);
     expect(withBonus.monthlyTakeHomeWithoutBonus).toBeLessThan(withBonus.monthlyTakeHome);
   });
+
+  it("handles extreme 100 LPA CTC without overflow or NaN", () => {
+    const r = calculateCtcInHand(10000000); // 100 LPA
+    expect(Number.isFinite(r.monthlyTakeHome)).toBe(true);
+    expect(r.monthlyTakeHome).toBeGreaterThan(400000);
+    expect(r.deductionPercentage).toBeGreaterThan(30);
+  });
+
+  it("handles negative CTC input gracefully via Math.max clamping", () => {
+    const r = calculateCtcInHand(-500000);
+    expect(r.monthlyTakeHome).toBe(0);
+    expect(r.deductionPercentage).toBe(0);
+  });
 });
