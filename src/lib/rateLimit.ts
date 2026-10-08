@@ -54,6 +54,12 @@ export const RATE_LIMIT_CONFIGS = {
     windowMs: 60 * 1000,
     maxRequests: 60,
   },
+  // Strict pool for unverified/headerless client IPs in production (1 req / 10 min)
+  unknownPool: {
+    windowMs: 10 * 60 * 1000,
+    maxRequests: 1,
+    blockDurationMs: 15 * 60 * 1000,
+  },
 } as const;
 
 export interface RateLimitResult {
@@ -124,19 +130,9 @@ export function checkRateLimit(identifier: string, config: RateLimitConfig): Rat
 }
 
 /**
- * Extract client IP safely from Next.js request headers.
+ * Re-export getClientIp from canonical ip.ts helper.
  */
-export function getClientIp(headers: Headers): string {
-  const forwardedFor = headers.get("x-forwarded-for");
-  if (forwardedFor) {
-    return forwardedFor.split(",")[0].trim();
-  }
-  const realIp = headers.get("x-real-ip");
-  if (realIp) {
-    return realIp.trim();
-  }
-  return "127.0.0.1";
-}
+export { getClientIp } from "./ip";
 
 // Periodically clean up stale records every 60 seconds
 if (typeof setInterval !== "undefined") {

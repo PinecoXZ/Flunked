@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
 import { validateSuggestion } from "@/lib/sanitize";
 import { serverLogger } from "@/lib/logger";
-import { getClientIp } from "@/lib/rateLimit";
+import { getClientIp } from "@/lib/ip";
 
 export async function POST(request: Request) {
-  const ip = getClientIp(request.headers);
+  const { ip } = getClientIp(request.headers);
 
   try {
     const contentType = request.headers.get("content-type") || "";

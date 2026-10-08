@@ -28,7 +28,7 @@ const BLOCKED_USER_AGENTS = [
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const userAgent = (request.headers.get("user-agent") || "").toLowerCase();
-  const clientIp = getClientIp(request.headers);
+  const { ip: clientIp, isUnknown } = getClientIp(request.headers);
 
 
   // 2. Block known malicious vulnerability scanners and automated exploitation bots
@@ -46,7 +46,9 @@ export function middleware(request: NextRequest) {
 
   // 3. Apply Rate Limiting to API routes
   if (pathname.startsWith("/api/")) {
-    const limitConfig: RateLimitConfig = pathname.startsWith("/api/suggest")
+    const limitConfig: RateLimitConfig = isUnknown
+      ? RATE_LIMIT_CONFIGS.unknownPool
+      : pathname.startsWith("/api/suggest")
       ? RATE_LIMIT_CONFIGS.suggest
       : RATE_LIMIT_CONFIGS.api;
 

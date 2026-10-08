@@ -46,24 +46,12 @@ describe("checkRateLimit", () => {
   });
 });
 
-describe("getClientIp", () => {
-  it("extracts from x-forwarded-for first IP", async () => {
+describe("getClientIp re-export", () => {
+  it("re-exports getClientIp with { ip, isUnknown } shape", async () => {
     const { getClientIp } = await import("../rateLimit");
     const headers = new Headers();
-    headers.set("x-forwarded-for", "203.0.113.195, 70.41.3.18");
-    expect(getClientIp(headers)).toBe("203.0.113.195");
-  });
-
-  it("extracts from x-real-ip when forwarded-for is missing", async () => {
-    const { getClientIp } = await import("../rateLimit");
-    const headers = new Headers();
-    headers.set("x-real-ip", "198.51.100.1");
-    expect(getClientIp(headers)).toBe("198.51.100.1");
-  });
-
-  it("defaults to localhost if no IP headers exist", async () => {
-    const { getClientIp } = await import("../rateLimit");
-    const headers = new Headers();
-    expect(getClientIp(headers)).toBe("127.0.0.1");
+    const result = getClientIp(headers);
+    expect(result).toHaveProperty("ip");
+    expect(result).toHaveProperty("isUnknown");
   });
 });

@@ -180,8 +180,8 @@
 **Interfaces:**
 - Export `getClientIp(request: Request): { ip: string; isUnknown: boolean }` from `src/lib/ip.ts`.
 
-- [ ] **Step 1 (TDD A): Extract existing `getClientIp`**
-- [ ] **Step 2 (TDD B): Write test for spoofed header rejection, unknown IP handling, local override, and strict 429 exhaustion**
+- [x] **Step 1 (TDD A): Extract existing `getClientIp`**
+- [x] **Step 2 (TDD B): Write test for spoofed header rejection, unknown IP handling, local override, and strict 429 exhaustion**
   - Test cases:
     - Custom `X-Forwarded-For: 1.2.3.4` without Vercel header -> MUST NOT be trusted.
     - Verified `x-vercel-forwarded-for: 203.0.113.195` -> Returns `{ ip: "203.0.113.195", isUnknown: false }`.
@@ -191,7 +191,7 @@
     - Request with `ALLOW_LOCAL_PRODUCTION_IPS="true"` when `VERCEL_ENV` is unset -> Returns `{ ip: "127.0.0.1", isUnknown: false }`.
     - Request with `ALLOW_LOCAL_PRODUCTION_IPS="true"` when `VERCEL_ENV="production"` -> Ignored; returns `{ ip: "unknown_client_pool", isUnknown: true }`.
   - **Run test against unhardened logic: Show FAIL.**
-- [ ] **Step 3 (TDD C): Implement hardened IP extraction with development bypass**
+- [x] **Step 3 (TDD C): Implement hardened IP extraction with development bypass**
   ```typescript
   export function getClientIp(request: Request): { ip: string; isUnknown: boolean } {
     // In local development or local production override (strictly ignored on Vercel)
@@ -212,8 +212,8 @@
     return { ip: "unknown_client_pool", isUnknown: true };
   }
   ```
-- [ ] **Step 4: Run tests, lint, tsc, and build**
-- [ ] **Step 5: Show diff & commit**
+- [x] **Step 4: Run tests, lint, tsc, and build**
+- [x] **Step 5: Show diff & commit**
   - Review diff with user.
   - Commit message: `fix(sec): harden client IP resolution with strict shared bucket for unknown IPs`
 
