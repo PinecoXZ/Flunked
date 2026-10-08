@@ -244,7 +244,7 @@ export function CgpaMarriage() {
         <div className="pt-2">
           <ShareButton
             title="Send to Relatives"
-            shareText={`My CGPA Arranged Marriage Prospect score is ${finalScore}/100 on flunked.fun! Verdict: "${verdict}"`}
+            shareText={`My CGPA Arranged Marriage Prospect score is ${finalScore}/100 on flunked.online! Verdict: "${verdict}"`}
             className="w-full sm:w-auto"
           />
         </div>

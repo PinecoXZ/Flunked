@@ -162,7 +162,7 @@ export function GradeToPass() {
         metricLabel={metricLabel}
         verdict={verdict}
         status={status}
-        shareText={`I need ${metricDisplay} in my finals to pass this semester! Calculated on flunked.fun`}
+        shareText={`I need ${metricDisplay} in my finals to pass this semester! Calculated on flunked.online`}
       >
         <div className="mt-4 pt-4 border-t-2 border-black/10 grid grid-cols-3 gap-2 text-center text-xs font-mono font-bold text-black">
           <div className="p-2.5 rounded-lg bg-flunked-bg border border-black/20">

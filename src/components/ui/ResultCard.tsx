@@ -140,7 +140,7 @@ export function ResultCard({
       <div className="pt-4 border-t-2 border-black flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-1.5 text-xs text-black font-mono font-black">
           <span className="w-2.5 h-2.5 bg-flunked-yellow border border-black rounded-xs inline-block" />
-          <span>Flunked.fun</span>
+          <span>Flunked.online</span>
         </div>
         <div className="flex items-center gap-2">
           <button

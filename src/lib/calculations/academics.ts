@@ -1,5 +1,5 @@
 /**
- * Academic Utilities for Flunked.fun
+ * Academic Utilities for Flunked.online
  * Covering CGPA calculations, Semester Survival, Backlog Planner, and Grade to Pass.
  */
 
@@ -83,7 +83,7 @@ export function calculateCgpa(
     totalGradePoints,
     verdict,
     status,
-    shareText: `My CGPA is ${cgpa.toFixed(2)} (${percentage.toFixed(1)}%). Verdict: ${verdict} · Calculated on Flunked.fun`,
+    shareText: `My CGPA is ${cgpa.toFixed(2)} (${percentage.toFixed(1)}%). Verdict: ${verdict} · Calculated on Flunked.online`,
   };
 }
 
@@ -156,7 +156,7 @@ export function calculateSemesterSurvival(
     verdict,
     subDescription,
     status,
-    shareText: `Semester Survival: I need ${marksNeededInEndSem}/${endSemWeightage} in End-Sems to pass! Calculated on Flunked.fun`,
+    shareText: `Semester Survival: I need ${marksNeededInEndSem}/${endSemWeightage} in End-Sems to pass! Calculated on Flunked.online`,
   };
 }
 
@@ -335,7 +335,7 @@ export function calculateBacklogRecovery(
     recommendedWeeklyHours,
     advice,
     yearBackRisk,
-    shareText: `Backlog Recovery Plan: ${safeBacklogs} backlogs, ${recommendedWeeklyHours} hrs/week needed. Calculated on Flunked.fun`,
+    shareText: `Backlog Recovery Plan: ${safeBacklogs} backlogs, ${recommendedWeeklyHours} hrs/week needed. Calculated on Flunked.online`,
     hoursBreakdown: {
       backlogsStudy,
       regularSubjects,

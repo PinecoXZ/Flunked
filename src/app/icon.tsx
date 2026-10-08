@@ -7,7 +7,7 @@ export const size = {
 };
 export const contentType = "image/png";
 
-// Dynamic Favicon Generator for Flunked.fun
+// Dynamic Favicon Generator for Flunked.online
 export default function Icon() {
   return new ImageResponse(
     <div

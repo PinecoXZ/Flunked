@@ -183,7 +183,7 @@ export function HowIndianAreYou() {
         <div className="pt-2">
           <ShareButton
             title="Share Your Score"
-            shareText={`I scored ${totalScore}% on the Indian College Student DNA Index on flunked.fun! Archetype: ${archetype}`}
+            shareText={`I scored ${totalScore}% on the Indian College Student DNA Index on flunked.online! Archetype: ${archetype}`}
             className="w-full sm:w-auto"
           />
         </div>

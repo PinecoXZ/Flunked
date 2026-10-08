@@ -91,7 +91,7 @@ export function PlacementQuiz() {
   const progressPercent = Math.round((Object.keys(answers).length / totalQuestions) * 100);
 
   const handleShare = () => {
-    const text = `*Placement Readiness Assessment* [Flunked.fun]\nScore: ${results.percentage}/100 (${results.tier.badge})\n\nVerdict: ${results.tier.verdict}\n\nTop Action Items:\n1. ${results.weakestCategories[0]?.headline || "Grind DSA"}\n2. ${results.weakestCategories[1]?.headline || "Fix projects"}\n\nCheck your readiness at flunked.fun/tools/placement-quiz`;
+    const text = `*Placement Readiness Assessment* [Flunked.online]\nScore: ${results.percentage}/100 (${results.tier.badge})\n\nVerdict: ${results.tier.verdict}\n\nTop Action Items:\n1. ${results.weakestCategories[0]?.headline || "Grind DSA"}\n2. ${results.weakestCategories[1]?.headline || "Fix projects"}\n\nCheck your readiness at flunked.online/tools/placement-quiz`;
     copy(text);
   };
 

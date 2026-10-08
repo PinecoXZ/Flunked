@@ -8,7 +8,7 @@ function getEnv(): EnvConfig {
     throw new Error("NEXT_PUBLIC_BASE_URL must be defined in production.");
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://flunked.fun";
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://flunked.online";
   const nodeEnv = (process.env.NODE_ENV || "development") as EnvConfig["NODE_ENV"];
 
   return {

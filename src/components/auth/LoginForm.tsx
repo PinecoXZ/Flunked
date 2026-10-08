@@ -75,7 +75,7 @@ export function LoginForm({ onSuccess, redirectTo, className }: LoginFormProps) 
             <GraduationCap className="w-6 h-6 stroke-[2.5]" />
           </div>
           <h1 className="text-xl sm:text-2xl font-black tracking-tight text-black">
-            {user ? "Update Campus Profile" : "Enter Flunked.fun"}
+            {user ? "Update Campus Profile" : "Enter Flunked.online"}
           </h1>
           <p className="text-xs sm:text-sm text-flunked-muted font-medium">
             Zero friction. No email, passwords, or OTPs required. Just tell us what to call you and

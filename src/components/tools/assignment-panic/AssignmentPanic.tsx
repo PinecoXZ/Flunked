@@ -23,7 +23,7 @@ export function AssignmentPanic() {
   }, [pages, hoursLeft, type, caffeine, withFriends]);
 
   const handleShare = useCallback(() => {
-    const text = `*Assignment Panic Assessment* [Flunked.fun]\nAssignment: ${pages} pages in ${hoursLeft} hours (${type})\nStatus: ${result.feasibilityPercentage}% Feasible (${result.headline})\n\nTactical Verdict: ${result.tacticalVerdict}\nBegging the CR Probability: ${result.beggingCrProbability}%\n\nCalculated on Flunked.fun · flunked.fun/tools/assignment-panic`;
+    const text = `*Assignment Panic Assessment* [Flunked.online]\nAssignment: ${pages} pages in ${hoursLeft} hours (${type})\nStatus: ${result.feasibilityPercentage}% Feasible (${result.headline})\n\nTactical Verdict: ${result.tacticalVerdict}\nBegging the CR Probability: ${result.beggingCrProbability}%\n\nCalculated on Flunked.online · flunked.online/tools/assignment-panic`;
     copy(text);
   }, [
     copy,

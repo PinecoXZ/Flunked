@@ -13,7 +13,7 @@ interface ShareButtonProps {
 
 export function ShareButton({
   shareText,
-  title = "Flunked.fun",
+  title = "Flunked.online",
   className,
   variant = "primary",
 }: ShareButtonProps) {
@@ -26,7 +26,7 @@ export function ShareButton({
         await navigator.share({
           title,
           text: shareText,
-          url: typeof window !== "undefined" ? window.location.href : "https://flunked.fun",
+          url: typeof window !== "undefined" ? window.location.href : "https://flunked.online",
         });
         setCopied(true);
         setTimeout(() => setCopied(false), 2500);

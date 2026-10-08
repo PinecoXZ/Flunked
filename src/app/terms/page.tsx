@@ -16,9 +16,9 @@ import { SubpageHeader } from "@/components/layout/SubpageHeader";
 export const metadata = {
   title: "Terms of Service & End-User Agreement",
   description:
-    "Comprehensive, legally binding Terms of Service and End-User Agreement governing all access, tools, and calculators on Flunked.fun.",
+    "Comprehensive, legally binding Terms of Service and End-User Agreement governing all access, tools, and calculators on Flunked.online.",
   alternates: {
-    canonical: "https://flunked.fun/terms",
+    canonical: "https://flunked.online/terms",
   },
 };
 
@@ -73,8 +73,8 @@ export default function TermsPage() {
           </h1>
 
           <p className="text-xs sm:text-sm font-mono text-black/70 font-semibold leading-relaxed">
-            Please read these Terms of Service carefully before utilizing Flunked.fun. This document
-            constitutes a legally binding electronic agreement between you and Flunked.fun governing
+            Please read these Terms of Service carefully before utilizing Flunked.online. This document
+            constitutes a legally binding electronic agreement between you and Flunked.online governing
             your access to student tools, mathematical routines, and client-side calculators.
           </p>
         </header>
@@ -86,7 +86,7 @@ export default function TermsPage() {
             <span>Executive Plain-English Summary (The Student Covenant)</span>
           </div>
           <p className="text-xs sm:text-sm text-black/85 font-medium leading-relaxed font-sans">
-            Flunked.fun is an independent, non-corporate educational suite built to help college
+            Flunked.online is an independent, non-corporate educational suite built to help college
             students estimate attendance, calculate projected CGPAs, breakdown campus CTC offer
             letters, and resolve hostel expenses. By accessing or authenticating on this platform,
             you agree that you are an actively enrolled student using these tools solely for
@@ -146,12 +146,12 @@ export default function TermsPage() {
                 individually, as a student, researcher, or guest (&quot;User&quot;,
                 &quot;Student&quot;, &quot;Data Principal&quot;, or &quot;you&quot;)—and the
                 operators, maintainers, and contributors of{" "}
-                <strong className="text-black font-black">Flunked.fun</strong> (&quot;Flunked&quot;,
+                <strong className="text-black font-black">Flunked.online</strong> (&quot;Flunked&quot;,
                 &quot;Platform&quot;, &quot;we&quot;, &quot;our&quot;, or &quot;us&quot;).
               </p>
               <p>
                 By opening, browsing, accessing, bookmarking, authenticating via institutional email
-                domain, or invoking any mathematical computation on Flunked.fun, you provide your
+                domain, or invoking any mathematical computation on Flunked.online, you provide your
                 irrevocable, unreserved, and affirmative consent to be bound by these Terms and our
                 companion{" "}
                 <Link
@@ -175,7 +175,7 @@ export default function TermsPage() {
                   Cookie Policy
                 </Link>
                 . If you do not unconditionally assent to every provision set forth herein, you must
-                immediately terminate your session and discontinue use of Flunked.fun.
+                immediately terminate your session and discontinue use of Flunked.online.
               </p>
             </div>
           </section>
@@ -198,7 +198,7 @@ export default function TermsPage() {
                   <strong className="text-black">
                     &quot;Calculators&quot; or &quot;Tools&quot;:
                   </strong>{" "}
-                  Refers collectively to all 19 programmatic utilities hosted on Flunked.fun,
+                  Refers collectively to all 19 programmatic utilities hosted on Flunked.online,
                   including but not limited to the Bunk Calculator, CGPA Calculator, Semester
                   Survival Check, Backlog Planner, CTC to In-Hand Calculator, Placement Readiness
                   Quiz, Attend or Skip decider, Am I Cooked? diagnostic, Hostel Expense Splitter,
@@ -279,7 +279,7 @@ export default function TermsPage() {
                   into contracts under Indian law;
                 </li>
                 <li>
-                  You access Flunked.fun exclusively for personal, educational, non-commercial
+                  You access Flunked.online exclusively for personal, educational, non-commercial
                   self-auditing purposes.
                 </li>
               </ol>
@@ -296,7 +296,7 @@ export default function TermsPage() {
             </h2>
             <div className="space-y-3 text-black/80 font-medium leading-relaxed pl-1">
               <p>
-                Flunked.fun provides a frictionless student computing utility. Access to full
+                Flunked.online provides a frictionless student computing utility. Access to full
                 calculator tool suites requires designating your student name/nickname and
                 institutional campus name.
               </p>
@@ -338,7 +338,7 @@ export default function TermsPage() {
             </h2>
             <div className="space-y-3 text-black/80 font-medium leading-relaxed pl-1">
               <p>
-                Subject to your continuous compliance with these Terms, Flunked.fun grants you a
+                Subject to your continuous compliance with these Terms, Flunked.online grants you a
                 personal, revocable, non-exclusive, non-transferable, non-sublicensable, and limited
                 license to access and interact with the user interface and calculators solely for
                 your individual academic self-evaluation.
@@ -347,11 +347,11 @@ export default function TermsPage() {
                 <strong className="text-black font-black">
                   Reservation of Proprietary Rights:
                 </strong>{" "}
-                All intellectual property rights in and to Flunked.fun—including but not limited to
+                All intellectual property rights in and to Flunked.online—including but not limited to
                 the underlying TypeScript/React/Next.js codebase, mathematical models, formula
                 calibrations, editorial copy, question databases, Neo-Brutalist design tokens,
                 vector illustrations, trademarks, domain names, and brand identifiers—are the
-                exclusive intellectual property of Flunked.fun and are protected under the{" "}
+                exclusive intellectual property of Flunked.online and are protected under the{" "}
                 <strong className="text-black font-bold">Copyright Act, 1957</strong>, the{" "}
                 <strong className="text-black font-bold">Trade Marks Act, 1999</strong>, and
                 international intellectual property conventions.
@@ -359,7 +359,7 @@ export default function TermsPage() {
               <p>
                 Except as expressly authorized herein, no part of this Platform may be copied,
                 reproduced, republished, modified, mirrored, framed, distributed, or broadcast
-                without prior written authorization from the operators of Flunked.fun.
+                without prior written authorization from the operators of Flunked.online.
               </p>
             </div>
           </section>
@@ -374,7 +374,7 @@ export default function TermsPage() {
             </h2>
             <div className="space-y-3 text-black/80 font-medium leading-relaxed pl-1">
               <p>
-                To maintain the integrity, security, and performance of Flunked.fun for all college
+                To maintain the integrity, security, and performance of Flunked.online for all college
                 students across India, you explicitly agree that you shall NOT, directly or
                 indirectly:
               </p>
@@ -398,7 +398,7 @@ export default function TermsPage() {
                 </li>
                 <li>
                   <strong className="text-black">Commercial Resale &amp; White-Labeling:</strong>{" "}
-                  Monetize, re-brand, syndicate, iframe, or package Flunked.fun calculators as a
+                  Monetize, re-brand, syndicate, iframe, or package Flunked.online calculators as a
                   commercial paid service or enterprise product.
                 </li>
                 <li>
@@ -433,7 +433,7 @@ export default function TermsPage() {
                 </span>
                 <p className="text-xs sm:text-sm font-medium text-black/90">
                   Every calculation, percentage threshold, exam mark target, tax withholding
-                  estimate, and hostel debt settlement provided on Flunked.fun is an{" "}
+                  estimate, and hostel debt settlement provided on Flunked.online is an{" "}
                   <strong className="text-black font-black">
                     unverified mathematical heuristic
                   </strong>{" "}
@@ -444,7 +444,7 @@ export default function TermsPage() {
                 You acknowledge that university statutes, institutional ordinances, autonomous
                 college regulations, and departmental examination circulars{" "}
                 <strong className="text-black font-black">supersede and overrule</strong> all
-                results rendered on this platform. Flunked.fun possesses zero legal, academic, or
+                results rendered on this platform. Flunked.online possesses zero legal, academic, or
                 institutional authority to certify attendance compliance, exam eligibility, degree
                 completion, or tax liability.
               </p>
@@ -484,7 +484,7 @@ export default function TermsPage() {
                 non-proprietary.
               </p>
               <p>
-                By submitting ideas, you grant Flunked.fun an unrestricted, perpetual, irrevocable,
+                By submitting ideas, you grant Flunked.online an unrestricted, perpetual, irrevocable,
                 worldwide, royalty-free, transferable, and sublicensable license to utilize, test,
                 implement, modify, publish, and commercialize such concepts without compensation,
                 royalty, accounting, or attribution obligation to you.
@@ -508,7 +508,7 @@ export default function TermsPage() {
               <ul className="list-disc list-inside space-y-1.5 text-xs sm:text-sm pl-2 font-medium text-black/85">
                 <li>
                   <strong className="text-black">Unified Payments Interface (UPI):</strong>{" "}
-                  Deep-links for settlement via Google Pay, PhonePe, Paytm, or BHIM. Flunked.fun is
+                  Deep-links for settlement via Google Pay, PhonePe, Paytm, or BHIM. Flunked.online is
                   NOT an intermediary or payment aggregator under the Payment and Settlement Systems
                   Act, 2007;
                 </li>
@@ -519,7 +519,7 @@ export default function TermsPage() {
                   Links to external creator support channels (
                   <code className="font-bold">buymeacoffee.com/fayezahmad</code>). Any contribution
                   is strictly voluntary, gratuitous, and non-refundable, processed externally by Buy
-                  Me a Coffee / Stripe. Flunked.fun never collects, handles, or stores payment
+                  Me a Coffee / Stripe. Flunked.online never collects, handles, or stores payment
                   cards, banking credentials, or UPI PINs. Voluntary tips do NOT constitute fees for
                   software licenses, premium features, or service contracts;
                 </li>
@@ -535,7 +535,7 @@ export default function TermsPage() {
                 </li>
               </ul>
               <p>
-                Flunked.fun maintains zero control over third-party terms of service, server uptime,
+                Flunked.online maintains zero control over third-party terms of service, server uptime,
                 security practices, or privacy policies. Your interaction with third-party software
                 is governed solely by their respective agreements.
               </p>
@@ -558,7 +558,7 @@ export default function TermsPage() {
                 </span>
               </div>
               <p className="text-xs sm:text-sm font-semibold text-black/90 leading-relaxed uppercase">
-                TO THE MAXIMUM EXTENT PERMISSIBLE UNDER APPLICABLE INDIAN LAW, FLUNKED.FUN, ITS
+                TO THE MAXIMUM EXTENT PERMISSIBLE UNDER APPLICABLE INDIAN LAW, FLUNKED.ONLINE, ITS
                 OPERATORS, CONTRIBUTORS, AFFILIATES, AND AGENTS EXPRESSLY DISCLAIM ALL WARRANTIES OF
                 ANY KIND, WHETHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE.
               </p>
@@ -599,13 +599,13 @@ export default function TermsPage() {
             <div className="space-y-3 text-black/80 font-medium leading-relaxed pl-1">
               <p>
                 Under no circumstances—including breach of contract, tort, negligence, strict
-                liability, or statutory duty—shall Flunked.fun, its maintainers, or hosting
+                liability, or statutory duty—shall Flunked.online, its maintainers, or hosting
                 affiliates be held liable for any direct, indirect, incidental, special, exemplary,
                 consequential, or punitive damages arising out of your use or inability to use the
                 Platform.
               </p>
               <p className="font-bold text-black">
-                Without limiting the generality of the foregoing, Flunked.fun assumes zero liability
+                Without limiting the generality of the foregoing, Flunked.online assumes zero liability
                 for:
               </p>
               <ul className="list-disc list-inside space-y-1.5 text-xs sm:text-sm pl-2 font-medium text-black/85">
@@ -635,12 +635,12 @@ export default function TermsPage() {
                 </li>
               </ul>
               <p className="text-xs sm:text-sm font-mono text-black/80 font-bold pt-1">
-                In all events, the total cumulative monetary liability of Flunked.fun under these
+                In all events, the total cumulative monetary liability of Flunked.online under these
                 Terms shall be strictly capped at{" "}
                 <strong className="text-black font-black">
                   INR ₹500 (Indian Rupees Five Hundred Only)
                 </strong>{" "}
-                or the aggregate amount paid by you to Flunked.fun during the preceding thirty (30)
+                or the aggregate amount paid by you to Flunked.online during the preceding thirty (30)
                 days, whichever is lower (which is zero for all non-paying users).
               </p>
             </div>
@@ -656,7 +656,7 @@ export default function TermsPage() {
             </h2>
             <div className="space-y-3 text-black/80 font-medium leading-relaxed pl-1">
               <p>
-                You agree to defend, indemnify, and hold harmless Flunked.fun, its founders,
+                You agree to defend, indemnify, and hold harmless Flunked.online, its founders,
                 operators, contributors, and service providers from and against any claims,
                 liabilities, damages, losses, costs, demands, investigations, and legal expenses
                 (including reasonable attorney fees) arising out of or in connection with:
@@ -693,7 +693,7 @@ export default function TermsPage() {
                 Platform or retain verified session tokens in your browser.
               </p>
               <p>
-                Flunked.fun reserves the absolute right, without prior notice or liability, to
+                Flunked.online reserves the absolute right, without prior notice or liability, to
                 suspend, terminate, rate-limit, or permanently block your access (including
                 domain-level or IP-level blocking) if we detect:
               </p>
@@ -719,7 +719,7 @@ export default function TermsPage() {
             <div className="space-y-3 text-black/80 font-medium leading-relaxed pl-1">
               <p>
                 These Terms and any dispute, controversy, or claim arising out of or relating to
-                your use of Flunked.fun shall be governed by, construed, and interpreted in
+                your use of Flunked.online shall be governed by, construed, and interpreted in
                 accordance with the substantive laws of the{" "}
                 <strong className="text-black font-black">Republic of India</strong>, without regard
                 to its conflict of law principles.
@@ -730,7 +730,7 @@ export default function TermsPage() {
                 </div>
                 <p className="text-xs sm:text-sm text-black/80 font-medium">
                   Prior to initiating any legal proceedings, you agree to notify us of the dispute
-                  in writing at <code className="font-mono font-bold">legal@flunked.fun</code>. Both
+                  in writing at <code className="font-mono font-bold">legal@flunked.online</code>. Both
                   parties agree to engage in good-faith informal negotiations for a minimum period
                   of thirty (30) days.
                 </p>
@@ -771,7 +771,7 @@ export default function TermsPage() {
                 and enforceability of any remaining provisions.
               </p>
               <p>
-                <strong className="text-black">Force Majeure:</strong> Flunked.fun shall not be held
+                <strong className="text-black">Force Majeure:</strong> Flunked.online shall not be held
                 liable for failure or delay in performance resulting from causes beyond our
                 reasonable control, including internet backbone outages, DDoS attacks, electrical
                 failures, server hosting downtime, acts of civil authorities, or changes in
@@ -780,7 +780,7 @@ export default function TermsPage() {
               <p>
                 <strong className="text-black">Entire Agreement &amp; Non-Waiver:</strong> These
                 Terms, together with our Privacy Policy, Academic Disclaimer, and Cookie Policy,
-                constitute the entire agreement between you and Flunked.fun regarding your use of
+                constitute the entire agreement between you and Flunked.online regarding your use of
                 the Platform. Our failure to enforce any strict right or provision shall not
                 constitute a waiver of such right.
               </p>
@@ -828,7 +828,7 @@ export default function TermsPage() {
                       Entity
                     </span>
                     <span className="font-bold text-black">
-                      Flunked.fun Legal &amp; Student Rights Desk
+                      Flunked.online Legal &amp; Student Rights Desk
                     </span>
                   </div>
                   <div>
@@ -836,10 +836,10 @@ export default function TermsPage() {
                       Grievance Electronic Mail
                     </span>
                     <a
-                      href="mailto:grievance@flunked.fun"
+                      href="mailto:grievance@flunked.online"
                       className="font-bold text-black underline hover:bg-flunked-yellow"
                     >
-                      grievance@flunked.fun
+                      grievance@flunked.online
                     </a>
                   </div>
                   <div>
@@ -847,10 +847,10 @@ export default function TermsPage() {
                       General Legal Inquiries
                     </span>
                     <a
-                      href="mailto:legal@flunked.fun"
+                      href="mailto:legal@flunked.online"
                       className="font-bold text-black underline hover:bg-flunked-yellow"
                     >
-                      legal@flunked.fun
+                      legal@flunked.online
                     </a>
                   </div>
                   <div>
@@ -879,7 +879,7 @@ export default function TermsPage() {
         <footer className="pt-6 border-t-2 border-black flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-black/70">
           <div>
             <span>
-              © {new Date().getFullYear()} Flunked.fun. Standard Indian Higher Education License.
+              © {new Date().getFullYear()} Flunked.online. Standard Indian Higher Education License.
             </span>
           </div>
           <div className="flex items-center gap-3">

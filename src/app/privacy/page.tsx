@@ -19,9 +19,9 @@ import { SubpageHeader } from "@/components/layout/SubpageHeader";
 export const metadata = {
   title: "Privacy Policy & Student Data Protection Standards",
   description:
-    "Official Privacy Policy and Data Protection Standards for Flunked.fun, fully compliant with India's Digital Personal Data Protection Act, 2023 (DPDP Act).",
+    "Official Privacy Policy and Data Protection Standards for Flunked.online, fully compliant with India's Digital Personal Data Protection Act, 2023 (DPDP Act).",
   alternates: {
-    canonical: "https://flunked.fun/privacy",
+    canonical: "https://flunked.online/privacy",
   },
 };
 
@@ -73,7 +73,7 @@ export default function PrivacyPage() {
 
           <p className="text-xs sm:text-sm font-mono text-black/70 font-semibold leading-relaxed">
             This Privacy Policy governs the collection, processing, local storage, and absolute
-            non-disclosure of digital personal data across Flunked.fun under the Digital Personal
+            non-disclosure of digital personal data across Flunked.online under the Digital Personal
             Data Protection Act, 2023 (DPDP Act, Act No. 22 of 2023) and the Information Technology
             Act, 2000.
           </p>
@@ -86,7 +86,7 @@ export default function PrivacyPage() {
             <span>The Student Privacy Manifesto (In Plain English)</span>
           </div>
           <p className="text-xs sm:text-sm text-black/85 font-medium leading-relaxed font-sans">
-            Flunked.fun was created by university students who refuse to participate in the
+            Flunked.online was created by university students who refuse to participate in the
             corporate surveillance web. We practice{" "}
             <strong className="text-black font-black">radical data minimization</strong>. We do not
             sell student emails, we run zero programmatic advertising networks, and we never report
@@ -133,7 +133,7 @@ export default function PrivacyPage() {
             <div className="space-y-3 text-black/80 font-medium leading-relaxed pl-1">
               <p>
                 This Privacy Policy establishes the statutory standards under which{" "}
-                <strong className="text-black font-black">Flunked.fun</strong> acts as a{" "}
+                <strong className="text-black font-black">Flunked.online</strong> acts as a{" "}
                 <strong className="text-black font-bold">&quot;Data Fiduciary&quot;</strong>{" "}
                 pursuant to Section 2(i) of the{" "}
                 <strong className="text-black font-bold">
@@ -146,7 +146,7 @@ export default function PrivacyPage() {
               <p>
                 This Policy applies to all digital personal data processed in connection with any
                 service, interactive calculator, quiz, or feature hosted on the domain{" "}
-                <strong className="text-black font-bold">flunked.fun</strong> and its sub-domains.
+                <strong className="text-black font-bold">flunked.online</strong> and its sub-domains.
                 It is drafted in compliance with the DPDP Act 2023, the{" "}
                 <strong className="text-black font-bold">Information Technology Act, 2000</strong>,
                 and the{" "}
@@ -169,10 +169,10 @@ export default function PrivacyPage() {
             </h2>
             <div className="space-y-3 text-black/80 font-medium leading-relaxed pl-1">
               <p>
-                Flunked.fun is architected from the ground up on the principle of{" "}
+                Flunked.online is architected from the ground up on the principle of{" "}
                 <strong className="text-black font-black">Privacy by Design and Default</strong>.
                 Unlike traditional corporate web applications that log every user interaction to
-                backend analytical datastores, Flunked.fun enforces strict{" "}
+                backend analytical datastores, Flunked.online enforces strict{" "}
                 <strong className="text-black font-black">Client-Side Memory Sandboxing</strong>.
               </p>
               <div className="p-5 rounded-2xl bg-flunked-bg border-2 border-black shadow-neo-sm space-y-3">
@@ -247,7 +247,7 @@ export default function PrivacyPage() {
                     credits, CTC packages, base salary, EPF allocations, hostel roommate expense
                     logs, and quiz selections—are{" "}
                     <strong className="text-black font-bold">never collected or uploaded</strong>.
-                    Flunked.fun possesses zero copies or logs of these personal values.
+                    Flunked.online possesses zero copies or logs of these personal values.
                   </p>
                 </div>
 
@@ -294,7 +294,7 @@ export default function PrivacyPage() {
             </h2>
             <div className="space-y-3 text-black/80 font-medium leading-relaxed pl-1">
               <p>
-                Under Section 4 and Section 7 of the DPDP Act, 2023, Flunked.fun processes your
+                Under Section 4 and Section 7 of the DPDP Act, 2023, Flunked.online processes your
                 institutional email address solely on the following lawful statutory grounds:
               </p>
               <ul className="list-disc list-inside space-y-1.5 text-xs sm:text-sm pl-2 font-medium text-black/85">
@@ -333,7 +333,7 @@ export default function PrivacyPage() {
               </div>
               <ul className="list-disc list-inside space-y-2 text-xs sm:text-sm font-medium text-black/85">
                 <li>
-                  <strong className="text-black">Zero Institutional Reporting:</strong> Flunked.fun
+                  <strong className="text-black">Zero Institutional Reporting:</strong> Flunked.online
                   will NEVER disclose, furnish, or transmit your name, campus affiliation,
                   attendance numbers, or calculation history to any college administration, Dean of
                   Academic Affairs, Head of Department (HOD), Proctorial Board, or university
@@ -364,7 +364,7 @@ export default function PrivacyPage() {
             </h2>
             <div className="space-y-3 text-black/80 font-medium leading-relaxed pl-1">
               <p>
-                To provide a seamless, non-invasive experience, Flunked.fun utilizes standard W3C{" "}
+                To provide a seamless, non-invasive experience, Flunked.online utilizes standard W3C{" "}
                 <strong className="text-black font-bold">HTML5 Web Storage (localStorage)</strong>{" "}
                 directly inside your browser rather than tracking cookies.
               </p>
@@ -433,7 +433,7 @@ export default function PrivacyPage() {
                     <span>Instant Profile Reset</span>
                   </div>
                   <p className="text-xs text-black/80 font-medium">
-                    When you click &quot;Reset Profile&quot; in the profile dropdown, Flunked.fun
+                    When you click &quot;Reset Profile&quot; in the profile dropdown, Flunked.online
                     executes an immediate programmatic purge of the{" "}
                     <code className="font-bold">flunked_user</code> payload from your browser&apos;s
                     local storage, severing all session data.
@@ -465,7 +465,7 @@ export default function PrivacyPage() {
             <div className="space-y-3 text-black/80 font-medium leading-relaxed pl-1">
               <p>
                 In fulfillment of Section 8(5) of the DPDP Act and Rule 8 of the Information
-                Technology SPDI Rules 2011, Flunked.fun implements reasonable security practices and
+                Technology SPDI Rules 2011, Flunked.online implements reasonable security practices and
                 procedures:
               </p>
               <ul className="list-disc list-inside space-y-1.5 text-xs sm:text-sm pl-2 font-medium text-black/85">
@@ -526,7 +526,7 @@ export default function PrivacyPage() {
               </div>
               <p className="text-xs sm:text-sm font-medium text-black/80 pt-1">
                 For any privacy or data rights inquiries under the DPDP Act, contact our designated
-                desk at <code className="font-mono font-bold">privacy@flunked.fun</code>.
+                desk at <code className="font-mono font-bold">privacy@flunked.online</code>.
               </p>
             </div>
           </section>
@@ -543,7 +543,7 @@ export default function PrivacyPage() {
               <p>
                 Section 9 of the DPDP Act, 2023 prescribes specific obligations regarding the
                 personal data of children (individuals under eighteen years of age). While
-                Flunked.fun is targeted primarily at university students who have completed
+                Flunked.online is targeted primarily at university students who have completed
                 secondary school, we strictly abide by the following protective mandates:
               </p>
               <ul className="list-disc list-inside space-y-1.5 text-xs sm:text-sm pl-2 font-medium text-black/85">
@@ -573,7 +573,7 @@ export default function PrivacyPage() {
             </h2>
             <div className="space-y-3 text-black/80 font-medium leading-relaxed pl-1">
               <p>
-                Flunked.fun prioritizes Indian domestic cloud edge infrastructure. Any operational
+                Flunked.online prioritizes Indian domestic cloud edge infrastructure. Any operational
                 transmission of technical telemetry complies with Section 16 of the DPDP Act, 2023.
                 We do NOT transfer student personal data to any foreign country or territory
                 blacklisted or restricted by the Central Government of India.
@@ -592,7 +592,7 @@ export default function PrivacyPage() {
             <div className="space-y-3 text-black/80 font-medium leading-relaxed pl-1">
               <p>
                 In compliance with Section 13 of the DPDP Act, 2023 and Rule 3(2) of the Information
-                Technology Rules, 2021, Flunked.fun has designated a Nodal Data Protection &amp;
+                Technology Rules, 2021, Flunked.online has designated a Nodal Data Protection &amp;
                 Grievance Officer:
               </p>
               <div className="p-5 rounded-2xl bg-flunked-bg border-2 border-black shadow-neo space-y-3 font-mono text-xs sm:text-sm">
@@ -614,7 +614,7 @@ export default function PrivacyPage() {
                       Institutional Domain Desk
                     </span>
                     <span className="font-bold text-black">
-                      Flunked.fun Privacy &amp; Data Rights Bureau
+                      Flunked.online Privacy &amp; Data Rights Bureau
                     </span>
                   </div>
                   <div>
@@ -622,10 +622,10 @@ export default function PrivacyPage() {
                       Privacy Electronic Mail
                     </span>
                     <a
-                      href="mailto:privacy@flunked.fun"
+                      href="mailto:privacy@flunked.online"
                       className="font-bold text-black underline hover:bg-flunked-yellow"
                     >
-                      privacy@flunked.fun
+                      privacy@flunked.online
                     </a>
                   </div>
                   <div>
@@ -633,10 +633,10 @@ export default function PrivacyPage() {
                       Formal Grievances
                     </span>
                     <a
-                      href="mailto:grievance@flunked.fun"
+                      href="mailto:grievance@flunked.online"
                       className="font-bold text-black underline hover:bg-flunked-yellow"
                     >
-                      grievance@flunked.fun
+                      grievance@flunked.online
                     </a>
                   </div>
                   <div>
@@ -673,7 +673,7 @@ export default function PrivacyPage() {
         {/* Footer Note */}
         <footer className="pt-6 border-t-2 border-black flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-black/70">
           <div>
-            <span>© {new Date().getFullYear()} Flunked.fun. DPDP Act (India) Protected.</span>
+            <span>© {new Date().getFullYear()} Flunked.online. DPDP Act (India) Protected.</span>
           </div>
           <div className="flex items-center gap-3">
             <Link href="/terms" className="hover:text-black underline">

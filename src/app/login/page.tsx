@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     "Instant, frictionless campus onboarding. Enter your nickname and college to unlock 19 academic and placement survival calculators.",
   alternates: {
-    canonical: "https://flunked.fun/login",
+    canonical: "https://flunked.online/login",
   },
 };
 

@@ -6,9 +6,9 @@ import { SubpageHeader } from "@/components/layout/SubpageHeader";
 export const metadata: Metadata = {
   title: "About the Project — Manifesto & Story",
   description:
-    "Why Flunked.fun was built: 19 free, zero-friction academic & campus survival calculators created by Indian students, for Indian students. No corporate BS.",
+    "Why Flunked.online was built: 19 free, zero-friction academic & campus survival calculators created by Indian students, for Indian students. No corporate BS.",
   alternates: {
-    canonical: "https://flunked.fun/about",
+    canonical: "https://flunked.online/about",
   },
 };
 
@@ -26,7 +26,7 @@ export default function AboutPage() {
             <span>Manifesto</span>
           </div>
           <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-black">
-            About Flunked.fun
+            About Flunked.online
           </h1>
           <p className="text-xs font-mono font-bold text-black/70">Just the truth.</p>
         </div>
@@ -35,7 +35,7 @@ export default function AboutPage() {
         <div className="relative rounded-2xl bg-white border-2 border-black p-6 sm:p-10 shadow-neo space-y-6">
           <blockquote className="text-lg sm:text-2xl text-black font-serif leading-relaxed space-y-4 font-normal">
             <p>
-              Flunked.fun is a collection of survival tools built specifically for Indian college
+              Flunked.online is a collection of survival tools built specifically for Indian college
               students.
             </p>
             <p className="font-sans font-black text-base sm:text-lg">
@@ -63,7 +63,7 @@ export default function AboutPage() {
             month after gratuity, PF, and TDS? Who owes who after the Friday night Biryani order?
           </p>
           <p>
-            Instead of clunky WhatsApp arguments or broken Excel sheets, Flunked.fun puts all 19
+            Instead of clunky WhatsApp arguments or broken Excel sheets, Flunked.online puts all 19
             tools in one zero-friction, student-verified place.
           </p>
         </div>

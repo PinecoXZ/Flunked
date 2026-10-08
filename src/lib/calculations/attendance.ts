@@ -1,5 +1,5 @@
 /**
- * Attendance & Bunk Calculations for Flunked.fun
+ * Attendance & Bunk Calculations for Flunked.online
  * Powers Bunk Calculator and "Should I Attend This Lecture?" decider.
  */
 
@@ -28,7 +28,7 @@ export function calculateBunk(held: number, attended: number, target: number = 7
       headline: "No classes held yet.",
       verdict: "Semester hasn't started yet. You have a clean slate.",
       status: "safe",
-      shareText: "No classes held yet. Calculated on Flunked.fun",
+      shareText: "No classes held yet. Calculated on Flunked.online",
     };
   }
 
@@ -56,7 +56,7 @@ export function calculateBunk(held: number, attended: number, target: number = 7
       headline,
       verdict,
       status,
-      shareText: `My attendance is ${currentPercentage}% (Target: ${safeTarget}%). I can bunk ${classesCount} more classes! Calculated on Flunked.fun`,
+      shareText: `My attendance is ${currentPercentage}% (Target: ${safeTarget}%). I can bunk ${classesCount} more classes! Calculated on Flunked.online`,
     };
   } else {
     const denominator = 100 - safeTarget;
@@ -76,7 +76,7 @@ export function calculateBunk(held: number, attended: number, target: number = 7
       headline,
       verdict,
       status,
-      shareText: `My attendance is ${currentPercentage}% (below ${safeTarget}%). I need to attend ${classesCount} classes consecutively! Calculated on Flunked.fun`,
+      shareText: `My attendance is ${currentPercentage}% (below ${safeTarget}%). I need to attend ${classesCount} classes consecutively! Calculated on Flunked.online`,
     };
   }
 }

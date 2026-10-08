@@ -16,9 +16,9 @@ import { SubpageHeader } from "@/components/layout/SubpageHeader";
 export const metadata = {
   title: "Cookie & Local Storage Policy",
   description:
-    "Official Cookie, HTML5 Web Storage, and Client-Side Data Transparency Statement for Flunked.fun.",
+    "Official Cookie, HTML5 Web Storage, and Client-Side Data Transparency Statement for Flunked.online.",
   alternates: {
-    canonical: "https://flunked.fun/cookies",
+    canonical: "https://flunked.online/cookies",
   },
 };
 
@@ -64,7 +64,7 @@ export default function CookiePage() {
           </h1>
 
           <p className="text-xs sm:text-sm font-mono text-black/70 font-semibold leading-relaxed">
-            This policy outlines how Flunked.fun utilizes browser-level HTML5 Web Storage
+            This policy outlines how Flunked.online utilizes browser-level HTML5 Web Storage
             (localStorage) and session memory strictly for technical authentication and tutorial
             state—without third-party tracking cookies or surveillance beacons.
           </p>
@@ -77,7 +77,7 @@ export default function CookiePage() {
             <span>The Clean Web Commitment (In Plain English)</span>
           </div>
           <p className="text-xs sm:text-sm text-black/85 font-medium leading-relaxed font-sans">
-            Flunked.fun refuses to compromise student devices. We do not use third-party marketing
+            Flunked.online refuses to compromise student devices. We do not use third-party marketing
             cookies, cross-site analytics beacons, or behavioral fingerprinting scripts. We use
             modern, client-side{" "}
             <strong className="text-black font-black">HTML5 Local Storage</strong> strictly to keep
@@ -139,7 +139,7 @@ export default function CookiePage() {
                     Commercial ad tech abuses cookies to construct cross-site surveillance
                     histories.{" "}
                     <strong className="text-black font-black">
-                      Flunked.fun does NOT deploy tracking or advertising cookies.
+                      Flunked.online does NOT deploy tracking or advertising cookies.
                     </strong>
                   </p>
                 </div>
@@ -172,7 +172,7 @@ export default function CookiePage() {
             </h2>
             <div className="space-y-4 text-black/80 font-medium leading-relaxed pl-1">
               <p>
-                Below is the complete, comprehensive registry of every data item Flunked.fun stores
+                Below is the complete, comprehensive registry of every data item Flunked.online stores
                 or handles inside your web browser client:
               </p>
 
@@ -257,7 +257,7 @@ export default function CookiePage() {
             <div className="p-5 rounded-2xl bg-[#FFF5F5] border-2 border-black space-y-3">
               <div className="flex items-center gap-2 text-xs font-mono font-black text-rose-700 uppercase">
                 <Ban className="w-4 h-4 text-rose-600 shrink-0" />
-                <span>What Flunked.fun Strictly Rejects &amp; Prohibits</span>
+                <span>What Flunked.online Strictly Rejects &amp; Prohibits</span>
               </div>
               <ul className="list-disc list-inside space-y-2 text-xs sm:text-sm font-medium text-black/85">
                 <li>
@@ -268,7 +268,7 @@ export default function CookiePage() {
                 <li>
                   <strong className="text-black">No Cross-Site Behavioral Graphing:</strong> We
                   never track what other educational, shopping, or university portals you browse
-                  before or after visiting Flunked.fun;
+                  before or after visiting Flunked.online;
                 </li>
                 <li>
                   <strong className="text-black">No Device Fingerprinting:</strong> We strictly
@@ -277,7 +277,7 @@ export default function CookiePage() {
                 </li>
                 <li>
                   <strong className="text-black">No Third-Party Data Brokers:</strong> No analytics
-                  software embedded on Flunked.fun transmits your device data to data aggregators.
+                  software embedded on Flunked.online transmits your device data to data aggregators.
                 </li>
               </ul>
             </div>
@@ -294,7 +294,7 @@ export default function CookiePage() {
             <div className="space-y-4 text-black/80 font-medium leading-relaxed pl-1">
               <p>
                 You retain complete sovereign control over your browser&apos;s storage. You can
-                immediately wipe all Flunked.fun session state using either our one-click
+                immediately wipe all Flunked.online session state using either our one-click
                 application control or native browser settings:
               </p>
 
@@ -329,7 +329,7 @@ export default function CookiePage() {
                       Press{" "}
                       <kbd className="font-mono font-bold bg-zinc-100 px-1 rounded border">F12</kbd>{" "}
                       &gt; Application tab &gt; Storage &gt; Local Storage &gt; Right-click{" "}
-                      <code className="font-bold">flunked.fun</code> &gt; Clear. Or: Settings &gt;
+                      <code className="font-bold">flunked.online</code> &gt; Clear. Or: Settings &gt;
                       Privacy &amp; Security &gt; Delete browsing data.
                     </p>
                   </div>
@@ -339,7 +339,7 @@ export default function CookiePage() {
                     </span>
                     <p className="text-black/75">
                       macOS: Safari &gt; Settings &gt; Privacy &gt; Manage Website Data &gt; Search
-                      &quot;flunked.fun&quot; &gt; Remove. iOS: Settings &gt; Safari &gt; Advanced
+                      &quot;flunked.online&quot; &gt; Remove. iOS: Settings &gt; Safari &gt; Advanced
                       &gt; Website Data &gt; Delete.
                     </p>
                   </div>
@@ -376,7 +376,7 @@ export default function CookiePage() {
             </h2>
             <div className="space-y-3 text-black/80 font-medium leading-relaxed pl-1">
               <p>
-                Flunked.fun natively honors the{" "}
+                Flunked.online natively honors the{" "}
                 <strong className="text-black font-bold">Global Privacy Control (GPC)</strong> and{" "}
                 <strong className="text-black font-bold">Do Not Track (DNT)</strong> browser
                 signals. Because our infrastructure does not load behavioral trackers or sell
@@ -438,10 +438,10 @@ export default function CookiePage() {
                 <div className="text-black/85">
                   <span>Electronic Dispatch: </span>
                   <a
-                    href="mailto:privacy@flunked.fun"
+                    href="mailto:privacy@flunked.online"
                     className="font-bold text-black underline hover:bg-flunked-yellow px-1"
                   >
-                    privacy@flunked.fun
+                    privacy@flunked.online
                   </a>
                 </div>
                 <div className="text-black/70 text-xs">
@@ -458,7 +458,7 @@ export default function CookiePage() {
         {/* Footer Note */}
         <footer className="pt-6 border-t-2 border-black flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-black/70">
           <div>
-            <span>© {new Date().getFullYear()} Flunked.fun. Transparent Client-Side Storage.</span>
+            <span>© {new Date().getFullYear()} Flunked.online. Transparent Client-Side Storage.</span>
           </div>
           <div className="flex items-center gap-3">
             <Link href="/terms" className="hover:text-black underline">

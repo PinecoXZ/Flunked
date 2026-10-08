@@ -32,7 +32,7 @@ export function AttendOrSkip() {
   }, [attendance, proxy, strictness, important, tiredness]);
 
   const handleShare = () => {
-    const text = `*Should I Attend This Lecture?* [Flunked.fun]\nDecision: ${result.headline}\nAttendance: ${attendance}% → If skipped: ${result.projectedAttendanceAfterSkip}%\nReasoning: ${result.reasoning}\nAction: ${result.actionText}\n\nCalculated on Flunked.fun · flunked.fun/tools/attend-or-skip`;
+    const text = `*Should I Attend This Lecture?* [Flunked.online]\nDecision: ${result.headline}\nAttendance: ${attendance}% → If skipped: ${result.projectedAttendanceAfterSkip}%\nReasoning: ${result.reasoning}\nAction: ${result.actionText}\n\nCalculated on Flunked.online · flunked.online/tools/attend-or-skip`;
     copy(text);
   };
 

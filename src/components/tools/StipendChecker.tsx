@@ -257,7 +257,7 @@ export function StipendChecker() {
         metricLabel="Estimated Net Savings / Month"
         verdict={verdict}
         status={status}
-        shareText={`My ${formatCurrencyINR(stipend)}/mo internship in ${selectedCity} gives ${netSavings >= 0 ? "+" : ""}${formatCurrencyINR(netSavings)}/mo savings! Checked on flunked.fun`}
+        shareText={`My ${formatCurrencyINR(stipend)}/mo internship in ${selectedCity} gives ${netSavings >= 0 ? "+" : ""}${formatCurrencyINR(netSavings)}/mo savings! Checked on flunked.online`}
       >
         {/* Cost of Living Ledger */}
         <div className="mt-4 pt-4 border-t-2 border-black/10 space-y-2">

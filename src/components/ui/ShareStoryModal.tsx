@@ -144,7 +144,7 @@ export function ShareStoryModal({
     drawNeoCard(50, 50, 980, 1250, 36, "#FFFFFF", true);
 
     // 2. Header
-    // Flunked.fun logo
+    // Flunked.online logo
     ctx.font = "900 46px system-ui, -apple-system, sans-serif";
     ctx.fillStyle = "#000000";
     ctx.textAlign = "left";
@@ -266,11 +266,13 @@ export function ShareStoryModal({
     ctx.textAlign = "left";
     ctx.fillStyle = "#000000";
     ctx.font = "900 24px monospace";
-    ctx.fillText("flunked.fun", 95, 1225);
+    const brandX = 95;
+    ctx.fillText("flunked.online", brandX, 1225);
+    const brandWidth = ctx.measureText("flunked.online").width;
 
     ctx.font = "600 20px system-ui, -apple-system, sans-serif";
     ctx.fillStyle = "#666666";
-    ctx.fillText("· Free survival tools for Indian college students", 260, 1225);
+    ctx.fillText("· Free survival tools for Indian college students", brandX + brandWidth + 14, 1225);
 
     ctx.textAlign = "right";
     ctx.fillStyle = "#000000";
@@ -305,8 +307,8 @@ export function ShareStoryModal({
       if (navigator.canShare && navigator.canShare({ files: [file] })) {
         await navigator.share({
           files: [file],
-          title: `${toolName} | Flunked.fun`,
-          text: `${headline} — ${verdict} | Check yours at flunked.fun`,
+          title: `${toolName} | Flunked.online`,
+          text: `${headline} — ${verdict} | Check yours at flunked.online`,
         });
         return;
       }
@@ -331,9 +333,9 @@ export function ShareStoryModal({
 
   // 3. Direct WhatsApp Web Text + Link Share
   const handleWhatsAppShare = () => {
-    const shareUrl = typeof window !== "undefined" ? window.location.href : "https://flunked.fun";
+    const shareUrl = typeof window !== "undefined" ? window.location.href : "https://flunked.online";
     const text = encodeURIComponent(
-      `*${toolName} Status via Flunked.fun*\n\n` +
+      `*${toolName} Status via Flunked.online*\n\n` +
         `🔥 *${headline}*\n` +
         `"${verdict}"\n\n` +
         `Calculate yours: ${shareUrl}`

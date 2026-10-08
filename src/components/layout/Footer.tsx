@@ -53,7 +53,7 @@ export function Footer() {
         {/* Legal Links Bar */}
         <div className="mt-8 pt-6 border-t border-zinc-800 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] font-mono text-zinc-400 font-medium">
           <div>
-            © {new Date().getFullYear()} Flunked.fun · Not affiliated with university
+            © {new Date().getFullYear()} Flunked.online · Not affiliated with university
             administration.
           </div>
 

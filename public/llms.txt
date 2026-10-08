@@ -1,6 +1,6 @@
-# Flunked.fun — College Survival Tools for Indian Students
+# Flunked.online — College Survival Tools for Indian Students
 
-> Flunked.fun is a free, privacy-first, anti-corporate multi-tool platform built for Indian college students. It provides 19 specialized calculators and estimators designed for campus academics, attendance compliance, placement CTC evaluations, and hostel life.
+> Flunked.online is a free, privacy-first, anti-corporate multi-tool platform built for Indian college students. It provides 19 specialized calculators and estimators designed for campus academics, attendance compliance, placement CTC evaluations, and hostel life.
 
 ## Key Principles
 - 100% Free & Open: No paywalls, subscription models, or intrusive ads.
@@ -11,83 +11,83 @@
 ## Core Calculators & Tools
 
 ### 1. 75% Bunk Attendance Calculator
-- URL: https://flunked.fun/tools/bunk-calculator
+- URL: https://flunked.online/tools/bunk-calculator
 - Purpose: Calculates exactly how many classes a student can safely bunk while staying above a target percentage (e.g. 75%, 80%, 85%), or how many consecutive classes they must attend to recover from a shortage. Supports university-specific preset policies.
 
 ### 2. CTC to In-Hand Salary Calculator
-- URL: https://flunked.fun/tools/ctc-calculator
+- URL: https://flunked.online/tools/ctc-calculator
 - Purpose: Deconstructs inflated Indian campus placement CTC letters into actual monthly take-home in-hand pay. Deducts PF, Professional Tax, Income Tax (Old vs New Regime), Gratuity, and amortizes joining bonuses and ESOP vesting periods.
 
 ### 3. Official CGPA to Percentage Calculator
-- URL: https://flunked.fun/tools/cgpa-calculator
+- URL: https://flunked.online/tools/cgpa-calculator
 - Purpose: Converts university CGPAs into official percentage equivalents using AICTE, CBSE (9.5x), Anna University / VTU (10x), and Mumbai University formulas for placement and higher education eligibility.
 
 ### 4. Am I Cooked This Semester?
-- URL: https://flunked.fun/tools/am-i-cooked
+- URL: https://flunked.online/tools/am-i-cooked
 - Purpose: Diagnoses end-semester academic danger level based on attendance shortages, internal marks deficit, assignment pending debt, and remaining weeks until exams.
 
 ### 5. Semester Survival Check
-- URL: https://flunked.fun/tools/semester-survival
+- URL: https://flunked.online/tools/semester-survival
 - Purpose: Computes minimum marks required in end-semester exams to pass a subject or hit a target grade given internal assessment marks.
 
 ### 6. Backlog Planner
-- URL: https://flunked.fun/tools/backlog-planner
+- URL: https://flunked.online/tools/backlog-planner
 - Purpose: Multi-semester supplementary clearance roadmap without breaching university year-back rules.
 
 ### 7. What Tier Engineer Are You?
-- URL: https://flunked.fun/tools/tier-engineer
+- URL: https://flunked.online/tools/tier-engineer
 - Purpose: Realistic skills auditor scoring DSA, projects, system design, and open-source contributions to evaluate placement competitiveness.
 
 ### 8. Hostel Expense Splitter
-- URL: https://flunked.fun/tools/expense-splitter
+- URL: https://flunked.online/tools/expense-splitter
 - Purpose: Minimizes transactions and settles roommate expenses (groceries, food deliveries, Wi-Fi, electricity) without awkward confrontations.
 
 ### 9. Is This Stipend Good?
-- URL: https://flunked.fun/tools/stipend-checker
+- URL: https://flunked.online/tools/stipend-checker
 - Purpose: Analyzes internship stipends against real living expenses in Bangalore, Hyderabad, Pune, Gurgaon, Mumbai, and Noida.
 
 ### 10. Grade Required to Pass
-- URL: https://flunked.fun/tools/grade-to-pass
+- URL: https://flunked.online/tools/grade-to-pass
 - Purpose: Instant passing threshold calculator for relative and absolute grading scales.
 
 ### 11. Sleep Debt Calculator
-- URL: https://flunked.fun/tools/sleep-debt
+- URL: https://flunked.online/tools/sleep-debt
 - Purpose: Quantifies cumulative college sleep deprivation and recovery timelines.
 
 ### 12. Placement Readiness Quiz
-- URL: https://flunked.fun/tools/placement-quiz
+- URL: https://flunked.online/tools/placement-quiz
 - Purpose: Diagnostic assessment identifying specific weaknesses across DSA, CS Fundamentals, Resume, and Behavioral rounds.
 
 ### 13. Which Startup Should You Build?
-- URL: https://flunked.fun/tools/startup-match
+- URL: https://flunked.online/tools/startup-match
 - Purpose: Branch, CGPA, and chaos tolerance mapped to tailored college startup concepts.
 
 ### 14. Mess Food Calorie Estimator
-- URL: https://flunked.fun/tools/mess-calories
+- URL: https://flunked.online/tools/mess-calories
 - Purpose: Nutritional and caloric estimator tailored to Indian hostel and canteen menus (paneer bhurji, dal tadka, roti, maggi).
 
 ### 15. LinkedIn Bio Auditor
-- URL: https://flunked.fun/tools/linkedin-auditor
+- URL: https://flunked.online/tools/linkedin-auditor
 - Purpose: Rates student LinkedIn headlines and bios, weeding out overused corporate cliches.
 
 ### 16. Should I Attend This Lecture?
-- URL: https://flunked.fun/tools/attend-or-skip
+- URL: https://flunked.online/tools/attend-or-skip
 - Purpose: Real-time morning decision engine evaluating professor strictness, attendance margin, and sleep levels.
 
 ### 17. Assignment Panic Calculator
-- URL: https://flunked.fun/tools/assignment-panic
+- URL: https://flunked.online/tools/assignment-panic
 - Purpose: Calculates submission feasibility when facing urgent deadlines and predicts extension likelihood.
 
 ### 18. How Indian College Student Are You?
-- URL: https://flunked.fun/tools/how-indian-are-you
+- URL: https://flunked.online/tools/how-indian-are-you
 - Purpose: Cultural benchmark score based on common engineering and degree college habits.
 
 ### 19. CGPA → Marriage Prospects
-- URL: https://flunked.fun/tools/cgpa-marriage
+- URL: https://flunked.online/tools/cgpa-marriage
 - Purpose: Satirical calculator projecting matrimonial biodata impressiveness based on engineering grades and campus pedigree.
 
 ## Contact & Legal
-- Website: https://flunked.fun
-- Support & Queries: support@flunked.fun
-- Terms of Service: https://flunked.fun/terms
-- Privacy Policy: https://flunked.fun/privacy
+- Website: https://flunked.online
+- Support & Queries: support@flunked.online
+- Terms of Service: https://flunked.online/terms
+- Privacy Policy: https://flunked.online/privacy

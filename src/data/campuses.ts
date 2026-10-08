@@ -1,5 +1,5 @@
 /**
- * Centralized campus and university definitions for Flunked.fun.
+ * Centralized campus and university definitions for Flunked.online.
  */
 
 export const POPULAR_CAMPUSES = [

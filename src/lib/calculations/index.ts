@@ -1,5 +1,5 @@
 /**
- * Core Calculations Barrel for Flunked.fun
+ * Core Calculations Barrel for Flunked.online
  * Re-exports all domain calculation engines.
  */
 

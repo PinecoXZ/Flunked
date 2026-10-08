@@ -45,14 +45,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       "bunk attendance calculator",
       "cgpa to percentage",
       "campus placement preparation",
-      "flunked.fun",
+      "flunked.online",
     ],
     openGraph: {
       title,
       description,
       type: "website",
       url: `${env.NEXT_PUBLIC_BASE_URL}/tools/${tool.slug}`,
-      siteName: "Flunked.fun",
+      siteName: "Flunked.online",
     },
     twitter: {
       card: "summary_large_image",

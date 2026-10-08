@@ -207,7 +207,7 @@ export function LinkedInAuditor() {
         metricLabel="Bio Impact Score"
         verdict={verdict}
         status={status}
-        shareText={`My LinkedIn About section scored ${finalScore}/10 on flunked.fun's Bio Auditor!`}
+        shareText={`My LinkedIn About section scored ${finalScore}/10 on flunked.online's Bio Auditor!`}
       >
         <div className="mt-4 pt-4 border-t-2 border-black/10 space-y-3">
           <div className="flex items-center justify-between">

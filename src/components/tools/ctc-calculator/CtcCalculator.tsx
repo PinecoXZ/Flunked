@@ -54,7 +54,7 @@ export function CtcCalculator() {
       breakdown.monthlyTakeHome
     )}/mo\nAnnual Take-Home: ${formatCurrencyINR(
       breakdown.netTakeHomeAnnual
-    )}\nTotal Cut (Taxes + PF + Gratuity): ${breakdown.deductionPercentage}%\n\nCalculated on Flunked.fun`;
+    )}\nTotal Cut (Taxes + PF + Gratuity): ${breakdown.deductionPercentage}%\n\nCalculated on Flunked.online`;
 
     copy(text);
   }, [

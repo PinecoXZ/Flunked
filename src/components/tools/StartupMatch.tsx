@@ -256,7 +256,7 @@ export function StartupMatch() {
         <div className="pt-2">
           <ShareButton
             title="Share Your Match"
-            shareText={`My college startup archetype is "${startup.type}" on flunked.fun! Idea: ${startup.idea}`}
+            shareText={`My college startup archetype is "${startup.type}" on flunked.online! Idea: ${startup.idea}`}
             className="w-full sm:w-auto"
           />
         </div>

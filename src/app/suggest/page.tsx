@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     "Have an idea for a college calculator or academic survival tool? Suggest it here. Built by students, for students.",
   alternates: {
-    canonical: "https://flunked.fun/suggest",
+    canonical: "https://flunked.online/suggest",
   },
 };
 

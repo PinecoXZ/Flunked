@@ -44,7 +44,7 @@ describe("solveExpenseSplit", () => {
       ["A", "B"],
       [{ description: "X", amount: 100, paidBy: "A", splitAmong: ["A", "B"] }]
     );
-    expect(r.whatsAppSummary).toContain("Flunked.fun");
+    expect(r.whatsAppSummary).toContain("Flunked.online");
   });
 });
 

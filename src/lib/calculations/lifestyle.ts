@@ -1,5 +1,5 @@
 /**
- * Daily Life & Chaos Calculations for Flunked.fun
+ * Daily Life & Chaos Calculations for Flunked.online
  * Covering Am I Cooked Calculator, Hostel Expense Splitter, and Assignment Panic Calculator.
  */
 
@@ -299,7 +299,7 @@ export function solveExpenseSplit(
     }
   }
 
-  let summary = `*Hostel Expense Settlement* [Flunked.fun]\n`;
+  let summary = `*Hostel Expense Settlement* [Flunked.online]\n`;
   summary += `Total Spent: ₹${Math.round(totalSpent).toLocaleString("en-IN")}\n`;
   summary += `--------------------------\n`;
 
@@ -313,7 +313,7 @@ export function solveExpenseSplit(
   }
 
   summary += `--------------------------\n`;
-  summary += `Calculated via flunked.fun/tools/expense-splitter`;
+  summary += `Calculated via flunked.online/tools/expense-splitter`;
 
   return {
     totalSpent: Math.round(totalSpent),

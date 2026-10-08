@@ -11,11 +11,11 @@ export interface TutorialStep {
 export const TUTORIAL_STEPS: TutorialStep[] = [
   {
     id: 1,
-    badge: "WELCOME TO FLUNKED.FUN",
+    badge: "WELCOME TO FLUNKED.ONLINE",
     title: "Tools Built for College Chaos",
     tagline: "Free. No ads. No corporate fluff.",
     description:
-      "Flunked.fun is an anti-corporate suite of 19 hyper-specific calculators designed for Indian college life — from saving your attendance before end-sems to finding out what an in-hand offer actually pays.",
+      "Flunked.online is an anti-corporate suite of 19 hyper-specific calculators designed for Indian college life — from saving your attendance before end-sems to finding out what an in-hand offer actually pays.",
     highlights: [
       "19 dedicated calculators, deciders, and viral diagnostics",
       "Instant university-specific thresholds (75% cutoff, 50/50 splits)",

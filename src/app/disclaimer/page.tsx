@@ -20,9 +20,9 @@ import { SubpageHeader } from "@/components/layout/SubpageHeader";
 export const metadata = {
   title: "Academic & Operational Disclaimer",
   description:
-    "Official Academic Disclaimer, Institutional Non-Affiliation Declaration, and Tool-by-Tool Regulatory Assumptions for Flunked.fun.",
+    "Official Academic Disclaimer, Institutional Non-Affiliation Declaration, and Tool-by-Tool Regulatory Assumptions for Flunked.online.",
   alternates: {
-    canonical: "https://flunked.fun/disclaimer",
+    canonical: "https://flunked.online/disclaimer",
   },
 };
 
@@ -75,7 +75,7 @@ export default function DisclaimerPage() {
 
           <p className="text-xs sm:text-sm font-mono text-black/70 font-semibold leading-relaxed">
             This document outlines the strict operational boundaries, statutory limitations, and
-            tool-by-tool mathematical assumptions governing Flunked.fun under Indian higher
+            tool-by-tool mathematical assumptions governing Flunked.online under Indian higher
             education ordinances, labor laws, and financial statutes.
           </p>
         </header>
@@ -88,7 +88,7 @@ export default function DisclaimerPage() {
           </div>
           <p className="text-xs sm:text-sm text-black/85 font-medium leading-relaxed font-sans">
             <strong className="text-black font-black">
-              Flunked.fun is an independent, student-built mathematical utility platform.
+              Flunked.online is an independent, student-built mathematical utility platform.
             </strong>{" "}
             It is NOT affiliated with, authorized by, sponsored by, endorsed by, or associated in
             any official capacity with the University Grants Commission (UGC), the All India Council
@@ -138,7 +138,7 @@ export default function DisclaimerPage() {
             </h2>
             <div className="space-y-3 text-black/80 font-medium leading-relaxed pl-1">
               <p>
-                Flunked.fun operates entirely free from institutional patronage. When a student
+                Flunked.online operates entirely free from institutional patronage. When a student
                 enters their campus name (such as{" "}
                 <code className="font-mono font-bold bg-flunked-yellow/40 px-1 rounded border border-black/20">
                   IIT Bombay
@@ -153,7 +153,7 @@ export default function DisclaimerPage() {
               <p>
                 Mention of any university, college, institute of national importance, or educational
                 testing agency does NOT imply that such institution has reviewed, audited,
-                calibrated, or certified the mathematical algorithms used on Flunked.fun.
+                calibrated, or certified the mathematical algorithms used on Flunked.online.
               </p>
             </div>
           </section>
@@ -179,7 +179,7 @@ export default function DisclaimerPage() {
                   ACADEMIC STATUS.
                 </p>
                 <p className="text-xs text-black/80 font-medium">
-                  If any discrepancy arises between a calculation produced on Flunked.fun and your
+                  If any discrepancy arises between a calculation produced on Flunked.online and your
                   college&apos;s ERP database, your college&apos;s official ERP record shall be
                   conclusive, final, and absolute.
                 </p>
@@ -229,7 +229,7 @@ export default function DisclaimerPage() {
                     submission of certified hospital discharge summaries;
                   </li>
                   <li>
-                    <strong className="text-black">Attendance Debarment:</strong> Flunked.fun
+                    <strong className="text-black">Attendance Debarment:</strong> Flunked.online
                     accepts ZERO liability if a student misses lectures in reliance upon our
                     calculations and subsequently receives an attendance shortage notice, is
                     debarred from end-sem examinations, or has their admit card / hall ticket
@@ -319,7 +319,7 @@ export default function DisclaimerPage() {
                   <li>
                     <strong className="text-black">Timetable Clashes:</strong> Universities often
                     schedule supplementary examinations concurrently with regular semester exams.
-                    Flunked.fun cannot predict institutional exam timetable conflicts.
+                    Flunked.online cannot predict institutional exam timetable conflicts.
                   </li>
                 </ul>
               </div>
@@ -424,7 +424,7 @@ export default function DisclaimerPage() {
                 </div>
                 <p className="text-xs sm:text-sm text-black/85">
                   The Hostel Expense Splitter executes a purely mathematical graph minimization
-                  algorithm to compute minimal peer-to-peer settlement transactions. Flunked.fun is
+                  algorithm to compute minimal peer-to-peer settlement transactions. Flunked.online is
                   NOT a bank, non-banking financial company (NBFC), payment aggregator, or prepaid
                   payment instrument (PPI) issuer under the{" "}
                   <strong className="text-black font-bold">
@@ -433,9 +433,9 @@ export default function DisclaimerPage() {
                   .
                 </p>
                 <p className="text-xs text-black/80">
-                  Flunked.fun does not hold, escrow, process, or transmit fiat currency. All
+                  Flunked.online does not hold, escrow, process, or transmit fiat currency. All
                   settlements are executed directly between users via external third-party UPI
-                  applications (such as Google Pay, PhonePe, Paytm). Flunked.fun bears zero
+                  applications (such as Google Pay, PhonePe, Paytm). Flunked.online bears zero
                   responsibility for unpaid roommate debts, banking transfer failures, or UPI fraud.
                 </p>
               </div>
@@ -449,7 +449,7 @@ export default function DisclaimerPage() {
                   a Coffee) represent purely gratuitous gifts to support hosting costs and
                   maintenance. Such contributions do NOT constitute fees for software services, do
                   NOT purchase service warranties, and do NOT alter the free, non-commercial,
-                  &quot;as-is&quot; academic heuristic nature of Flunked.fun.
+                  &quot;as-is&quot; academic heuristic nature of Flunked.online.
                 </p>
               </div>
             </div>
@@ -532,11 +532,11 @@ export default function DisclaimerPage() {
             </h2>
             <div className="space-y-3 text-black/80 font-medium leading-relaxed pl-1">
               <p>
-                By accessing Flunked.fun, you make an affirmative and irrevocable covenant that:
+                By accessing Flunked.online, you make an affirmative and irrevocable covenant that:
               </p>
               <ol className="list-decimal list-inside space-y-2 text-xs sm:text-sm pl-2 font-medium text-black/85">
                 <li>
-                  You shall NOT cite, introduce, or present Flunked.fun calculation outputs as
+                  You shall NOT cite, introduce, or present Flunked.online calculation outputs as
                   evidence, legal justification, or mitigating defense in any university
                   disciplinary committee hearing, proctorial inquiry, attendance appeal, or judicial
                   proceeding against an educational institution;
@@ -558,7 +558,7 @@ export default function DisclaimerPage() {
         {/* Footer Note */}
         <footer className="pt-6 border-t-2 border-black flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-black/70">
           <div>
-            <span>© {new Date().getFullYear()} Flunked.fun. Standard Academic Disclaimer.</span>
+            <span>© {new Date().getFullYear()} Flunked.online. Standard Academic Disclaimer.</span>
           </div>
           <div className="flex items-center gap-3">
             <Link href="/terms" className="hover:text-black underline">

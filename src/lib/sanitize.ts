@@ -1,5 +1,5 @@
 /**
- * Input validation, sanitization, and injection defense utility for Flunked.fun.
+ * Input validation, sanitization, and injection defense utility for Flunked.online.
  * Guards against:
  * 1. SQL Injection (SQLi)
  * 2. Command Injection

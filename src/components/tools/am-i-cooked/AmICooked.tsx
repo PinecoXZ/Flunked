@@ -43,7 +43,7 @@ export function AmICooked() {
   }, [attendance, internalsAvg, weeksLeft, pendingAssignments]);
 
   const handleShare = useCallback(() => {
-    const text = `💀 *Am I Cooked This Semester?*\nStatus: ${result.cookedPercentage}% Cooked (${result.badge})\nVerdict: ${result.verdict}\n\nSurvival Probability: ${result.survivalProbability}%\nDiagnosed on Flunked.fun · Calculate yours at flunked.fun/tools/am-i-cooked`;
+    const text = `💀 *Am I Cooked This Semester?*\nStatus: ${result.cookedPercentage}% Cooked (${result.badge})\nVerdict: ${result.verdict}\n\nSurvival Probability: ${result.survivalProbability}%\nDiagnosed on Flunked.online · Calculate yours at flunked.online/tools/am-i-cooked`;
     copy(text);
   }, [copy, result.cookedPercentage, result.badge, result.verdict, result.survivalProbability]);
 

@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Flunked.fun — College Survival Tools for Indian Students";
+export const alt = "Flunked.online — College Survival Tools for Indian Students";
 export const size = {
   width: 1200,
   height: 630,
@@ -37,7 +37,7 @@ export default function Image() {
             boxShadow: "4px 4px 0px 0px #FFFFFF",
           }}
         >
-          FLUNKED.FUN
+          FLUNKED.ONLINE
         </div>
         <div
           style={{
@@ -132,7 +132,7 @@ export default function Image() {
             fontFamily: "monospace",
           }}
         >
-          https://flunked.fun
+          https://flunked.online
         </div>
       </div>
     </div>,

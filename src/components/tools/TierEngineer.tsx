@@ -220,7 +220,7 @@ export function TierEngineer() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
             <ShareButton
               title="Share Your Tier"
-              shareText={`I just got ranked ${tier} Tier on the Engineer Tier Benchmark at flunked.fun!`}
+              shareText={`I just got ranked ${tier} Tier on the Engineer Tier Benchmark at flunked.online!`}
               className="w-full sm:w-auto"
             />
             <button

@@ -13,7 +13,7 @@ import {
 export const metadata = {
   title: "404 — Page Flunked / Not Found",
   description:
-    "Looks like this page got detached or bunked. Browse all 19 free academic survival calculators on Flunked.fun.",
+    "Looks like this page got detached or bunked. Browse all 19 free academic survival calculators on Flunked.online.",
 };
 
 const POPULAR_TOOLS = [

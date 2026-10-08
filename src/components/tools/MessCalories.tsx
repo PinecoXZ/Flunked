@@ -211,7 +211,7 @@ export function MessCalories() {
         metricLabel="Estimated Daily Intake"
         verdict={verdict}
         status={status}
-        shareText={`I consumed ~${totalCalories} kcal of Indian college mess food today! Tracked on flunked.fun`}
+        shareText={`I consumed ~${totalCalories} kcal of Indian college mess food today! Tracked on flunked.online`}
       />
     </div>
   );

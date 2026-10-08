@@ -120,7 +120,7 @@ export function SleepDebt() {
         metricLabel="Weekly Sleep Debt"
         verdict={verdict}
         status={status}
-        shareText={`I'm ${debt.toFixed(1)} hours in sleep debt this week! Checked on flunked.fun`}
+        shareText={`I'm ${debt.toFixed(1)} hours in sleep debt this week! Checked on flunked.online`}
       >
         <div className="mt-4 pt-4 border-t-2 border-black/10 grid grid-cols-3 gap-2 text-center text-xs font-mono font-bold text-black">
           <div className="p-2.5 rounded-lg bg-flunked-bg border border-black/20">
