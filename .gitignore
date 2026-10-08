@@ -1,0 +1,28 @@
+# Dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# Testing & Coverage
+/coverage
+
+# Next.js build output
+/.next/
+/out/
+/build
+
+# Environment files (strictly ignored)
+.env
+.env*.local
+.env.development
+.env.production
+.env.test
+!.env.example
+
+# Debug & OS files
+npm-debug.log*
+yarn-debug.log*
+.DS_Store
+Thumbs.db
+*.pem
+tsconfig.tsbuildinfo
