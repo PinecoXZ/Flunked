@@ -1,4 +1,22 @@
 /** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === "production";
+
+// Content Security Policy: Strict in production (no 'unsafe-eval'), allows Fast Refresh in dev
+const cspDirectives = [
+  "default-src 'self'",
+  isProd
+    ? "script-src 'self' 'unsafe-inline'"
+    : "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "font-src 'self' https://fonts.gstatic.com",
+  "img-src 'self' blob: data: https:",
+  "connect-src 'self'",
+  "object-src 'none'",
+  "frame-ancestors 'none'",
+  "form-action 'self'",
+  "base-uri 'self'",
+];
+
 const nextConfig = {
   // Disable production browser source maps to protect source code and reduce client bundle size
   productionBrowserSourceMaps: false,
@@ -11,10 +29,7 @@ const nextConfig = {
 
   // Optimize bundle and compiler options
   compiler: {
-    removeConsole:
-      process.env.NODE_ENV === "production"
-        ? { exclude: ["error", "warn"] }
-        : false,
+    removeConsole: isProd ? { exclude: ["error", "warn"] } : false,
   },
 
   // Optimize package imports to tree-shake large icon sets and speed up compile time
@@ -28,10 +43,10 @@ const nextConfig = {
       {
         source: "/(.*)",
         headers: [
-          // Enforce HTTPS across all subdomains for 2 years
+          // Enforce HTTPS across all subdomains (preload omitted for initial launch phase)
           {
             key: "Strict-Transport-Security",
-            value: "max-age=63072000; includeSubDomains; preload",
+            value: "max-age=63072000; includeSubDomains",
           },
           // Prevent MIME-sniffing
           {
@@ -51,8 +66,7 @@ const nextConfig = {
           // Disable unneeded browser features and sensors
           {
             key: "Permissions-Policy",
-            value:
-              "camera=(), microphone=(), geolocation=(), browsing-topics=(), payment=()",
+            value: "camera=(), microphone=(), geolocation=(), browsing-topics=()",
           },
           // Enable DNS prefetching for performance
           {
@@ -62,20 +76,7 @@ const nextConfig = {
           // Content Security Policy
           {
             key: "Content-Security-Policy",
-            value: [
-              "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
-              "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-              "font-src 'self' https://fonts.gstatic.com data:",
-              "img-src 'self' data: https: blob:",
-              "connect-src 'self'",
-              "frame-ancestors 'none'",
-              "base-uri 'self'",
-              "form-action 'self'",
-            ]
-              .join("; ")
-              .replace(/\s{2,}/g, " ")
-              .trim(),
+            value: cspDirectives.join("; ").trim(),
           },
         ],
       },
