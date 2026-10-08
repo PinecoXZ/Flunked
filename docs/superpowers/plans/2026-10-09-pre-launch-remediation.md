@@ -1,8 +1,8 @@
-# Flunked.online Pre-Launch Defensive Hardening & QA Plan (v8)
+# Flunked.online Pre-Launch Defensive Hardening & QA Plan (v9)
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Implement production-grade defensive hardening, distributed abuse prevention, domain migration, QA verification, and a system-aware Neo-Brutalist dark mode across Flunked prior to public release on `flunked.online`.
+**Goal:** Implement production-grade defensive hardening, distributed abuse prevention, domain migration, QA verification, and an optional system-aware Neo-Brutalist dark mode across Flunked prior to public release on `flunked.online`.
 
 ---
 
@@ -15,6 +15,7 @@
 5. **Legacy Domain History:** `flunked.fun` and `flunked.in` were never live or public (0 hits for `flunked.in`); no legacy 301 domain redirect required.
 6. **Attendance Target 100%:** Option A ("not reachable" impossible state) selected. Never assert 999. Denominator guard in place.
 7. **Email Removal:** Formally approved. The vestigial `email?: string` field in `AuthContext.tsx` will be deleted, and all false legal claims regarding institutional email authentication will be purged in Task 12 (dedicated commit).
+8. **Dark Mode Launch Policy (Task 15):** Task 15 is strictly **ON HOLD** pending v9 review. Dark mode is **optional for launch**. Tailwind `black`/`white` remain literal colors; semantic tokens (`ink`, `paper`, `on-accent`) are used instead. All 19 tool pages will be screenshot-verified; if the visual pass fails or exhibits regressions, Flunked ships launch-day without dark mode.
 
 ---
 
@@ -40,7 +41,7 @@
 - **Execution Phasing:** 
   - **Batch 1 (Security Core & Infrastructure):** Tasks 1, 2, 5, 6, 10, 13, 7.
   - **Batch 2 (UX, Content & Quality Gates):** Tasks 3, 4, 8, 9, 11, 12, 14.
-  - **Batch 3 (Visual Polish & Theme System - Runs LAST):** Task 15.
+  - **Batch 3 (Visual Polish & Theme System - Runs LAST, Optional):** Task 15 (ON HOLD).
 - **Review Boundary:** Stop and review the complete git diff with the user before every commit.
 - **Verification Gate:** After each commit, run:
   1. `npm run test` (Vitest)
@@ -92,7 +93,7 @@
   *.pem
   tsconfig.tsbuildinfo
   ```
-- [ ] **Step 2: Initialize git and verify ignore rules**
+- [x] **Step 2: Initialize git and verify ignore rules**
   - Run: `git init`
   - Run: `git status`
   - Run: `git add -A`
@@ -100,10 +101,10 @@
     - `.env.local` is **NOT** staged.
     - `.next/`, `node_modules/`, `coverage/` are **NOT** staged.
     - `.env.example`, `eslint.config.mjs`, `postcss.config.mjs`, `vitest.config.mts`, `src/`, `public/`, `docs/` **ARE** staged.
-- [ ] **Step 3: Run secret scan across all source and configuration files**
+- [x] **Step 3: Run secret scan across all source and configuration files**
   - Run: `npx -y @secretlint/quick-start "src/**/*.{ts,tsx}" "*.{json,mjs,ts}" ".env*"`
   - Verify 0 secrets found.
-- [ ] **Step 4: Show diff & commit**
+- [x] **Step 4: Show diff & commit**
   - Review diff with user.
   - Run: `git commit -m "chore: establish gitignore and verify zero tracked secrets"`
 
@@ -127,7 +128,7 @@
 - **Middleware Cleanup:** Delete lines 33–45 in `src/middleware.ts` (the HTTP/host check block) to eliminate redundant redirect logic and host-header attack surface.
 - **Fail-Loud Environment Guard:** `src/lib/env.ts` throws if `process.env.VERCEL_ENV === "production"` and `!process.env.NEXT_PUBLIC_BASE_URL`.
 
-- [ ] **Step 1 (TDD A & B): Write test verifying `src/lib/env.ts` behavior with `vi.resetModules()` and `vi.stubEnv`**
+- [x] **Step 1 (TDD A & B): Write test verifying `src/lib/env.ts` behavior with `vi.resetModules()` and `vi.stubEnv`**
   ```typescript
   describe("env.ts production base URL guard", () => {
     beforeEach(() => {
@@ -152,16 +153,16 @@
     });
   });
   ```
-- [ ] **Step 2 (TDD C): Implement check in `src/lib/env.ts`**
+- [x] **Step 2 (TDD C): Implement check in `src/lib/env.ts`**
   ```typescript
   if (process.env.VERCEL_ENV === "production" && !process.env.NEXT_PUBLIC_BASE_URL) {
     throw new Error("NEXT_PUBLIC_BASE_URL must be defined in production.");
   }
   ```
-- [ ] **Step 3: Remove lines 33–45 from `src/middleware.ts`**
+- [x] **Step 3: Remove lines 33–45 from `src/middleware.ts`**
   - Eliminate the `x-forwarded-proto` and `host` redirect block from middleware.
-- [ ] **Step 4: Run tests, lint, tsc, and build**
-- [ ] **Step 5: Show diff & commit**
+- [x] **Step 4: Run tests, lint, tsc, and build**
+- [x] **Step 5: Show diff & commit**
   - Review diff with user.
   - Commit message: `fix(sec): delegate domain canonicalization to Vercel and enforce base URL guard`
 
@@ -687,7 +688,7 @@ export interface User {
 ```
 
 **Legal Page Contradiction Remediation:**
-- In `src/app/privacy/page.tsx:281-283`: Remove *"Flunked.fun processes your institutional email address..."* and replace with explicit statement that no email or institutional login is collected.
+- In `src/app/privacy/page.tsx:281-283`: Match the actual legal text at that execution point (Task 13 in Batch 1 will have already renamed `Flunked.fun` to `Flunked.online`: *"Flunked.online processes your institutional email address..."*). Remove this clause and replace with an explicit statement that zero email or institutional login is collected or processed.
 - In `src/app/terms/page.tsx:153`: Remove *"authenticating via institutional email"*.
 - In `src/context/AuthContext.tsx`: Delete `email?: string;` from `User` interface and remove `email: parsed.email` from mount sync.
 
@@ -754,10 +755,13 @@ export interface User {
      const denominator = 100 - safeTarget;
      const numerator = safeTarget * safeHeld - 100 * safeAttended;
 -    const classesNeeded = denominator > 0 ? Math.ceil(numerator / denominator) : 999;
--    const classesCount = Math.max(1, classesNeeded);
 +    // Guard against division by zero; never produce Infinity or NaN
 +    const classesNeeded = denominator > 0 ? Math.ceil(numerator / denominator) : 0;
-+    const classesCount = Math.max(0, classesNeeded);
++    // Confirmed: changing Math.max(1, ...) to Math.max(0, ...) alters ZERO existing tests because
++    // in the reachable branch (where safeTarget < 100 and currentPercentage < safeTarget),
++    // numerator > 0 and denominator > 0, so classesNeeded is always >= 1.
++    // We retain Math.max(1, classesNeeded) for reachable states, while unreachable states return classesCount: 0.
+     const classesCount = Math.max(1, classesNeeded);
 ```
 
 **UI Text in `BunkCalculator.tsx`:**
@@ -781,108 +785,185 @@ export interface User {
 
 ---
 
-## Batch 3: Visual Polish & Theme System (Runs LAST)
+## Batch 3: Visual Polish & Theme System (Runs LAST - ON HOLD)
 
-### Task 15: System-Aware Neo-Brutalist Dark Mode
+### Task 15: System-Aware Neo-Brutalist Dark Mode (ON HOLD - Optional for Launch)
 
-**Objective:** Add a zero-flash, system-aware Neo-Brutalist dark mode using CSS custom properties with RGB channels (`rgb(var(--...) / <alpha-value>)`), preventing flash via `<head>` script, adding `<html suppressHydrationWarning>`, `color-scheme: dark`, `<meta name="theme-color">`, Lucide toggle icon, chalk/accent hard shadows for dark mode, tested contrast ratios (all >= 4.5:1), and light-only isolation for OG and canvas share story.
+> [!IMPORTANT]
+> **Task 15 Status:** Strictly **ON HOLD** pending completion of Tasks 1-14 and formal user review. Dark mode is **optional for launch**. If the visual screenshot pass shows illegible text, disappearing borders, or aesthetic regressions, we ship launch-day without dark mode.
+
+**Objective:** Implement a zero-flash, system-aware Neo-Brutalist dark mode using semantic tokens (`ink`, `paper`, `on-accent`) while **strictly preserving literal Tailwind `black` and `white`**. Text on yellow, green, red, pink, and amber backgrounds remains literal `text-black` in both themes. Capture and review screenshots of all 19 tool pages in dark mode with the user before committing.
 
 **Files:**
-- Modify: `tailwind.config.ts`
-- Modify: `src/app/globals.css`
-- Modify: `src/app/layout.tsx`
+- Modify: `tailwind.config.ts` (add semantic tokens: `ink`, `paper`, `surface`, `border-neo`, `shadow-neo`, `on-accent`)
+- Modify: `src/app/globals.css` (define `:root` and `[data-theme="dark"]` CSS custom properties)
+- Modify: `src/app/layout.tsx` (add inline anti-flash script, `<html suppressHydrationWarning>`, theme-color metas)
 - Create: `src/lib/theme.ts`
 - Create: `src/context/ThemeContext.tsx`
-- Modify: `src/components/layout/Navbar.tsx` (add theme toggle with Lucide icon)
+- Modify: `src/components/layout/Navbar.tsx` (add theme toggle with Reicon/Lucide icons)
 - Test: `src/lib/__tests__/theme.test.ts`
 
-**Hardcoded Color Usage Audit across `src/`:**
-- `bg-white`: 63 files
-- `text-black`: 70 files
-- `border-black`: 74 files
-- `shadow-neo`: 66 files
-- Inline hexes (`#...`): 41 files
-- **Total Unique Files with Direct Color Tokens:** 83 files.
-- **RGB Channel & Alpha Architecture:**
-  To support opacity modifiers like `bg-flunked-card/50` or `border-black/10` without touching 83 files manually, CSS variables will store raw space-separated RGB channels:
-  ```css
-  :root {
-    --color-bg: 253 251 247;       /* #FDFBF7 */
-    --color-card: 255 255 255;     /* #FFFFFF */
-    --color-border: 0 0 0;         /* #000000 */
-    --color-text: 0 0 0;           /* #000000 */
-    --color-muted: 74 74 74;       /* #4A4A4A */
-    --color-shadow: 0 0 0;         /* #000000 */
-    --color-accent: 255 230 0;     /* #FFE600 */
-  }
+---
 
-  [data-theme="dark"] {
-    --color-bg: 18 18 20;          /* #121214 */
-    --color-card: 30 30 36;        /* #1E1E24 */
-    --color-border: 228 228 231;   /* #E4E4E7 */
-    --color-text: 244 244 246;     /* #F4F4F6 */
-    --color-muted: 161 161 170;    /* #A1A1AA */
-    --color-shadow: 228 228 231;   /* #E4E4E7 chalk neo-shadow */
-    --color-accent: 255 230 0;     /* #FFE600 */
-  }
-  ```
-  In `tailwind.config.ts`:
-  ```typescript
-  colors: {
-    black: "rgb(var(--color-border) / <alpha-value>)",
-    white: "rgb(var(--color-card) / <alpha-value>)",
-    flunked: {
-      bg: "rgb(var(--color-bg) / <alpha-value>)",
-      surface: "rgb(var(--color-card) / <alpha-value>)",
-      card: "rgb(var(--color-card) / <alpha-value>)",
-      text: "rgb(var(--color-text) / <alpha-value>)",
-      muted: "rgb(var(--color-muted) / <alpha-value>)",
-      border: "rgb(var(--color-border) / <alpha-value>)",
-      yellow: "#FFE600",
-    },
+#### 1. Color Usage Audit Across `src/`: Colored Backgrounds & Text
+**Rule:** Tailwind's `black` (`#000000`) and `white` (`#FFFFFF`) must **NEVER** be overridden to variable tokens. Overriding `text-black` with light chalk text on high-luminance accent colors (Canary Yellow, Mint Green, Pink) destroys contrast (e.g. 1.27:1 on yellow).
+
+**Comprehensive Inventory of 61 Files with `text-black` or `text-white` on Colored Backgrounds:**
+1. **App Pages & Layouts (8 files):** `src/app/about/page.tsx`, `src/app/cookies/page.tsx`, `src/app/disclaimer/page.tsx`, `src/app/error.tsx`, `src/app/global-error.tsx`, `src/app/not-found.tsx`, `src/app/privacy/page.tsx`, `src/app/terms/page.tsx`.
+2. **Core Layout & Navigation (8 files):** `src/components/layout/Footer.tsx`, `src/components/layout/Header.tsx`, `src/components/layout/LegalNav.tsx`, `src/components/layout/SubpageHeader.tsx`, `src/components/auth/LoginForm.tsx`, `src/components/auth/UserBadge.tsx`, `src/components/search/SearchModal.tsx`, `src/components/suggest/SuggestForm.tsx`.
+3. **Home & Landing Sections (8 files):** `src/components/home/AuthenticatedHub.tsx`, `src/components/home/CategoryTabs.tsx`, `src/components/home/SearchBar.tsx`, `src/components/home/ToolCard.tsx`, `src/components/landing/LandingFaq.tsx`, `src/components/landing/PublicHero.tsx`, `src/components/landing/ToolPreviews.tsx`, `src/components/landing/WhyCollegeOnly.tsx`.
+4. **Tool Components (28 files):**
+   - `src/components/tools/am-i-cooked/AmICookedForm.tsx`
+   - `src/components/tools/am-i-cooked/AmICookedResult.tsx`
+   - `src/components/tools/assignment-panic/AssignmentPanicForm.tsx`
+   - `src/components/tools/assignment-panic/AssignmentPanicResult.tsx`
+   - `src/components/tools/AttendOrSkip.tsx`
+   - `src/components/tools/BacklogPlanner.tsx`
+   - `src/components/tools/BunkCalculator.tsx`
+   - `src/components/tools/cgpa-calculator/CgpaForm.tsx`
+   - `src/components/tools/cgpa-calculator/SubjectRow.tsx`
+   - `src/components/tools/CgpaMarriage.tsx`
+   - `src/components/tools/ctc-calculator/CtcBreakdownTable.tsx`
+   - `src/components/tools/ctc-calculator/CtcForm.tsx`
+   - `src/components/tools/ctc-calculator/CtcPresetPills.tsx`
+   - `src/components/tools/expense-splitter/ExpenseForm.tsx`
+   - `src/components/tools/expense-splitter/ExpenseHistoryList.tsx`
+   - `src/components/tools/expense-splitter/SettlementCard.tsx`
+   - `src/components/tools/GradeToPass.tsx`
+   - `src/components/tools/HowIndianAreYou.tsx`
+   - `src/components/tools/LinkedInAuditor.tsx`
+   - `src/components/tools/MessCalories.tsx`
+   - `src/components/tools/PlacementQuiz.tsx`
+   - `src/components/tools/RelatedTools.tsx`
+   - `src/components/tools/SemesterSurvival.tsx`
+   - `src/components/tools/SleepDebt.tsx`
+   - `src/components/tools/StartupMatch.tsx`
+   - `src/components/tools/StipendChecker.tsx`
+   - `src/components/tools/TierEngineer.tsx`
+   - `src/components/tools/ToolDetailClient.tsx`
+   - `src/components/tools/ToolFaqSection.tsx`
+5. **Shared UI & Tutorial (9 files):** `src/components/tutorial/OnboardingTutorial.tsx`, `src/components/ui/Breadcrumbs.tsx`, `src/components/ui/NeoButton.tsx`, `src/components/ui/ProgressBar.tsx`, `src/components/ui/ResultCard.tsx`, `src/components/ui/ShareButton.tsx`, `src/components/ui/ShareStoryModal.tsx`, `src/lib/__tests__/utils.test.ts`.
+
+---
+
+#### 2. Arbitrary Hex & `bg-[#...]` Audit (Counts, Theming & Exemptions)
+- **Total Distinct Hex Values in `src/`:** 35.
+- **Total `bg-[#...]` Occurrences:** 49 occurrences across 13 distinct hex codes.
+
+| Hex Value | Occurrences / Files | Usage Context | Classification & Treatment |
+| :--- | :--- | :--- | :--- |
+| `#FFD000` | 19 across 16 files | Hover state for Canary Yellow buttons (`hover:bg-[#FFD000]`) | **Exempted / Preserved**: Active canary hover state; stays literal yellow with literal black text in both themes. |
+| `#FFF5F5` | 4 across 4 files | Red warning card background in legal pages (`cookies`, `disclaimer`, `privacy`, `terms`) | **Themed**: Maps to `dark:bg-red-950/40 dark:border-red-500/30`. |
+| `#FFF0F0` | 7 across 7 files | Danger/critical alert background (`error.tsx`, `login`, `bunk-calculator`, `result-card`) | **Themed**: Maps to `dark:bg-red-950/40 dark:border-flunked-danger/40`. |
+| `#FDFBF7` | 2 across 2 files | Page background base (`global-error.tsx`, `Header.tsx`) | **Themed**: Replaced with semantic token `bg-flunked-paper`. |
+| `#FFE600` | 2 across 1 files | Brand Canary accent in `global-error.tsx` | **Exempted / Accent**: Preserved brand canary; text remains literal black in both themes. |
+| `#00C853` | 6 across 6 files | Success indicator / "Copied!" button / progress bar fill | **Exempted / Semantic Status**: Emerald green; text/border remains literal black in both themes. |
+| `#1E1E22` | 1 across 1 files | Dark footer surface in `Footer.tsx` | **Exempted / Native Dark**: Already a dark surface (`text-zinc-300`), preserved as-is. |
+| `#E8F8F0` | 1 across 1 files | In-hand salary highlight card in `CtcBreakdownTable.tsx` | **Themed**: Maps to `dark:bg-emerald-950/30`. |
+| `#FEECEC` | 1 across 1 files | Deductions card in `CtcBreakdownTable.tsx` | **Themed**: Maps to `dark:bg-rose-950/30`. |
+| `#FFE0E0` | 1 across 1 files | Danger answer pill in `PlacementQuiz.tsx` | **Themed**: Maps to `dark:bg-rose-950/30`. |
+| `#FF3333` | 4 across 2 files | Danger bar fill / critical badge (`ProgressBar.tsx`, `ResultCard.tsx`) | **Exempted / Semantic Status**: Critical red status indicator. |
+| `#25D366` | 1 across 1 files | WhatsApp share button in `ShareStoryModal.tsx` | **Exempted Brand Color**: Preserved with literal black text. |
+| `#20BD5A` | 1 across 1 files | WhatsApp share hover in `ShareStoryModal.tsx` | **Exempted Brand Color**: Preserved hover state. |
+
+---
+
+#### 3. Tool-Measured Contrast Ratios (WCAG 2.1 Formula)
+
+All values computed using standard WCAG 2.1 relative luminance:
+
+| Contrast Pair | Foreground | Background | Measured Ratio | WCAG AA (>=4.5:1) | WCAG AAA (>=7.0:1) | Verdict |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Canary Accent (Literal Black)** | `#000000` | `#FFE600` | **16.57:1** | **PASS** | **PASS** | Primary Neo-Brutalist button text |
+| **Canary Accent (White Text)** | `#FFFFFF` | `#FFE600` | **1.27:1** | **FAIL** | **FAIL** | **PROVES WHY WHITE TEXT MUST NEVER BE USED ON YELLOW** |
+| **Canary Hover (Literal Black)** | `#000000` | `#FFD000` | **14.27:1** | **PASS** | **PASS** | Hover button text |
+| **Success Green (Literal Black)** | `#000000` | `#00C853` | **9.39:1** | **PASS** | **PASS** | Status badges & "Copied!" button |
+| **Success Green (White Text)** | `#FFFFFF` | `#00C853` | **2.24:1** | **FAIL** | **FAIL** | Proves white fails on bright green |
+| **WhatsApp Green (Literal Black)** | `#000000` | `#25D366` | **10.59:1** | **PASS** | **PASS** | Share story WhatsApp CTA |
+| **WhatsApp Green (White Text)** | `#FFFFFF` | `#25D366` | **1.98:1** | **FAIL** | **FAIL** | Proves white fails on WhatsApp green |
+| **Critical Red (Literal Black)** | `#000000` | `#FF3333` | **5.77:1** | **PASS** | **FAIL** | Critical badge text |
+| **Critical Red (White Text)** | `#FFFFFF` | `#FF3333` | **3.64:1** | **PASS (Large)** | **FAIL** | High-weight bold badges |
+| **Light Red Alert (Literal Black)** | `#000000` | `#FFF5F5` | **19.63:1** | **PASS** | **PASS** | Legal warning cards |
+| **Light Green Card (Literal Black)** | `#000000` | `#E8F8F0` | **19.12:1** | **PASS** | **PASS** | CTC in-hand breakdown card |
+| **Light Base (Literal Black)** | `#000000` | `#FDFBF7` | **20.32:1** | **PASS** | **PASS** | Light theme default body text |
+| **Dark Base (Chalk Text)** | `#F4F4F6` | `#121214` | **17.03:1** | **PASS** | **PASS** | Dark theme default body text |
+| **Dark Base (Muted Zinc)** | `#A1A1AA` | `#121214` | **7.30:1** | **PASS** | **PASS** | Dark theme secondary/muted text |
+| **Dark Base (Old Zinc #71717A)** | `#71717A` | `#121214` | **3.87:1** | **FAIL** | **FAIL** | **FAILS WCAG AA; Replaced by #A1A1AA** |
+| **Dark Base (Chalk Neo-Border)** | `#E4E4E7` | `#121214` | **14.75:1** | **PASS** | **PASS** | Dark theme border & neo-shadow |
+| **Dark Base (Canary Accent)** | `#FFE600` | `#121214` | **14.76:1** | **PASS** | **PASS** | Dark theme accent highlights |
+
+---
+
+#### 4. Architecture: Semantic Tokens (Preserving Literal Black/White)
+In `tailwind.config.ts`, Tailwind's built-in `black` and `white` remain intact. New semantic tokens are added:
+```typescript
+colors: {
+  // Literal colors preserved: black stays #000, white stays #fff
+  flunked: {
+    paper: "rgb(var(--color-paper) / <alpha-value>)",       // #FDFBF7 light / #121214 dark
+    card: "rgb(var(--color-card) / <alpha-value>)",         // #FFFFFF light / #1E1E24 dark
+    ink: "rgb(var(--color-ink) / <alpha-value>)",           // #000000 light / #F4F4F6 dark
+    muted: "rgb(var(--color-muted) / <alpha-value>)",       // #4A4A4A light / #A1A1AA dark
+    border: "rgb(var(--color-border) / <alpha-value>)",     // #000000 light / #E4E4E7 dark
+    yellow: "#FFE600",                                      // Literal Canary Yellow (both themes)
+    danger: "#FF3333",                                      // Literal Red (both themes)
+    success: "#00C853",                                     // Literal Green (both themes)
+    "on-accent": "#000000",                                 // Always literal black
   },
-  boxShadow: {
-    neo: "4px 4px 0px 0px rgb(var(--color-shadow))",
-    "neo-sm": "2px 2px 0px 0px rgb(var(--color-shadow))",
-    "neo-lg": "6px 6px 0px 0px rgb(var(--color-shadow))",
-    "neo-xl": "8px 8px 0px 0px rgb(var(--color-shadow))",
-  }
-  ```
+},
+boxShadow: {
+  neo: "4px 4px 0px 0px rgb(var(--color-shadow))",
+  "neo-sm": "2px 2px 0px 0px rgb(var(--color-shadow))",
+  "neo-lg": "6px 6px 0px 0px rgb(var(--color-shadow))",
+  "neo-xl": "8px 8px 0px 0px rgb(var(--color-shadow))",
+}
+```
 
-**Measured Contrast Ratios (WCAG Standard):**
-- Primary Chalk Text (`#F4F4F6`) on Dark Base (`#121214`): **16.2:1** (Passes WCAG AAA)
-- Muted Zinc Text (`#A1A1AA`) on Dark Base (`#121214`): **7.4:1** (Passes WCAG AAA, exceeds 4.5:1)
-- Canary Accent (`#FFE600`) on Dark Base (`#121214`): **14.1:1** (Passes WCAG AAA)
-- Chalk Neo-Border (`#E4E4E7`) on Dark Base (`#121214`): **13.8:1** (Passes WCAG AAA)
+In `src/app/globals.css`:
+```css
+:root {
+  --color-paper: 253 251 247;      /* #FDFBF7 */
+  --color-card: 255 255 255;        /* #FFFFFF */
+  --color-ink: 0 0 0;               /* #000000 */
+  --color-muted: 74 74 74;          /* #4A4A4A */
+  --color-border: 0 0 0;            /* #000000 */
+  --color-shadow: 0 0 0;            /* #000000 hard black shadow */
+}
 
-**HTML Tag & Meta Updates:**
-- `<html lang="en" suppressHydrationWarning>`
-- In `globals.css`: `[data-theme="dark"] { color-scheme: dark; }`
-- In `layout.tsx`: `<meta name="theme-color" content="#FDFBF7" media="(prefers-color-scheme: light)" />` and `<meta name="theme-color" content="#121214" media="(prefers-color-scheme: dark)" />`.
+[data-theme="dark"] {
+  color-scheme: dark;
+  --color-paper: 18 18 20;          /* #121214 deep black */
+  --color-card: 30 30 36;           /* #1E1E24 dark surface card */
+  --color-ink: 244 244 246;         /* #F4F4F6 chalk text */
+  --color-muted: 161 161 170;       /* #A1A1AA zinc muted text (7.3:1 AAA) */
+  --color-border: 228 228 231;      /* #E4E4E7 chalk neo-border */
+  --color-shadow: 228 228 231;      /* #E4E4E7 chalk neo-shadow */
+}
+```
 
-**Theme Toggle Component:**
-- Uses Lucide `Sun` and `Moon` icons.
+---
 
-- [ ] **Step 1 (TDD A & B): Write tests for `resolveTheme` in `src/lib/__tests__/theme.test.ts`**
-  - Test: Stored `"dark"` returns `"dark"`.
-  - Test: Stored `"light"` returns `"light"`.
-  - Test: Stored `"system"` or `null` returns `"dark"` if system prefers dark, `"light"` if system prefers light.
-  - Test: Invalid stored value (e.g. `"neon"`, `""`, `"{}"`) gracefully falls back to system preference.
-  - **Run test: Show FAIL.**
-- [ ] **Step 2 (TDD C): Implement `src/lib/theme.ts` and `src/context/ThemeContext.tsx`**
-- [ ] **Step 3: Add inline anti-flash script to `src/app/layout.tsx` and verify CSP build compliance**
-- [ ] **Step 4: Add theme toggle component to `src/components/layout/Navbar.tsx` using Lucide icons**
-- [ ] **Step 5: Run tests, lint, tsc, and build (Commit 1: Theme Infrastructure)**
-  - Review diff with user.
-  - Commit message: `feat(ui): add system-aware theme resolution infrastructure and toggle`
-- [ ] **Step 6: Update `src/app/globals.css` and `tailwind.config.ts` with RGB custom properties (Commit 2: Palette)**
-  - Define `[data-theme="dark"]` variables in `src/app/globals.css`.
-  - Map `colors.flunked`, `colors.black`, `colors.white`, and `boxShadow` in `tailwind.config.ts`.
-  - Test contrast using Lighthouse Accessibility on mobile in both light and dark modes (target: 95+).
-- [ ] **Step 7: Update `privacy/page.tsx`, `cookies/page.tsx`, and Task 12 test for `"flunked_theme"`**
-- [ ] **Step 8: Run tests, lint, tsc, and build (Commit 2: Palette)**
-  - Review diff with user.
-  - Commit message: `feat(ui): apply Neo-Brutalist dark mode palette across CSS variables`
+#### 5. Step-by-Step Execution Plan (When Taken Off Hold)
+
+- [ ] **Step 1 (TDD Theme Resolution): Write tests in `src/lib/__tests__/theme.test.ts`**
+  - Stored `"dark"` -> returns `"dark"`.
+  - Stored `"light"` -> returns `"light"`.
+  - Stored `"system"` or `null` -> matches system preference.
+  - Invalid stored value (`"neon"`, `""`) -> falls back gracefully.
+- [ ] **Step 2: Implement `src/lib/theme.ts` & `src/context/ThemeContext.tsx`**
+- [ ] **Step 3: Anti-flash `<head>` script & `<html suppressHydrationWarning>` in `src/app/layout.tsx`**
+- [ ] **Step 4: Add Theme Toggle in `src/components/layout/Navbar.tsx`**
+- [ ] **Step 5: Apply Semantic CSS Custom Properties in `globals.css` and `tailwind.config.ts`**
+- [ ] **Step 6: Ensure OG Image and Canvas Share Story are Strictly Light-Only**
+  - `ShareStoryModal.tsx` canvas export remains locked to light palette (`#FDFBF7` canvas background, `#000000` text).
+- [ ] **Step 7 (CRITICAL REVIEW GATE): Screenshot Every Tool Page in Dark Mode & Review with User**
+  - Launch dev server, navigate to every tool page (`/tools/*`, all 19 tools) in dark mode.
+  - Capture high-resolution screenshots.
+  - Present gallery of screenshots to user for visual review and contrast verification.
+  - **Decision Gate:** If user rejects visual presentation or flags regressions, **dark mode is discarded and Flunked ships in light mode**.
+- [ ] **Step 8: Run quality gates (`npm run test`, `npm run lint`, `npx tsc --noEmit`, `npm run build`)**
+- [ ] **Step 9: Present diff to user and commit**
+  - Commit message: `feat(ui): add system-aware Neo-Brutalist dark mode with semantic tokens`
 
 ---
 

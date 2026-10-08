@@ -30,19 +30,6 @@ export function middleware(request: NextRequest) {
   const userAgent = (request.headers.get("user-agent") || "").toLowerCase();
   const clientIp = getClientIp(request.headers);
 
-  // 1. Enforce HTTPS in production
-  const proto = request.headers.get("x-forwarded-proto");
-  const host = request.headers.get("host") || "";
-
-  if (
-    process.env.NODE_ENV === "production" &&
-    proto &&
-    proto === "http" &&
-    !host.includes("localhost") &&
-    !host.includes("127.0.0.1")
-  ) {
-    return NextResponse.redirect(`https://${host}${pathname}${request.nextUrl.search}`, 301);
-  }
 
   // 2. Block known malicious vulnerability scanners and automated exploitation bots
   const isMaliciousScanner = BLOCKED_USER_AGENTS.some((bot) => userAgent.includes(bot));

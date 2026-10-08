@@ -4,6 +4,10 @@ export interface EnvConfig {
 }
 
 function getEnv(): EnvConfig {
+  if (process.env.VERCEL_ENV === "production" && !process.env.NEXT_PUBLIC_BASE_URL) {
+    throw new Error("NEXT_PUBLIC_BASE_URL must be defined in production.");
+  }
+
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://flunked.fun";
   const nodeEnv = (process.env.NODE_ENV || "development") as EnvConfig["NODE_ENV"];
 
