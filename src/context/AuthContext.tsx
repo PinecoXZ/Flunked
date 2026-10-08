@@ -5,7 +5,6 @@ import { createContext, useContext, useEffect, useState, useCallback, type React
 export interface User {
   name: string;
   campusName: string;
-  email?: string;
   loggedInAt: string;
 }
 
@@ -35,7 +34,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           setUser({
             name: parsed.name || "Student",
             campusName: parsed.campusName || "Campus Student",
-            email: parsed.email,
             loggedInAt: parsed.loggedInAt || new Date().toISOString(),
           });
         }

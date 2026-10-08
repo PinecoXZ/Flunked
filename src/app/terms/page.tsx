@@ -150,10 +150,9 @@ export default function TermsPage() {
                 &quot;Platform&quot;, &quot;we&quot;, &quot;our&quot;, or &quot;us&quot;).
               </p>
               <p>
-                By opening, browsing, accessing, bookmarking, authenticating via institutional email
-                domain, or invoking any mathematical computation on Flunked.online, you provide your
-                irrevocable, unreserved, and affirmative consent to be bound by these Terms and our
-                companion{" "}
+                By opening, browsing, accessing, bookmarking, or invoking any mathematical
+                computation on Flunked.online, you provide your irrevocable, unreserved, and
+                affirmative consent to be bound by these Terms and our companion{" "}
                 <Link
                   href="/privacy"
                   className="font-bold text-black underline hover:bg-flunked-yellow px-1"

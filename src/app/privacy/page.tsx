@@ -294,8 +294,9 @@ export default function PrivacyPage() {
             </h2>
             <div className="space-y-3 text-black/80 font-medium leading-relaxed pl-1">
               <p>
-                Under Section 4 and Section 7 of the DPDP Act, 2023, Flunked.online processes your
-                institutional email address solely on the following lawful statutory grounds:
+                Under Section 4 and Section 7 of the DPDP Act, 2023, Flunked.online collects zero
+                email addresses or institutional credentials, processing technical connection data
+                and voluntary user inputs solely on the following lawful statutory grounds:
               </p>
               <ul className="list-disc list-inside space-y-1.5 text-xs sm:text-sm pl-2 font-medium text-black/85">
                 <li>
