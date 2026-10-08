@@ -1,4 +1,5 @@
 import React from "react";
+import { safeJsonLd } from "@/lib/jsonLd";
 import Link from "next/link";
 import { ChevronRight, Home } from "lucide-react";
 import { env } from "@/lib/env";
@@ -42,7 +43,7 @@ export function Breadcrumbs({ items, className = "" }: BreadcrumbsProps) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbListJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(breadcrumbListJsonLd) }}
       />
       <nav
         aria-label="Breadcrumb"

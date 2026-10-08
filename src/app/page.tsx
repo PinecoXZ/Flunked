@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { HomeClient } from "@/components/home/HomeClient";
 import { LANDING_FAQS } from "@/data/landingFaqs";
 import { env } from "@/lib/env";
+import { safeJsonLd } from "@/lib/jsonLd";
 
 export const metadata: Metadata = {
   title: "Flunked.online — Academic Survival Tools Built for Indian College Chaos",
@@ -39,7 +40,7 @@ export default function HomePage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(faqSchema) }}
       />
       <HomeClient />
     </>

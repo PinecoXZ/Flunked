@@ -4,6 +4,7 @@ import { getToolBySlug, TOOLS } from "@/data/tools";
 import { getToolFaqs } from "@/data/toolFaqs";
 import { ToolDetailClient } from "@/components/tools/ToolDetailClient";
 import { env } from "@/lib/env";
+import { safeJsonLd } from "@/lib/jsonLd";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -110,7 +111,7 @@ export default async function ToolDetailPage({ params }: PageProps) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+            __html: safeJsonLd(jsonLd),
           }}
         />
       )}

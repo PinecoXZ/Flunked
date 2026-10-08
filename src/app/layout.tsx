@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { OnboardingTutorial } from "@/components/tutorial/OnboardingTutorial";
 import { TopProgressBar } from "@/components/layout/TopProgressBar";
 import { env } from "@/lib/env";
+import { safeJsonLd } from "@/lib/jsonLd";
 import "./globals.css";
 
 export const viewport: Viewport = {
@@ -113,7 +114,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(globalSchema).replace(/</g, "\\u003c"),
+            __html: safeJsonLd(globalSchema),
           }}
         />
       </head>
