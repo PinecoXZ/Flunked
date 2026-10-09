@@ -41,7 +41,7 @@ export function LoadingWindow({
   ],
   state = "connecting",
   badgeText = "[ACTIVE]",
-  duration = 2200,
+  duration = 5500,
   onComplete,
   className,
 }: LoadingWindowProps) {

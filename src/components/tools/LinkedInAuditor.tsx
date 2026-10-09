@@ -214,7 +214,7 @@ export function LinkedInAuditor() {
                     "Checking quantitative metrics and tech stack keywords...",
                     "Simulating recruiter skim retention...",
                   ],
-                  duration: 2000,
+                  duration: 5500,
                 });
               }}
               className="w-full py-2.5 px-4 rounded-xl border-2 border-black bg-flunked-yellow text-black font-mono font-black text-xs uppercase shadow-neo hover:translate-x-[-1px] hover:translate-y-[-1px] active:translate-x-[1px] active:translate-y-[1px] transition-all flex items-center justify-center gap-2 cursor-pointer"
