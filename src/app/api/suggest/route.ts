@@ -4,6 +4,9 @@ import { serverLogger } from "@/lib/logger";
 import { getClientIp } from "@/lib/ip";
 import { checkDistributedRateLimit, RATE_LIMIT_CONFIGS } from "@/lib/rateLimit";
 
+// Set maximum function execution duration for Vercel serverless functions (up to 30s for Apps Script cold starts)
+export const maxDuration = 30;
+
 export async function POST(request: Request) {
   const { ip, isUnknown } = getClientIp(request.headers);
 
@@ -105,11 +108,17 @@ export async function POST(request: Request) {
     const sanitizedCampus = sanitizeForSheets(campus);
     const sanitizedName = sanitizeForSheets(name);
 
-    // 6. Forward to Google Sheets Apps Script Webhook with shared secret and 5s timeout
-    const webhookUrl = process.env.SUGGESTIONS_WEBHOOK_URL;
+    // 6. Forward to Google Sheets Apps Script Webhook with shared secret and 15s timeout
+    const webhookUrl =
+      process.env.SUGGESTIONS_WEBHOOK_URL || process.env.APPS_SCRIPT_URL || process.env.WEBHOOK_URL;
+    const webhookSecret =
+      process.env.SUGGESTIONS_WEBHOOK_SECRET ||
+      process.env.APPS_SCRIPT_SECRET ||
+      process.env.WEBHOOK_SECRET;
+
     if (webhookUrl) {
       const forwardPayload = {
-        secret: process.env.SUGGESTIONS_WEBHOOK_SECRET,
+        secret: webhookSecret,
         category: sanitizedCategory,
         campus: sanitizedCampus,
         name: sanitizedName,
@@ -122,6 +131,7 @@ export async function POST(request: Request) {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(forwardPayload),
+          redirect: "follow",
           signal: AbortSignal.timeout(15000),
         });
 

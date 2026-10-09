@@ -116,9 +116,10 @@ Populate the required environment variables:
 # Rate limiting security salt
 RATE_LIMIT_SALT=your-random-32-char-salt
 
-# Optional: Google Apps Script webhook integration for student tool proposals
-# APPS_SCRIPT_URL=https://script.google.com/macros/s/.../exec
-# APPS_SCRIPT_SECRET=your-shared-webhook-secret
+# Google Sheets Webhook for Tool Suggestions (Supports either naming convention)
+SUGGESTIONS_WEBHOOK_URL=https://script.google.com/macros/s/.../exec
+SUGGESTIONS_WEBHOOK_SECRET=your-shared-webhook-secret
+# (APPS_SCRIPT_URL and APPS_SCRIPT_SECRET are also supported)
 ```
 
 ### 4. Run the development server
