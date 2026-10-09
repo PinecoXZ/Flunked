@@ -4,6 +4,8 @@ import { LoadingProvider } from "@/context/LoadingContext";
 import { Footer } from "@/components/layout/Footer";
 import { OnboardingTutorial } from "@/components/tutorial/OnboardingTutorial";
 import { TopProgressBar } from "@/components/layout/TopProgressBar";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { env } from "@/lib/env";
 import { safeJsonLd } from "@/lib/jsonLd";
 import "./globals.css";
@@ -131,6 +133,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
           </LoadingProvider>
         </AuthProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
