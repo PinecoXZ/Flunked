@@ -209,7 +209,7 @@ export function ToolPreviews() {
             </h3>
 
             <p className="text-xs sm:text-sm text-flunked-muted font-sans font-medium leading-relaxed">
-              We keep Flunked.online 100% free, instantaneous, and completely ad-free.
+              We keep Flunked 100% free, instantaneous, and completely ad-free.
             </p>
 
             {/* Curated high-CTR teaser tools that invite clicks */}

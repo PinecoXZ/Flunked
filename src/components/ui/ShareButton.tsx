@@ -13,7 +13,7 @@ interface ShareButtonProps {
 
 export function ShareButton({
   shareText,
-  title = "Flunked.online",
+  title = "Flunked",
   className,
   variant = "primary",
 }: ShareButtonProps) {

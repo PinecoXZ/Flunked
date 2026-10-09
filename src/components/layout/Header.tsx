@@ -39,9 +39,6 @@ export function Header() {
             className="group flex items-center text-xl sm:text-2xl font-black tracking-tight text-black select-none"
           >
             <span>Flunked</span>
-            <span className="ml-1 px-1.5 py-0.5 text-xs bg-flunked-yellow border-2 border-black rounded-md font-mono font-black text-black shadow-neo-sm">
-              .fun
-            </span>
           </Link>
           <span className="hidden xl:inline-block text-[11px] font-mono text-black font-bold border-l-2 border-black pl-3 py-0.5 uppercase tracking-wider">
             student tools · no bs

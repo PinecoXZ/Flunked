@@ -144,24 +144,11 @@ export function ShareStoryModal({
     drawNeoCard(50, 50, 980, 1250, 36, "#FFFFFF", true);
 
     // 2. Header
-    // Flunked.online logo
+    // Flunked logo
     ctx.font = "900 46px system-ui, -apple-system, sans-serif";
     ctx.fillStyle = "#000000";
     ctx.textAlign = "left";
     ctx.fillText("Flunked", 95, 135);
-
-    // Yellow ".fun" badge
-    const flunkedWidth = ctx.measureText("Flunked").width;
-    ctx.fillStyle = "#FFD000";
-    ctx.strokeStyle = "#000000";
-    ctx.lineWidth = 4;
-    ctx.beginPath();
-    ctx.roundRect(100 + flunkedWidth, 90, 95, 52, 10);
-    ctx.fill();
-    ctx.stroke();
-    ctx.fillStyle = "#000000";
-    ctx.font = "900 30px monospace";
-    ctx.fillText(".fun", 108 + flunkedWidth, 127);
 
     // Category Tag (Right aligned)
     ctx.fillStyle = "#FDFBF7";
@@ -307,7 +294,7 @@ export function ShareStoryModal({
       if (navigator.canShare && navigator.canShare({ files: [file] })) {
         await navigator.share({
           files: [file],
-          title: `${toolName} | Flunked.online`,
+          title: `${toolName} | Flunked`,
           text: `${headline} — ${verdict} | Check yours at flunked.online`,
         });
         return;
@@ -335,7 +322,7 @@ export function ShareStoryModal({
   const handleWhatsAppShare = () => {
     const shareUrl = typeof window !== "undefined" ? window.location.href : "https://flunked.online";
     const text = encodeURIComponent(
-      `*${toolName} Status via Flunked.online*\n\n` +
+      `*${toolName} Status via Flunked*\n\n` +
         `🔥 *${headline}*\n` +
         `"${verdict}"\n\n` +
         `Calculate yours: ${shareUrl}`

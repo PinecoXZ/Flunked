@@ -6,7 +6,7 @@ export interface LandingFaqItem {
 
 export const LANDING_FAQS: LandingFaqItem[] = [
   {
-    question: "Is Flunked.online really 100% free with zero ads?",
+    question: "Is Flunked really 100% free with zero ads?",
     answer:
       "Yes, 100% free forever. No banner ads, no video popups, no paid subscriptions, and no paywalls. We built Flunked because typical education portals are bloated with spam, paid courses, and recruiter trackers. Every single calculator—from the 75% attendance engine to the CTC salary breakdown—is freely accessible to every student.",
     category: "basics",

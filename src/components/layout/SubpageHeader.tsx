@@ -15,7 +15,7 @@ interface SubpageHeaderProps {
 export function SubpageHeader({
   breadcrumbLabel,
   backHref = "/",
-  backLabel = "Back to Flunked.online",
+  backLabel = "Back to Flunked",
   className = "mb-6 sm:mb-8",
 }: SubpageHeaderProps) {
   return (

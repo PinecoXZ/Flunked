@@ -17,12 +17,12 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(env.NEXT_PUBLIC_BASE_URL),
   title: {
-    default: "Flunked.online — Tools built for the chaos of college",
-    template: "%s | Flunked.online",
+    default: "Flunked — Tools built for the chaos of college",
+    template: "%s | Flunked",
   },
   description:
     "Free, student-only multi-tool platform for Indian college students. 75% bunk calculator, official university CGPA to %, CTC in-hand salary, and academic survival tools.",
-  applicationName: "Flunked.online",
+  applicationName: "Flunked",
   alternates: {
     canonical: env.NEXT_PUBLIC_BASE_URL,
   },
@@ -41,9 +41,9 @@ export const metadata: Metadata = {
     "indian college student tools",
     "flunked.online",
   ],
-  authors: [{ name: "Flunked.online Team", url: env.NEXT_PUBLIC_BASE_URL }],
-  creator: "Flunked.online",
-  publisher: "Flunked.online",
+  authors: [{ name: "Flunked Team", url: env.NEXT_PUBLIC_BASE_URL }],
+  creator: "Flunked",
+  publisher: "Flunked",
   formatDetection: {
     email: false,
     address: false,
@@ -53,14 +53,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     url: env.NEXT_PUBLIC_BASE_URL,
-    siteName: "Flunked.online",
-    title: "Flunked.online — Tools built for the chaos of college",
+    siteName: "Flunked",
+    title: "Flunked — Tools built for the chaos of college",
     description:
       "Free student multi-tools: 75% bunk calculator, official university CGPA conversion, in-hand placement take-home, and semester survival tools. Zero ads.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Flunked.online — College Academic Survival Tools",
+    title: "Flunked — College Academic Survival Tools",
     description:
       "Free student calculators: 75% bunk attendance, university CGPA converter, CTC in-hand salary, and semester survival planners.",
   },
@@ -81,7 +81,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         "@type": "WebSite",
         "@id": `${baseUrl}/#website`,
         url: baseUrl,
-        name: "Flunked.online",
+        name: "Flunked",
         description:
           "Academic survival tools and campus calculators built for Indian college students.",
         inLanguage: "en-IN",
@@ -94,7 +94,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       {
         "@type": "EducationalOrganization",
         "@id": `${baseUrl}/#organization`,
-        name: "Flunked.online",
+        name: "Flunked",
         url: baseUrl,
         logo: `${baseUrl}/icon`,
         description:

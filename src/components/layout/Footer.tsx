@@ -13,9 +13,6 @@ export function Footer() {
           <div className="flex flex-col items-center sm:items-start gap-1 text-center sm:text-left">
             <div className="flex items-center gap-1.5 text-base font-black tracking-tight text-white">
               <span>Flunked</span>
-              <span className="px-1.5 py-0.5 bg-flunked-yellow border-2 border-black rounded text-xs font-mono font-black text-black shadow-neo-sm">
-                .fun
-              </span>
             </div>
             <p className="text-[10px] text-zinc-400 font-mono font-medium">
               Built by a student · For students
@@ -53,7 +50,7 @@ export function Footer() {
         {/* Legal Links Bar */}
         <div className="mt-8 pt-6 border-t border-zinc-800 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] font-mono text-zinc-400 font-medium">
           <div>
-            © {new Date().getFullYear()} Flunked.online · Not affiliated with university
+            © {new Date().getFullYear()} Flunked · Not affiliated with university
             administration.
           </div>
 

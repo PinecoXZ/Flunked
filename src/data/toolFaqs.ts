@@ -99,7 +99,7 @@ export function getToolFaqs(slug: string): ToolFaq[] {
       {
         question: "Is this tool free to use for students?",
         answer:
-          "Yes. Flunked.online is 100% free, requires no paid subscription, and contains zero intrusive corporate advertisements.",
+          "Yes. Flunked is 100% free, requires no paid subscription, and contains zero intrusive corporate advertisements.",
       },
     ]
   );

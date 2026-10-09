@@ -26,7 +26,7 @@ export function LandingFaq() {
         </h2>
         <p className="text-sm sm:text-base font-sans font-medium text-flunked-muted leading-relaxed">
           Zero corporate jargon. Clear, honest answers about attendance formulas, in-hand placement
-          math, privacy, and how Flunked.online works.
+          math, privacy, and how Flunked works.
         </p>
       </div>
 
