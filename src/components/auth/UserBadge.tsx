@@ -39,21 +39,24 @@ export function UserBadge({ className }: UserBadgeProps) {
   const displayCampus = user?.campusName ? user.campusName.replace(" Student", "") : "Campus";
 
   return (
-    <div className={cn("relative", className)} ref={dropdownRef}>
+    <div className={cn("relative shrink-0", className)} ref={dropdownRef}>
       {/* Badge Button */}
       <button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
-        className="flex items-center gap-2 px-3 py-1 rounded-lg bg-white hover:bg-flunked-yellow border-2 border-black transition-all text-xs font-mono font-black text-black select-none group cursor-pointer shadow-neo-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-neo active:translate-x-[1px] active:translate-y-[1px] active:shadow-none"
+        aria-expanded={isOpen}
+        aria-label={`Student profile menu for ${displayName}`}
+        className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 rounded-lg bg-white hover:bg-flunked-yellow border-2 border-black transition-all text-xs font-mono font-black text-black select-none group cursor-pointer shadow-neo-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-neo active:translate-x-[1px] active:translate-y-[1px] active:shadow-none shrink-0"
       >
-        <div className="w-2.5 h-2.5 rounded-full bg-[#00C853] border border-black" />
-        <GraduationCap className="w-4 h-4 stroke-[2.5]" />
-        <span className="font-black max-w-[120px] sm:max-w-[160px] truncate">
-          {displayName} · {displayCampus}
+        <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#00C853] border border-black shrink-0" />
+        <GraduationCap className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5] shrink-0" />
+        <span className="font-black max-w-[75px] xs:max-w-[95px] sm:max-w-[160px] truncate leading-none">
+          <span className="sm:hidden">{displayName}</span>
+          <span className="hidden sm:inline">{displayName} · {displayCampus}</span>
         </span>
         <ChevronDown
           className={cn(
-            "w-3 h-3 text-black stroke-[3] transition-transform duration-150",
+            "w-3 h-3 text-black stroke-[3] transition-transform duration-150 shrink-0",
             isOpen && "rotate-180"
           )}
         />
@@ -61,7 +64,7 @@ export function UserBadge({ className }: UserBadgeProps) {
 
       {/* Dropdown Menu */}
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-64 rounded-xl bg-white border-2 border-black shadow-neo-lg p-3.5 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
+        <div className="absolute right-0 mt-2 w-[calc(100vw-1.75rem)] max-w-[270px] sm:w-64 rounded-xl bg-white border-2 border-black shadow-neo-lg p-3.5 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
           <div className="flex items-start gap-2.5 pb-3 border-b-2 border-black">
             <div className="p-2 rounded-lg bg-flunked-yellow border-2 border-black text-black shadow-neo-sm">
               <GraduationCap className="w-4 h-4 stroke-[2.5]" />

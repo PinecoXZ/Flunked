@@ -34,9 +34,9 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40 w-full border-b-2 border-black bg-[#FDFBF7]/95 backdrop-blur-md transition-colors">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2 sm:gap-3">
         {/* Left Section: Brand Logo */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 shrink-0">
           <Link
             href="/"
             className="group flex items-center text-xl sm:text-2xl font-black tracking-tight text-black select-none"
@@ -49,20 +49,20 @@ export function Header() {
         </div>
 
         {/* Right Section: About Link, Tour & Auth */}
-        <div className="flex items-center gap-2 sm:gap-2.5">
+        <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
           {/* About Page Link */}
           <Link
             href="/about"
             title="About Flunked"
             className={cn(
-              "flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg border-2 border-black text-xs font-mono font-black text-black transition-all shadow-neo-sm hover:translate-x-[-1px] hover:translate-y-[-1px] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none cursor-pointer",
+              "flex items-center gap-1.5 px-2 sm:px-3 py-1.5 rounded-lg border-2 border-black text-xs font-mono font-black text-black transition-all shadow-neo-sm hover:translate-x-[-1px] hover:translate-y-[-1px] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none cursor-pointer shrink-0",
               pathname === "/about"
                 ? "bg-flunked-yellow hover:bg-[#FFD000] shadow-neo"
                 : "bg-white hover:bg-flunked-yellow hover:shadow-neo"
             )}
           >
             <Info className="w-3.5 h-3.5 stroke-[2.5]" />
-            <span>About</span>
+            <span className="hidden sm:inline">About</span>
           </Link>
 
           {/* App Tour Button */}
@@ -71,7 +71,7 @@ export function Header() {
             onClick={launchOnboardingTutorial}
             title="App Walkthrough & Tutorial"
             aria-label="App Tour"
-            className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg bg-white hover:bg-flunked-yellow border-2 border-black text-xs font-mono font-black text-black transition-all shadow-neo-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-neo active:translate-x-[1px] active:translate-y-[1px] active:shadow-none cursor-pointer"
+            className="flex items-center gap-1.5 px-2 sm:px-3 py-1.5 rounded-lg bg-white hover:bg-flunked-yellow border-2 border-black text-xs font-mono font-black text-black transition-all shadow-neo-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-neo active:translate-x-[1px] active:translate-y-[1px] active:shadow-none cursor-pointer shrink-0"
           >
             <Compass className="w-3.5 h-3.5 stroke-[2.5]" />
             <span className="hidden sm:inline">Tour</span>
@@ -84,7 +84,7 @@ export function Header() {
             ) : (
               <Link
                 href="/login"
-                className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-lg bg-flunked-yellow hover:bg-[#FFD000] text-xs sm:text-sm font-mono font-black text-black transition-all border-2 border-black shadow-neo-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-neo active:translate-x-[1px] active:translate-y-[1px] active:shadow-none cursor-pointer"
+                className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1.5 rounded-lg bg-flunked-yellow hover:bg-[#FFD000] text-xs sm:text-sm font-mono font-black text-black transition-all border-2 border-black shadow-neo-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-neo active:translate-x-[1px] active:translate-y-[1px] active:shadow-none cursor-pointer shrink-0"
               >
                 <LogIn className="w-3.5 h-3.5 stroke-[2.5]" />
                 <span className="hidden sm:inline">Enter Campus Hub</span>
@@ -92,7 +92,7 @@ export function Header() {
               </Link>
             )
           ) : (
-            <div className="h-9 w-20 sm:w-28 rounded-lg bg-white border-2 border-black shadow-neo-sm animate-pulse" />
+            <div className="h-9 w-20 sm:w-28 rounded-lg bg-white border-2 border-black shadow-neo-sm animate-pulse shrink-0" />
           )}
         </div>
       </div>
