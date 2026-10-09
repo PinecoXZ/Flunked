@@ -272,12 +272,13 @@ export default function PrivacyPage() {
                     <span>Community Tool Suggestions Processing</span>
                   </div>
                   <p className="text-xs sm:text-sm text-black/80">
-                    When you submit a tool suggestion, your selected campus category and idea text
-                    are forwarded to Google Sheets (Google is the data processor) using a secure
-                    server-to-server webhook. To prevent denial-of-service abuse, your IP address is
-                    salted with a secret key, hashed with HMAC-SHA256, and stored temporarily in
-                    Upstash Redis for 10 minutes before expiring. No accounts or persistent user
-                    profiles are created.
+                    When you submit a tool suggestion, your selected tool category, college/university
+                    name, optional student name (which automatically defaults to &quot;Anonymous&quot; if
+                    omitted), and idea description are forwarded to Google Sheets (Google is the data
+                    processor) using a secure server-to-server webhook. To prevent denial-of-service
+                    abuse, your IP address is salted with a secret key, hashed with HMAC-SHA256, and
+                    stored temporarily in Upstash Redis for 10 minutes before expiring. No accounts or
+                    persistent user profiles are created.
                   </p>
                 </div>
               </div>

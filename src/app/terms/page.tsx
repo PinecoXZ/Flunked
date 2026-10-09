@@ -480,7 +480,8 @@ export default function TermsPage() {
                   /suggest
                 </Link>
                 ) or electronic mail, you acknowledge that such submissions are non-confidential and
-                non-proprietary.
+                non-proprietary. Submissions include your college or university name and an optional
+                student name or alias (which automatically defaults to &quot;Anonymous&quot; if omitted).
               </p>
               <p>
                 By submitting ideas, you grant Flunked.online an unrestricted, perpetual, irrevocable,
