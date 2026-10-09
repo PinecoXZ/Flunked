@@ -5,8 +5,10 @@ import Link from "next/link";
 import { Send, CheckCircle2, Lightbulb, AlertCircle } from "lucide-react";
 import { CATEGORIES, ToolCategory } from "@/data/tools";
 import { cn } from "@/lib/utils";
+import { useLoading } from "@/context/LoadingContext";
 
 export function SuggestForm() {
+  const { showLoading } = useLoading();
   const [idea, setIdea] = useState("");
   const [category, setCategory] = useState<ToolCategory>("academics");
   const [name, setName] = useState("");
@@ -23,20 +25,36 @@ export function SuggestForm() {
     setIsSubmitting(true);
     setErrorMessage(null);
 
+    const loadingPromise = showLoading({
+      title: "flunked-suggest.sys // dispatch",
+      statusTitle: "Submitting Tool Proposal...",
+      badgeText: "[DISPATCH: ACTIVE]",
+      state: "weaving",
+      steps: [
+        "Sanitizing student proposal...",
+        "Dispatching idea to developer queue...",
+        "Recording campus contribution...",
+      ],
+      duration: 1100,
+    });
+
     try {
-      const res = await fetch("/api/suggest", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          idea: idea.trim(),
-          category,
-          campus: campus.trim(),
-          name: name.trim() || "Anonymous",
-          _honeypot: honeypot,
+      const [res] = await Promise.all([
+        fetch("/api/suggest", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            idea: idea.trim(),
+            category,
+            campus: campus.trim(),
+            name: name.trim() || "Anonymous",
+            _honeypot: honeypot,
+          }),
         }),
-      });
+        loadingPromise,
+      ]);
 
       const data = await res.json();
 

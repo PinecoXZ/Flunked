@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import { ResultCard, type ResultStatus } from "@/components/ui/ResultCard";
-import { FileSearch, Check } from "lucide-react";
+import { FileSearch, Check, Sparkles } from "lucide-react";
+import { useLoading } from "@/context/LoadingContext";
 
 export function LinkedInAuditor() {
+  const { showLoading } = useLoading();
   const [bio, setBio] = useState<string>(
     "I am an aspiring software engineer passionate about creating scalable solutions. Seeking opportunities to leverage my hardworking mindset in full-stack development."
   );
@@ -197,6 +199,30 @@ export function LinkedInAuditor() {
             placeholder="Paste your LinkedIn About section here..."
             className="w-full p-4 rounded-xl border-2 border-black bg-white font-sans text-sm text-black shadow-neo-sm focus:outline-none leading-relaxed"
           />
+
+          <div className="pt-1">
+            <button
+              type="button"
+              onClick={() => {
+                showLoading({
+                  title: "flunked-bio.audit",
+                  statusTitle: "Auditing LinkedIn About Section...",
+                  state: "searching",
+                  badgeText: "[AUDITING]",
+                  steps: [
+                    "Scanning for generic buzzwords & empty hype...",
+                    "Checking quantitative metrics and tech stack keywords...",
+                    "Simulating recruiter skim retention...",
+                  ],
+                  duration: 850,
+                });
+              }}
+              className="w-full py-2.5 px-4 rounded-xl border-2 border-black bg-flunked-yellow text-black font-mono font-black text-xs uppercase shadow-neo hover:translate-x-[-1px] hover:translate-y-[-1px] active:translate-x-[1px] active:translate-y-[1px] transition-all flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <Sparkles className="w-4 h-4 stroke-[2.5]" />
+              <span>Run Deep Bio Audit</span>
+            </button>
+          </div>
         </div>
       </div>
 

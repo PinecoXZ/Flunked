@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { useAuth } from "@/context/AuthContext";
+import { useLoading } from "@/context/LoadingContext";
 import Link from "next/link";
 import {
   LogOut,
@@ -20,6 +21,7 @@ interface UserBadgeProps {
 
 export function UserBadge({ className }: UserBadgeProps) {
   const { user, logout } = useAuth();
+  const { showLoading } = useLoading();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -105,9 +107,21 @@ export function UserBadge({ className }: UserBadgeProps) {
           <div className="pt-2 border-t-2 border-black">
             <button
               type="button"
-              onClick={() => {
-                logout();
+              onClick={async () => {
                 setIsOpen(false);
+                await showLoading({
+                  title: "flunked-session.exe // terminate",
+                  statusTitle: "Resetting Campus Profile...",
+                  badgeText: "[LOGOUT: ACTIVE]",
+                  state: "working",
+                  steps: [
+                    "Clearing local student session...",
+                    "Flushing cached tool state...",
+                    "Returning to guest mode...",
+                  ],
+                  duration: 850,
+                });
+                logout();
               }}
               className="w-full flex items-center gap-2 px-2.5 py-2 rounded-lg text-xs font-mono font-black text-flunked-danger hover:bg-[#FFF0F0] border border-flunked-danger transition-colors cursor-pointer"
             >

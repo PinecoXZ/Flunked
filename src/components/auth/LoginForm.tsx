@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "@/context/AuthContext";
+import { useLoading } from "@/context/LoadingContext";
 import {
   GraduationCap,
   ArrowRight,
@@ -29,13 +30,14 @@ export function LoginForm({ onSuccess, redirectTo, className }: LoginFormProps) 
   const targetRedirect = safeRedirect(redirectTo || queryRedirect);
 
   const { login, user } = useAuth();
+  const { showLoading } = useLoading();
 
   const [name, setName] = useState(user?.name || "");
   const [campusName, setCampusName] = useState(user?.campusName || "");
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const trimmedName = name.trim();
     const trimmedCampus = campusName.trim();
@@ -51,6 +53,21 @@ export function LoginForm({ onSuccess, redirectTo, className }: LoginFormProps) 
     }
 
     setIsSubmitting(true);
+
+    await showLoading({
+      title: "flunked-auth.exe // session_init",
+      statusTitle: user ? "Updating Campus Profile..." : "Entering Campus Hub...",
+      badgeText: "[AUTH: VERIFYING]",
+      state: "connecting",
+      steps: [
+        `Verifying credentials for ${trimmedName}...`,
+        `Connecting to ${trimmedCampus} catalog...`,
+        "Unlocking 19 student survival calculators...",
+        "Welcome to Flunked! 🎓",
+      ],
+      duration: 1100,
+    });
+
     login(trimmedName, trimmedCampus);
 
     if (onSuccess) {
@@ -76,7 +93,7 @@ export function LoginForm({ onSuccess, redirectTo, className }: LoginFormProps) 
             <GraduationCap className="w-6 h-6 stroke-[2.5]" />
           </div>
           <h1 className="text-xl sm:text-2xl font-black tracking-tight text-black">
-            {user ? "Update Campus Profile" : "Enter Flunked.online"}
+            {user ? "Update Campus Profile" : "Enter Flunked"}
           </h1>
           <p className="text-xs sm:text-sm text-flunked-muted font-medium">
             Zero friction. No email, passwords, or OTPs required. Just tell us what to call you and

@@ -2,13 +2,30 @@
 
 import { useState } from "react";
 import { ShareButton } from "@/components/ui/ShareButton";
-import { HeartHandshake, AlertCircle } from "lucide-react";
+import { HeartHandshake, AlertCircle, RefreshCw } from "lucide-react";
+import { useLoading } from "@/context/LoadingContext";
 
 export function CgpaMarriage() {
+  const { showLoading } = useLoading();
   const [cgpa, setCgpa] = useState<number>(8.2);
   const [branch, setBranch] = useState<string>("CSE/IT");
   const [collegeTier, setCollegeTier] = useState<string>("NIT / BITS");
   const [jobStatus, setJobStatus] = useState<string>("MNC Offer (8–18 LPA)");
+
+  const handleRecalculate = () => {
+    showLoading({
+      title: "flunked-rishta.sys",
+      statusTitle: "Consulting Auntie Network...",
+      state: "solving",
+      badgeText: "[MATRIMONY]",
+      steps: [
+        "Analyzing family WhatsApp group gossip...",
+        "Cross-checking Sharma Ji's son's package...",
+        "Generating arranged marriage biodata prospects...",
+      ],
+      duration: 850,
+    });
+  };
 
   // Satirical Market Calculation
   let score = Math.round(cgpa * 6); // 30 - 60 base
@@ -241,10 +258,18 @@ export function CgpaMarriage() {
           </div>
         </div>
 
-        <div className="pt-2">
+        <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+          <button
+            type="button"
+            onClick={handleRecalculate}
+            className="w-full sm:w-auto px-5 py-2.5 rounded-xl border-2 border-black bg-flunked-yellow text-black font-mono font-black text-xs uppercase shadow-neo hover:translate-x-[-1px] hover:translate-y-[-1px] active:translate-x-[1px] active:translate-y-[1px] transition-all flex items-center justify-center gap-2 cursor-pointer"
+          >
+            <RefreshCw className="w-4 h-4 stroke-[2.5]" />
+            <span>Recalculate Rishta Prospects</span>
+          </button>
           <ShareButton
             title="Send to Relatives"
-            shareText={`My CGPA Arranged Marriage Prospect score is ${finalScore}/100 on flunked.online! Verdict: "${verdict}"`}
+            shareText={`My CGPA Arranged Marriage Prospect score is ${finalScore}/100 on flunked! Verdict: "${verdict}"`}
             className="w-full sm:w-auto"
           />
         </div>

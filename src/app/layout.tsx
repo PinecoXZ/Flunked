@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { AuthProvider } from "@/context/AuthContext";
+import { LoadingProvider } from "@/context/LoadingContext";
 import { Footer } from "@/components/layout/Footer";
 import { OnboardingTutorial } from "@/components/tutorial/OnboardingTutorial";
 import { TopProgressBar } from "@/components/layout/TopProgressBar";
@@ -121,12 +122,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="bg-flunked-bg text-flunked-text min-h-screen antialiased flex flex-col w-full max-w-full overflow-x-hidden">
         <TopProgressBar />
         <AuthProvider>
-          <div className="flex flex-col min-h-screen w-full max-w-full min-w-0 overflow-x-hidden">
-            <main className="flex-1 flex flex-col w-full max-w-full min-w-0">{children}</main>
-            <Footer />
-            {/* Skippable Onboarding Tutorial */}
-            <OnboardingTutorial />
-          </div>
+          <LoadingProvider>
+            <div className="flex flex-col min-h-screen w-full max-w-full min-w-0 overflow-x-hidden">
+              <main className="flex-1 flex flex-col w-full max-w-full min-w-0">{children}</main>
+              <Footer />
+              {/* Skippable Onboarding Tutorial */}
+              <OnboardingTutorial />
+            </div>
+          </LoadingProvider>
         </AuthProvider>
       </body>
     </html>

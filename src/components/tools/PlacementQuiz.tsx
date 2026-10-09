@@ -10,6 +10,7 @@ import {
   type QuizQuestion,
   type TriageItem,
 } from "@/data/quizQuestions";
+import { useLoading } from "@/context/LoadingContext";
 import {
   ArrowRight,
   ArrowLeft,
@@ -24,6 +25,7 @@ import {
 } from "lucide-react";
 
 export function PlacementQuiz() {
+  const { showLoading } = useLoading();
   const [activeQuestions, setActiveQuestions] = useState<QuizQuestion[]>(() =>
     QUIZ_QUESTIONS.slice(0, DEFAULT_QUIZ_QUESTION_COUNT)
   );
@@ -51,23 +53,36 @@ export function PlacementQuiz() {
     if (currentStep < totalQuestions - 1) {
       setCurrentStep((prev) => prev + 1);
     } else {
-      setShowResults(true);
-      // Trigger confetti if high score
-      try {
-        const result = evaluateQuiz(answers, activeQuestions);
-        if (result.percentage >= 80 && typeof window !== "undefined") {
-          import("canvas-confetti").then((confettiModule) => {
-            const confetti = confettiModule.default;
-            confetti({
-              particleCount: 100,
-              spread: 70,
-              origin: { y: 0.6 },
+      showLoading({
+        title: "flunked-placement.eval",
+        statusTitle: "Calculating Placement Readiness...",
+        state: "solving",
+        badgeText: "[ASSESSING]",
+        steps: [
+          "Cross-referencing DSA & system design answers...",
+          "Benchmarking against tier-1 campus averages...",
+          "Synthesizing customized triage prescriptions...",
+        ],
+        duration: 950,
+      }).then(() => {
+        setShowResults(true);
+        // Trigger confetti if high score
+        try {
+          const result = evaluateQuiz(answers, activeQuestions);
+          if (result.percentage >= 80 && typeof window !== "undefined") {
+            import("canvas-confetti").then((confettiModule) => {
+              const confetti = confettiModule.default;
+              confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 },
+              });
             });
-          });
+          }
+        } catch {
+          // Confetti fallback
         }
-      } catch {
-        // Confetti fallback
-      }
+      });
     }
   };
 
@@ -78,10 +93,23 @@ export function PlacementQuiz() {
   };
 
   const handleRetake = () => {
-    setActiveQuestions(getRandomQuizQuestions(DEFAULT_QUIZ_QUESTION_COUNT));
-    setAnswers({});
-    setCurrentStep(0);
-    setShowResults(false);
+    showLoading({
+      title: "flunked-deck.shuffle",
+      statusTitle: "Drawing Fresh Placement Questions...",
+      state: "weaving",
+      badgeText: "[SHUFFLE]",
+      steps: [
+        "Clearing previous evaluation matrix...",
+        "Sampling random questions across 6 categories...",
+        "Resetting triage timer...",
+      ],
+      duration: 750,
+    }).then(() => {
+      setActiveQuestions(getRandomQuizQuestions(DEFAULT_QUIZ_QUESTION_COUNT));
+      setAnswers({});
+      setCurrentStep(0);
+      setShowResults(false);
+    });
   };
 
   const results = useMemo(() => {

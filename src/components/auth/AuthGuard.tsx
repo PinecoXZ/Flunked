@@ -6,6 +6,8 @@ import { useAuth } from "@/context/AuthContext";
 import { LoginForm } from "@/components/auth/LoginForm";
 import { buildRedirectPath } from "@/lib/redirect";
 
+import { LoadingWindow } from "@/components/ui/LoadingWindow";
+
 interface AuthGuardProps {
   children: React.ReactNode;
 }
@@ -51,13 +53,19 @@ export function AuthGuard({ children }: AuthGuardProps) {
 
   if (!mounted || isLoading) {
     return (
-      <div className="min-h-[400px] flex items-center justify-center bg-flunked-bg text-black">
-        <div className="flex flex-col items-center gap-3">
-          <div className="w-8 h-8 rounded-full border-2 border-black border-t-transparent animate-spin" />
-          <span className="text-xs font-mono font-black text-black">
-            Verifying student credentials...
-          </span>
-        </div>
+      <div className="min-h-[500px] flex items-center justify-center p-4 bg-flunked-bg">
+        <LoadingWindow
+          inline
+          title="flunked-auth.guard"
+          statusTitle="Verifying Student Session"
+          state="connecting"
+          badgeText="[AUTH CHECK]"
+          steps={[
+            "Checking local student cache...",
+            "Validating campus roll number...",
+            "Granting access to student tools...",
+          ]}
+        />
       </div>
     );
   }

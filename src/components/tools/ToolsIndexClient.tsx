@@ -7,6 +7,8 @@ import { ToolPreviews } from "@/components/landing/ToolPreviews";
 import { CampusTicker } from "@/components/landing/CampusTicker";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 
+import { LoadingWindow } from "@/components/ui/LoadingWindow";
+
 export function ToolsIndexClient() {
   const { user, isLoading } = useAuth();
   const [mounted, setMounted] = useState(false);
@@ -17,13 +19,19 @@ export function ToolsIndexClient() {
 
   if (!mounted || isLoading) {
     return (
-      <div className="flex-1 flex items-center justify-center min-h-[60vh]">
-        <div className="flex flex-col items-center gap-3">
-          <div className="w-8 h-8 rounded-full border-2 border-black border-t-transparent animate-spin" />
-          <span className="text-xs font-mono font-black text-black">
-            Loading tools directory...
-          </span>
-        </div>
+      <div className="flex-1 flex items-center justify-center min-h-[60vh] px-4 py-12">
+        <LoadingWindow
+          inline
+          title="flunked-vault.sys // directory_load"
+          statusTitle="Loading Tools Directory..."
+          badgeText="[VAULT: INDEXING]"
+          state="searching"
+          steps={[
+            "Indexing 19 student calculators...",
+            "Loading UGC attendance regulations...",
+            "Syncing campus placement data...",
+          ]}
+        />
       </div>
     );
   }
