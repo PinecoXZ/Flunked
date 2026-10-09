@@ -121,10 +121,28 @@ export function AuthenticatedHub() {
       {filteredTools.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredTools.map((tool, idx) => {
-            // First popular tool gets featured 2-column span when viewing all tools without active search
-            const isFeatured =
-              selectedCategory === "all" && !searchQuery && idx === 0;
-            return <ToolCard key={tool.id} tool={tool} isFeatured={isFeatured} />;
+            const isAllTools = selectedCategory === "all" && !searchQuery;
+            const isFirstFeatured = isAllTools && idx === 0;
+            const isLastFeatured =
+              (!searchQuery &&
+                idx === filteredTools.length - 1 &&
+                filteredTools.length % 2 !== 0) ||
+              (isAllTools && idx === filteredTools.length - 1);
+
+            return (
+              <ToolCard
+                key={tool.id}
+                tool={tool}
+                isFeatured={isFirstFeatured || isLastFeatured}
+                featuredSpan={
+                  isFirstFeatured
+                    ? "first"
+                    : isLastFeatured
+                    ? "last"
+                    : undefined
+                }
+              />
+            );
           })}
         </div>
       ) : (
