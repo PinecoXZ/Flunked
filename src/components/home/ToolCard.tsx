@@ -12,10 +12,7 @@ interface ToolCardProps {
   featuredSpan?: "first" | "last";
 }
 
-const CATEGORY_THEME: Record<
-  string,
-  { badgeBg: string; cornerBg: string; tag: string }
-> = {
+const CATEGORY_THEME: Record<string, { badgeBg: string; cornerBg: string; tag: string }> = {
   academics: {
     badgeBg: "bg-flunked-yellow",
     cornerBg: "bg-flunked-yellow",
@@ -38,12 +35,7 @@ const CATEGORY_THEME: Record<
   },
 };
 
-export function ToolCard({
-  tool,
-  className,
-  isFeatured = false,
-  featuredSpan,
-}: ToolCardProps) {
+export function ToolCard({ tool, className, isFeatured = false, featuredSpan }: ToolCardProps) {
   const theme = CATEGORY_THEME[tool.category] || {
     badgeBg: "bg-flunked-yellow",
     cornerBg: "bg-flunked-yellow",

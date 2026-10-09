@@ -13,7 +13,7 @@ export const TOOL_COMPONENTS: Record<string, ComponentType> = {
     { loading: ToolLoading }
   ),
   "cgpa-calculator": dynamic(
-    () => import("./CgpaCalculator").then((m) => ({ default: m.CgpaCalculator })),
+    () => import("./cgpa-calculator").then((m) => ({ default: m.CgpaCalculator })),
     { loading: ToolLoading }
   ),
   "semester-survival": dynamic(
@@ -29,7 +29,7 @@ export const TOOL_COMPONENTS: Record<string, ComponentType> = {
     { loading: ToolLoading }
   ),
   "ctc-calculator": dynamic(
-    () => import("./CtcCalculator").then((m) => ({ default: m.CtcCalculator })),
+    () => import("./ctc-calculator").then((m) => ({ default: m.CtcCalculator })),
     { loading: ToolLoading }
   ),
   "placement-quiz": dynamic(
@@ -48,7 +48,7 @@ export const TOOL_COMPONENTS: Record<string, ComponentType> = {
     () => import("./AttendOrSkip").then((m) => ({ default: m.AttendOrSkip })),
     { loading: ToolLoading }
   ),
-  "am-i-cooked": dynamic(() => import("./AmICooked").then((m) => ({ default: m.AmICooked })), {
+  "am-i-cooked": dynamic(() => import("./am-i-cooked").then((m) => ({ default: m.AmICooked })), {
     loading: ToolLoading,
   }),
   "tier-engineer": dynamic(
@@ -68,11 +68,11 @@ export const TOOL_COMPONENTS: Record<string, ComponentType> = {
     { loading: ToolLoading }
   ),
   "expense-splitter": dynamic(
-    () => import("./ExpenseSplitter").then((m) => ({ default: m.ExpenseSplitter })),
+    () => import("./expense-splitter").then((m) => ({ default: m.ExpenseSplitter })),
     { loading: ToolLoading }
   ),
   "assignment-panic": dynamic(
-    () => import("./AssignmentPanic").then((m) => ({ default: m.AssignmentPanic })),
+    () => import("./assignment-panic").then((m) => ({ default: m.AssignmentPanic })),
     { loading: ToolLoading }
   ),
   "mess-calories": dynamic(

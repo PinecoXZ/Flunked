@@ -5,11 +5,14 @@
 
 # Testing & Coverage
 /coverage
+vitest.config.ts.timestamp-*
 
 # Next.js build output
 /.next/
 /out/
 /build
+/.turbo/
+/.vercel/
 
 # Environment files (strictly ignored)
 .env
@@ -19,10 +22,18 @@
 .env.test
 !.env.example
 
-# Debug & OS files
+# Debug, Logs & OS files
+*.log
 npm-debug.log*
 yarn-debug.log*
+pnpm-debug.log*
 .DS_Store
 Thumbs.db
 *.pem
+*.tsbuildinfo
 tsconfig.tsbuildinfo
+
+# Scratch & Temporary Developer Assets
+/scratch/
+.tempmediaStorage/
+

@@ -84,15 +84,21 @@ export function ToolPreviews() {
                 {/* Utilitarian Preview Ticker Block */}
                 <div className="mt-4 grid grid-cols-3 gap-2 p-3 rounded-xl bg-flunked-bg border-2 border-black shadow-neo-sm text-xs font-mono">
                   <div>
-                    <span className="text-[10px] text-flunked-muted font-bold block">UGC Cutoff</span>
+                    <span className="text-[10px] text-flunked-muted font-bold block">
+                      UGC Cutoff
+                    </span>
                     <span className="font-black text-black text-sm">75.0%</span>
                   </div>
                   <div>
-                    <span className="text-[10px] text-flunked-muted font-bold block">Sample Classes</span>
+                    <span className="text-[10px] text-flunked-muted font-bold block">
+                      Sample Classes
+                    </span>
                     <span className="font-black text-black text-sm">38 / 45</span>
                   </div>
                   <div>
-                    <span className="text-[10px] text-flunked-muted font-bold block">Calculated Margin</span>
+                    <span className="text-[10px] text-flunked-muted font-bold block">
+                      Calculated Margin
+                    </span>
                     <span className="font-black text-[#00A843] text-sm">+3 Bunks Safe</span>
                   </div>
                 </div>
@@ -135,7 +141,9 @@ export function ToolPreviews() {
                 </p>
 
                 <div className="mt-3 p-2.5 rounded-lg bg-flunked-bg border-2 border-black shadow-neo-sm text-xs font-mono">
-                  <span className="text-[10px] text-flunked-muted font-bold block">Formula Truth:</span>
+                  <span className="text-[10px] text-flunked-muted font-bold block">
+                    Formula Truth:
+                  </span>
                   <span className="font-black text-black text-xs">CTC ≠ In-Hand Cash</span>
                 </div>
               </div>
@@ -172,7 +180,9 @@ export function ToolPreviews() {
                     Instant Reality Check
                   </span>
                 </div>
-                <h3 className="text-xl sm:text-2xl font-black text-black">{spotlightTools[2].name}</h3>
+                <h3 className="text-xl sm:text-2xl font-black text-black">
+                  {spotlightTools[2].name}
+                </h3>
                 <p className="text-xs sm:text-sm text-flunked-muted font-sans font-medium max-w-xl">
                   {spotlightTools[2].description}
                 </p>

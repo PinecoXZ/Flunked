@@ -204,8 +204,7 @@ export function SuggestForm() {
                 htmlFor="student-name"
                 className="block text-xs font-mono uppercase tracking-wider text-black font-black"
               >
-                Your Name{" "}
-                <span className="text-black/40 font-normal font-sans">(optional)</span>
+                Your Name <span className="text-black/40 font-normal font-sans">(optional)</span>
               </label>
               <input
                 type="text"

@@ -52,7 +52,9 @@ export function UserBadge({ className }: UserBadgeProps) {
         <GraduationCap className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5] shrink-0" />
         <span className="font-black max-w-[75px] xs:max-w-[95px] sm:max-w-[160px] truncate leading-none">
           <span className="sm:hidden">{displayName}</span>
-          <span className="hidden sm:inline">{displayName} · {displayCampus}</span>
+          <span className="hidden sm:inline">
+            {displayName} · {displayCampus}
+          </span>
         </span>
         <ChevronDown
           className={cn(

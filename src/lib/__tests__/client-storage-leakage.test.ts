@@ -69,7 +69,9 @@ describe("Client storage network leakage audit", () => {
     const toolsDir = path.resolve(srcDir, "components/tools");
     if (!fs.existsSync(toolsDir)) return;
 
-    const toolFiles = fs.readdirSync(toolsDir).filter((f) => f.endsWith(".tsx") || f.endsWith(".ts"));
+    const toolFiles = fs
+      .readdirSync(toolsDir)
+      .filter((f) => f.endsWith(".tsx") || f.endsWith(".ts"));
     const storageUsages: string[] = [];
 
     for (const toolFile of toolFiles) {

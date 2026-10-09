@@ -111,9 +111,7 @@ export function ResultCard({
               {metric}
             </span>
             {metricLabel && (
-              <span className="text-sm font-mono text-flunked-muted font-bold">
-                {metricLabel}
-              </span>
+              <span className="text-sm font-mono text-flunked-muted font-bold">{metricLabel}</span>
             )}
           </div>
         )}

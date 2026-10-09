@@ -63,8 +63,8 @@ export default function AboutPage() {
             month after gratuity, PF, and TDS? Who owes who after the Friday night Biryani order?
           </p>
           <p>
-            Instead of clunky WhatsApp arguments or broken Excel sheets, Flunked puts all 19
-            tools in one zero-friction, student-verified place.
+            Instead of clunky WhatsApp arguments or broken Excel sheets, Flunked puts all 19 tools
+            in one zero-friction, student-verified place.
           </p>
         </div>
 

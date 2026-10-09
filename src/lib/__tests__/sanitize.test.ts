@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { sanitizeString, validateSuggestion } from "../sanitize";
+import { sanitizeString, sanitizeForSheets } from "../sanitize";
 
 describe("sanitizeString", () => {
   it("strips HTML tags", () => {
@@ -20,39 +20,20 @@ describe("sanitizeString", () => {
   });
 });
 
-describe("validateSuggestion", () => {
-  it("accepts valid suggestion", () => {
-    const r = validateSuggestion("Add a sleep calculator", "academics");
-    expect(r.isValid).toBe(true);
+describe("sanitizeForSheets", () => {
+  it("escapes formula injection characters (=, +, -, @)", () => {
+    expect(sanitizeForSheets("=SUM(A1:A10)")).toBe("'=SUM(A1:A10)");
+    expect(sanitizeForSheets("+12345")).toBe("'+12345");
+    expect(sanitizeForSheets("-100")).toBe("'-100");
+    expect(sanitizeForSheets("@HYPERLINK('evil.com')")).toBe("'@HYPERLINK('evil.com')");
   });
 
-  it("rejects too-short ideas", () => {
-    const r = validateSuggestion("Hi", "academics");
-    expect(r.isValid).toBe(false);
+  it("escapes tabs and carriage returns before trimming", () => {
+    expect(sanitizeForSheets("\t=evil()")).toBe("'=evil()");
   });
 
-  it("rejects SQL injection attempts", () => {
-    const r = validateSuggestion("'; DROP TABLE users; --", "academics");
-    expect(r.isValid).toBe(false);
-  });
-
-  it("rejects script injection in campus field", () => {
-    const r = validateSuggestion("Normal idea", "academics", "<script>alert(1)</script>");
-    expect(r.isValid).toBe(false);
-  });
-
-  it("accepts valid campus names with conjunctions like and", () => {
-    const r = validateSuggestion(
-      "Add a hostel laundry tracker",
-      "daily",
-      "College of Engineering and Technology"
-    );
-    expect(r.isValid).toBe(true);
-    expect(r.sanitized.campus).toBe("College of Engineering and Technology");
-  });
-
-  it("rejects invalid categories", () => {
-    const r = validateSuggestion("Good idea here", "hacking");
-    expect(r.isValid).toBe(false);
+  it("passes safe strings through trimmed", () => {
+    expect(sanitizeForSheets("  IIT Bombay  ")).toBe("IIT Bombay");
+    expect(sanitizeForSheets("")).toBe("");
   });
 });

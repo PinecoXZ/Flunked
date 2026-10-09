@@ -6,7 +6,8 @@
 export function getClientIp(input: Request | Headers): { ip: string; isUnknown: boolean } {
   // In local development or local production override (strictly ignored on Vercel)
   const isLocalDev = process.env.NODE_ENV === "development" && !process.env.VERCEL_ENV;
-  const isLocalProdOverride = process.env.ALLOW_LOCAL_PRODUCTION_IPS === "true" && !process.env.VERCEL_ENV;
+  const isLocalProdOverride =
+    process.env.ALLOW_LOCAL_PRODUCTION_IPS === "true" && !process.env.VERCEL_ENV;
   if (isLocalDev || isLocalProdOverride) {
     return { ip: "127.0.0.1", isUnknown: false };
   }

@@ -16,7 +16,9 @@ describe("sanitizeForSheets (Formula Defense)", () => {
   });
 
   it("leaves standard safe text untouched", () => {
-    expect(sanitizeForSheets("Attendance calculator for labs")).toBe("Attendance calculator for labs");
+    expect(sanitizeForSheets("Attendance calculator for labs")).toBe(
+      "Attendance calculator for labs"
+    );
     expect(sanitizeForSheets("Hello world")).toBe("Hello world");
     expect(sanitizeForSheets("")).toBe("");
   });

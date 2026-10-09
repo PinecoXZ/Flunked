@@ -9,12 +9,19 @@ describe("Upstash Redis live integration smoke test", () => {
 
   it.runIf(isConfigured)("successfully contacts live Upstash Redis instance", async () => {
     const testIp = `198.51.100.${Math.floor(Math.random() * 200 + 1)}`;
-    const result = await checkDistributedRateLimit(testIp, "/api/smoke-test", RATE_LIMIT_CONFIGS.suggest);
+    const result = await checkDistributedRateLimit(
+      testIp,
+      "/api/smoke-test",
+      RATE_LIMIT_CONFIGS.suggest
+    );
     expect(result).toHaveProperty("success");
     expect(result).toHaveProperty("remaining");
   });
 
-  it.skipIf(isConfigured)("skips live Upstash smoke test when credentials are not configured", () => {
-    expect(true).toBe(true);
-  });
+  it.skipIf(isConfigured)(
+    "skips live Upstash smoke test when credentials are not configured",
+    () => {
+      expect(true).toBe(true);
+    }
+  );
 });

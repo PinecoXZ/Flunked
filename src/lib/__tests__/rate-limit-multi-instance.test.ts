@@ -48,10 +48,16 @@ describe("checkDistributedRateLimit multi-instance atomic behavior", () => {
     vi.stubEnv("UPSTASH_REDIS_REST_URL", "https://fake-redis.upstash.io");
     vi.stubEnv("UPSTASH_REDIS_REST_TOKEN", "fake-token");
 
-    const fetchSpy = vi.spyOn(globalThis, "fetch").mockRejectedValue(new Error("Network timeout to Redis"));
+    const fetchSpy = vi
+      .spyOn(globalThis, "fetch")
+      .mockRejectedValue(new Error("Network timeout to Redis"));
     const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
 
-    const result = await checkDistributedRateLimit("192.0.2.10", "/api/suggest", RATE_LIMIT_CONFIGS.suggest);
+    const result = await checkDistributedRateLimit(
+      "192.0.2.10",
+      "/api/suggest",
+      RATE_LIMIT_CONFIGS.suggest
+    );
 
     expect(result.success).toBe(true);
     expect(result.remaining).toBe(RATE_LIMIT_CONFIGS.suggest.maxRequests);
@@ -67,12 +73,16 @@ describe("checkDistributedRateLimit multi-instance atomic behavior", () => {
     vi.stubEnv("UPSTASH_REDIS_REST_URL", "https://fake-redis.upstash.io");
     vi.stubEnv("UPSTASH_REDIS_REST_TOKEN", "fake-token");
 
-    const fetchSpy = vi.spyOn(globalThis, "fetch").mockResolvedValue(
-      new Response("Internal Server Error", { status: 500 })
-    );
+    const fetchSpy = vi
+      .spyOn(globalThis, "fetch")
+      .mockResolvedValue(new Response("Internal Server Error", { status: 500 }));
     const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
 
-    const result = await checkDistributedRateLimit("192.0.2.10", "/api/suggest", RATE_LIMIT_CONFIGS.suggest);
+    const result = await checkDistributedRateLimit(
+      "192.0.2.10",
+      "/api/suggest",
+      RATE_LIMIT_CONFIGS.suggest
+    );
 
     expect(result.success).toBe(true);
     expect(errorSpy).toHaveBeenCalled();

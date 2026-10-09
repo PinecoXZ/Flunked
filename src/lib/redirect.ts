@@ -33,6 +33,8 @@ export function buildRedirectPath(pathname: string, searchParamsString?: string)
   if (!searchParamsString || searchParamsString.trim() === "") {
     return cleanPath;
   }
-  const cleanQuery = searchParamsString.startsWith("?") ? searchParamsString : `?${searchParamsString}`;
+  const cleanQuery = searchParamsString.startsWith("?")
+    ? searchParamsString
+    : `?${searchParamsString}`;
   return `${cleanPath}${cleanQuery}`;
 }

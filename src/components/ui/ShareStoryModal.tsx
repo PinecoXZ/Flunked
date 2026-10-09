@@ -259,7 +259,11 @@ export function ShareStoryModal({
 
     ctx.font = "600 20px system-ui, -apple-system, sans-serif";
     ctx.fillStyle = "#666666";
-    ctx.fillText("· Free survival tools for Indian college students", brandX + brandWidth + 14, 1225);
+    ctx.fillText(
+      "· Free survival tools for Indian college students",
+      brandX + brandWidth + 14,
+      1225
+    );
 
     ctx.textAlign = "right";
     ctx.fillStyle = "#000000";
@@ -320,7 +324,8 @@ export function ShareStoryModal({
 
   // 3. Direct WhatsApp Web Text + Link Share
   const handleWhatsAppShare = () => {
-    const shareUrl = typeof window !== "undefined" ? window.location.href : "https://flunked.online";
+    const shareUrl =
+      typeof window !== "undefined" ? window.location.href : "https://flunked.online";
     const text = encodeURIComponent(
       `*${toolName} Status via Flunked*\n\n` +
         `🔥 *${headline}*\n` +

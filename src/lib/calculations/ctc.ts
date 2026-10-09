@@ -127,12 +127,8 @@ export function calculateCtcInHand(
   const grossWithoutBonus = Math.max(0, fixedCtc - employerPf - gratuity);
   const taxableWithoutBonus = Math.max(0, grossWithoutBonus - standardDeduction);
   const taxWithoutBonus = computeTax(taxableWithoutBonus);
-  const totalDeductionsWithoutBonus =
-    employeePf + professionalTax + taxWithoutBonus.totalTax;
-  const netTakeHomeWithoutBonus = Math.max(
-    0,
-    grossWithoutBonus - totalDeductionsWithoutBonus
-  );
+  const totalDeductionsWithoutBonus = employeePf + professionalTax + taxWithoutBonus.totalTax;
+  const netTakeHomeWithoutBonus = Math.max(0, grossWithoutBonus - totalDeductionsWithoutBonus);
   const monthlyTakeHomeWithoutBonus = Math.round(netTakeHomeWithoutBonus / 12);
   const monthlyCtcIllusion = Math.round(safeCtc / 12);
 

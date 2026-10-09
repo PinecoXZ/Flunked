@@ -328,8 +328,8 @@ export function BunkCalculator() {
             label: result.canBunk
               ? "Safe Skips"
               : result.isReachable === false
-              ? "Status"
-              : "Needed",
+                ? "Status"
+                : "Needed",
             value: result.isReachable === false ? "Not reachable" : result.classesCount,
           },
         ]}
@@ -337,20 +337,26 @@ export function BunkCalculator() {
         {/* Additional contextual breakdown */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2 text-xs font-mono">
           <div className="p-3.5 rounded-xl bg-flunked-bg border-2 border-black shadow-neo-sm">
-            <div className="text-flunked-muted text-[10px] uppercase font-bold tracking-wider">Classes Held</div>
+            <div className="text-flunked-muted text-[10px] uppercase font-bold tracking-wider">
+              Classes Held
+            </div>
             <div className="text-base font-black text-black mt-0.5 tabular-nums">{numHeld}</div>
           </div>
           <div className="p-3.5 rounded-xl bg-flunked-bg border-2 border-black shadow-neo-sm">
-            <div className="text-flunked-muted text-[10px] uppercase font-bold tracking-wider">Attended</div>
-            <div className="text-base font-black text-black mt-0.5 tabular-nums">{safeAttended}</div>
+            <div className="text-flunked-muted text-[10px] uppercase font-bold tracking-wider">
+              Attended
+            </div>
+            <div className="text-base font-black text-black mt-0.5 tabular-nums">
+              {safeAttended}
+            </div>
           </div>
           <div
             className={`p-3.5 rounded-xl border-2 border-black shadow-neo-sm col-span-2 sm:col-span-1 ${
               result.canBunk
                 ? "bg-flunked-mint"
                 : result.isReachable === false
-                ? "bg-flunked-pink"
-                : "bg-flunked-yellow"
+                  ? "bg-flunked-pink"
+                  : "bg-flunked-yellow"
             }`}
           >
             <div className="text-black text-[10px] uppercase font-black tracking-wider">

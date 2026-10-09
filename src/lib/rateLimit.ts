@@ -64,7 +64,9 @@ export const RATE_LIMIT_CONFIGS = {
  */
 export async function hashIp(ip: string, salt: string | undefined): Promise<string | null> {
   if (!salt) {
-    console.error("[CRITICAL] RATE_LIMIT_SALT is missing. Skipping rate limiting and failing open.");
+    console.error(
+      "[CRITICAL] RATE_LIMIT_SALT is missing. Skipping rate limiting and failing open."
+    );
     return null; // NEVER store raw or partial IP!
   }
   try {
@@ -195,7 +197,9 @@ export async function checkDistributedRateLimit(
       });
 
       if (!response.ok) {
-        console.error(`[ALERT] Upstash Redis returned non-200 status: ${response.status}. Failing open.`);
+        console.error(
+          `[ALERT] Upstash Redis returned non-200 status: ${response.status}. Failing open.`
+        );
         return {
           success: true,
           limit: config.maxRequests,
@@ -205,7 +209,8 @@ export async function checkDistributedRateLimit(
       }
 
       const data = await response.json();
-      const currentCount = typeof data.result === "number" ? data.result : parseInt(data.result, 10) || 1;
+      const currentCount =
+        typeof data.result === "number" ? data.result : parseInt(data.result, 10) || 1;
 
       if (currentCount > config.maxRequests) {
         return {

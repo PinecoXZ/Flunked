@@ -16,7 +16,9 @@ describe("hashIp and fail-open salt behavior", () => {
 
     expect(result).toBeNull();
     expect(errorSpy).toHaveBeenCalledWith(
-      expect.stringContaining("[CRITICAL] RATE_LIMIT_SALT is missing. Skipping rate limiting and failing open.")
+      expect.stringContaining(
+        "[CRITICAL] RATE_LIMIT_SALT is missing. Skipping rate limiting and failing open."
+      )
     );
   });
 
@@ -48,7 +50,11 @@ describe("hashIp and fail-open salt behavior", () => {
     vi.stubEnv("RATE_LIMIT_SALT", "");
     const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
 
-    const result = await checkDistributedRateLimit("203.0.113.195", "/api/suggest", RATE_LIMIT_CONFIGS.suggest);
+    const result = await checkDistributedRateLimit(
+      "203.0.113.195",
+      "/api/suggest",
+      RATE_LIMIT_CONFIGS.suggest
+    );
 
     expect(result.success).toBe(true);
     expect(result.remaining).toBe(1);

@@ -77,9 +77,9 @@ export default function CookiePage() {
             <span>The Clean Web Commitment (In Plain English)</span>
           </div>
           <p className="text-xs sm:text-sm text-black/85 font-medium leading-relaxed font-sans">
-            Flunked.online refuses to compromise student devices. We do not use third-party marketing
-            cookies, cross-site analytics beacons, or behavioral fingerprinting scripts. We use
-            modern, client-side{" "}
+            Flunked.online refuses to compromise student devices. We do not use third-party
+            marketing cookies, cross-site analytics beacons, or behavioral fingerprinting scripts.
+            We use modern, client-side{" "}
             <strong className="text-black font-black">HTML5 Local Storage</strong> strictly to keep
             your session authenticated between tool clicks and remember if you have dismissed the
             onboarding tutorial. You can audit, inspect, and completely wipe this data from your
@@ -172,8 +172,8 @@ export default function CookiePage() {
             </h2>
             <div className="space-y-4 text-black/80 font-medium leading-relaxed pl-1">
               <p>
-                Below is the complete, comprehensive registry of every data item Flunked.online stores
-                or handles inside your web browser client:
+                Below is the complete, comprehensive registry of every data item Flunked.online
+                stores or handles inside your web browser client:
               </p>
 
               <div className="overflow-x-auto border-2 border-black rounded-xl">
@@ -277,7 +277,8 @@ export default function CookiePage() {
                 </li>
                 <li>
                   <strong className="text-black">No Third-Party Data Brokers:</strong> No analytics
-                  software embedded on Flunked.online transmits your device data to data aggregators.
+                  software embedded on Flunked.online transmits your device data to data
+                  aggregators.
                 </li>
               </ul>
             </div>
@@ -329,8 +330,8 @@ export default function CookiePage() {
                       Press{" "}
                       <kbd className="font-mono font-bold bg-zinc-100 px-1 rounded border">F12</kbd>{" "}
                       &gt; Application tab &gt; Storage &gt; Local Storage &gt; Right-click{" "}
-                      <code className="font-bold">flunked.online</code> &gt; Clear. Or: Settings &gt;
-                      Privacy &amp; Security &gt; Delete browsing data.
+                      <code className="font-bold">flunked.online</code> &gt; Clear. Or: Settings
+                      &gt; Privacy &amp; Security &gt; Delete browsing data.
                     </p>
                   </div>
                   <div className="p-3.5 rounded-xl bg-white border-2 border-black shadow-neo-sm space-y-1">
@@ -339,8 +340,8 @@ export default function CookiePage() {
                     </span>
                     <p className="text-black/75">
                       macOS: Safari &gt; Settings &gt; Privacy &gt; Manage Website Data &gt; Search
-                      &quot;flunked.online&quot; &gt; Remove. iOS: Settings &gt; Safari &gt; Advanced
-                      &gt; Website Data &gt; Delete.
+                      &quot;flunked.online&quot; &gt; Remove. iOS: Settings &gt; Safari &gt;
+                      Advanced &gt; Website Data &gt; Delete.
                     </p>
                   </div>
                   <div className="p-3.5 rounded-xl bg-white border-2 border-black shadow-neo-sm space-y-1">
@@ -458,7 +459,9 @@ export default function CookiePage() {
         {/* Footer Note */}
         <footer className="pt-6 border-t-2 border-black flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-black/70">
           <div>
-            <span>© {new Date().getFullYear()} Flunked.online. Transparent Client-Side Storage.</span>
+            <span>
+              © {new Date().getFullYear()} Flunked.online. Transparent Client-Side Storage.
+            </span>
           </div>
           <div className="flex items-center gap-3">
             <Link href="/terms" className="hover:text-black underline">

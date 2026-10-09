@@ -179,8 +179,8 @@ export default function DisclaimerPage() {
                   ACADEMIC STATUS.
                 </p>
                 <p className="text-xs text-black/80 font-medium">
-                  If any discrepancy arises between a calculation produced on Flunked.online and your
-                  college&apos;s ERP database, your college&apos;s official ERP record shall be
+                  If any discrepancy arises between a calculation produced on Flunked.online and
+                  your college&apos;s ERP database, your college&apos;s official ERP record shall be
                   conclusive, final, and absolute.
                 </p>
               </div>
@@ -424,9 +424,9 @@ export default function DisclaimerPage() {
                 </div>
                 <p className="text-xs sm:text-sm text-black/85">
                   The Hostel Expense Splitter executes a purely mathematical graph minimization
-                  algorithm to compute minimal peer-to-peer settlement transactions. Flunked.online is
-                  NOT a bank, non-banking financial company (NBFC), payment aggregator, or prepaid
-                  payment instrument (PPI) issuer under the{" "}
+                  algorithm to compute minimal peer-to-peer settlement transactions. Flunked.online
+                  is NOT a bank, non-banking financial company (NBFC), payment aggregator, or
+                  prepaid payment instrument (PPI) issuer under the{" "}
                   <strong className="text-black font-bold">
                     Payment and Settlement Systems Act, 2007
                   </strong>

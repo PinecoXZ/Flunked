@@ -5,7 +5,9 @@ describe("safeRedirect open redirect defense", () => {
   it("allows valid relative internal paths", () => {
     expect(safeRedirect("/tools/bunk-calculator")).toBe("/tools/bunk-calculator");
     expect(safeRedirect("/tools")).toBe("/tools");
-    expect(safeRedirect("/tools/cgpa-calculator?campus=VIT")).toBe("/tools/cgpa-calculator?campus=VIT");
+    expect(safeRedirect("/tools/cgpa-calculator?campus=VIT")).toBe(
+      "/tools/cgpa-calculator?campus=VIT"
+    );
     expect(safeRedirect("/")).toBe("/");
   });
 

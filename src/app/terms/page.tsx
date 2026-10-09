@@ -73,9 +73,10 @@ export default function TermsPage() {
           </h1>
 
           <p className="text-xs sm:text-sm font-mono text-black/70 font-semibold leading-relaxed">
-            Please read these Terms of Service carefully before utilizing Flunked.online. This document
-            constitutes a legally binding electronic agreement between you and Flunked.online governing
-            your access to student tools, mathematical routines, and client-side calculators.
+            Please read these Terms of Service carefully before utilizing Flunked.online. This
+            document constitutes a legally binding electronic agreement between you and
+            Flunked.online governing your access to student tools, mathematical routines, and
+            client-side calculators.
           </p>
         </header>
 
@@ -146,8 +147,9 @@ export default function TermsPage() {
                 individually, as a student, researcher, or guest (&quot;User&quot;,
                 &quot;Student&quot;, &quot;Data Principal&quot;, or &quot;you&quot;)—and the
                 operators, maintainers, and contributors of{" "}
-                <strong className="text-black font-black">Flunked.online</strong> (&quot;Flunked&quot;,
-                &quot;Platform&quot;, &quot;we&quot;, &quot;our&quot;, or &quot;us&quot;).
+                <strong className="text-black font-black">Flunked.online</strong>{" "}
+                (&quot;Flunked&quot;, &quot;Platform&quot;, &quot;we&quot;, &quot;our&quot;, or
+                &quot;us&quot;).
               </p>
               <p>
                 By opening, browsing, accessing, bookmarking, or invoking any mathematical
@@ -346,8 +348,8 @@ export default function TermsPage() {
                 <strong className="text-black font-black">
                   Reservation of Proprietary Rights:
                 </strong>{" "}
-                All intellectual property rights in and to Flunked.online—including but not limited to
-                the underlying TypeScript/React/Next.js codebase, mathematical models, formula
+                All intellectual property rights in and to Flunked.online—including but not limited
+                to the underlying TypeScript/React/Next.js codebase, mathematical models, formula
                 calibrations, editorial copy, question databases, Neo-Brutalist design tokens,
                 vector illustrations, trademarks, domain names, and brand identifiers—are the
                 exclusive intellectual property of Flunked.online and are protected under the{" "}
@@ -373,8 +375,8 @@ export default function TermsPage() {
             </h2>
             <div className="space-y-3 text-black/80 font-medium leading-relaxed pl-1">
               <p>
-                To maintain the integrity, security, and performance of Flunked.online for all college
-                students across India, you explicitly agree that you shall NOT, directly or
+                To maintain the integrity, security, and performance of Flunked.online for all
+                college students across India, you explicitly agree that you shall NOT, directly or
                 indirectly:
               </p>
               <ul className="list-disc list-inside space-y-2 text-xs sm:text-sm pl-2 font-medium text-black/85">
@@ -481,13 +483,14 @@ export default function TermsPage() {
                 </Link>
                 ) or electronic mail, you acknowledge that such submissions are non-confidential and
                 non-proprietary. Submissions include your college or university name and an optional
-                student name or alias (which automatically defaults to &quot;Anonymous&quot; if omitted).
+                student name or alias (which automatically defaults to &quot;Anonymous&quot; if
+                omitted).
               </p>
               <p>
-                By submitting ideas, you grant Flunked.online an unrestricted, perpetual, irrevocable,
-                worldwide, royalty-free, transferable, and sublicensable license to utilize, test,
-                implement, modify, publish, and commercialize such concepts without compensation,
-                royalty, accounting, or attribution obligation to you.
+                By submitting ideas, you grant Flunked.online an unrestricted, perpetual,
+                irrevocable, worldwide, royalty-free, transferable, and sublicensable license to
+                utilize, test, implement, modify, publish, and commercialize such concepts without
+                compensation, royalty, accounting, or attribution obligation to you.
               </p>
             </div>
           </section>
@@ -508,9 +511,9 @@ export default function TermsPage() {
               <ul className="list-disc list-inside space-y-1.5 text-xs sm:text-sm pl-2 font-medium text-black/85">
                 <li>
                   <strong className="text-black">Unified Payments Interface (UPI):</strong>{" "}
-                  Deep-links for settlement via Google Pay, PhonePe, Paytm, or BHIM. Flunked.online is
-                  NOT an intermediary or payment aggregator under the Payment and Settlement Systems
-                  Act, 2007;
+                  Deep-links for settlement via Google Pay, PhonePe, Paytm, or BHIM. Flunked.online
+                  is NOT an intermediary or payment aggregator under the Payment and Settlement
+                  Systems Act, 2007;
                 </li>
                 <li>
                   <strong className="text-black">
@@ -535,9 +538,9 @@ export default function TermsPage() {
                 </li>
               </ul>
               <p>
-                Flunked.online maintains zero control over third-party terms of service, server uptime,
-                security practices, or privacy policies. Your interaction with third-party software
-                is governed solely by their respective agreements.
+                Flunked.online maintains zero control over third-party terms of service, server
+                uptime, security practices, or privacy policies. Your interaction with third-party
+                software is governed solely by their respective agreements.
               </p>
             </div>
           </section>
@@ -605,8 +608,8 @@ export default function TermsPage() {
                 Platform.
               </p>
               <p className="font-bold text-black">
-                Without limiting the generality of the foregoing, Flunked.online assumes zero liability
-                for:
+                Without limiting the generality of the foregoing, Flunked.online assumes zero
+                liability for:
               </p>
               <ul className="list-disc list-inside space-y-1.5 text-xs sm:text-sm pl-2 font-medium text-black/85">
                 <li>
@@ -640,8 +643,8 @@ export default function TermsPage() {
                 <strong className="text-black font-black">
                   INR ₹500 (Indian Rupees Five Hundred Only)
                 </strong>{" "}
-                or the aggregate amount paid by you to Flunked.online during the preceding thirty (30)
-                days, whichever is lower (which is zero for all non-paying users).
+                or the aggregate amount paid by you to Flunked.online during the preceding thirty
+                (30) days, whichever is lower (which is zero for all non-paying users).
               </p>
             </div>
           </section>
@@ -730,9 +733,9 @@ export default function TermsPage() {
                 </div>
                 <p className="text-xs sm:text-sm text-black/80 font-medium">
                   Prior to initiating any legal proceedings, you agree to notify us of the dispute
-                  in writing at <code className="font-mono font-bold">legal@flunked.online</code>. Both
-                  parties agree to engage in good-faith informal negotiations for a minimum period
-                  of thirty (30) days.
+                  in writing at <code className="font-mono font-bold">legal@flunked.online</code>.
+                  Both parties agree to engage in good-faith informal negotiations for a minimum
+                  period of thirty (30) days.
                 </p>
                 <p className="text-xs sm:text-sm text-black/80 font-medium">
                   In the event the dispute cannot be amicably resolved within thirty (30) days, it
@@ -771,8 +774,8 @@ export default function TermsPage() {
                 and enforceability of any remaining provisions.
               </p>
               <p>
-                <strong className="text-black">Force Majeure:</strong> Flunked.online shall not be held
-                liable for failure or delay in performance resulting from causes beyond our
+                <strong className="text-black">Force Majeure:</strong> Flunked.online shall not be
+                held liable for failure or delay in performance resulting from causes beyond our
                 reasonable control, including internet backbone outages, DDoS attacks, electrical
                 failures, server hosting downtime, acts of civil authorities, or changes in
                 statutory regulations.

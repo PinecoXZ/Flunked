@@ -146,8 +146,8 @@ export default function PrivacyPage() {
               <p>
                 This Policy applies to all digital personal data processed in connection with any
                 service, interactive calculator, quiz, or feature hosted on the domain{" "}
-                <strong className="text-black font-bold">flunked.online</strong> and its sub-domains.
-                It is drafted in compliance with the DPDP Act 2023, the{" "}
+                <strong className="text-black font-bold">flunked.online</strong> and its
+                sub-domains. It is drafted in compliance with the DPDP Act 2023, the{" "}
                 <strong className="text-black font-bold">Information Technology Act, 2000</strong>,
                 and the{" "}
                 <strong className="text-black font-bold">
@@ -272,13 +272,13 @@ export default function PrivacyPage() {
                     <span>Community Tool Suggestions Processing</span>
                   </div>
                   <p className="text-xs sm:text-sm text-black/80">
-                    When you submit a tool suggestion, your selected tool category, college/university
-                    name, optional student name (which automatically defaults to &quot;Anonymous&quot; if
-                    omitted), and idea description are forwarded to Google Sheets (Google is the data
-                    processor) using a secure server-to-server webhook. To prevent denial-of-service
-                    abuse, your IP address is salted with a secret key, hashed with HMAC-SHA256, and
-                    stored temporarily in Upstash Redis for 10 minutes before expiring. No accounts or
-                    persistent user profiles are created.
+                    When you submit a tool suggestion, your selected tool category,
+                    college/university name, optional student name (which automatically defaults to
+                    &quot;Anonymous&quot; if omitted), and idea description are forwarded to Google
+                    Sheets (Google is the data processor) using a secure server-to-server webhook.
+                    To prevent denial-of-service abuse, your IP address is salted with a secret key,
+                    hashed with HMAC-SHA256, and stored temporarily in Upstash Redis for 10 minutes
+                    before expiring. No accounts or persistent user profiles are created.
                   </p>
                 </div>
               </div>
@@ -335,11 +335,11 @@ export default function PrivacyPage() {
               </div>
               <ul className="list-disc list-inside space-y-2 text-xs sm:text-sm font-medium text-black/85">
                 <li>
-                  <strong className="text-black">Zero Institutional Reporting:</strong> Flunked.online
-                  will NEVER disclose, furnish, or transmit your name, campus affiliation,
-                  attendance numbers, or calculation history to any college administration, Dean of
-                  Academic Affairs, Head of Department (HOD), Proctorial Board, or university
-                  registrar.
+                  <strong className="text-black">Zero Institutional Reporting:</strong>{" "}
+                  Flunked.online will NEVER disclose, furnish, or transmit your name, campus
+                  affiliation, attendance numbers, or calculation history to any college
+                  administration, Dean of Academic Affairs, Head of Department (HOD), Proctorial
+                  Board, or university registrar.
                 </li>
                 <li>
                   <strong className="text-black">Zero Data Commercialization:</strong> We do NOT
@@ -467,8 +467,8 @@ export default function PrivacyPage() {
             <div className="space-y-3 text-black/80 font-medium leading-relaxed pl-1">
               <p>
                 In fulfillment of Section 8(5) of the DPDP Act and Rule 8 of the Information
-                Technology SPDI Rules 2011, Flunked.online implements reasonable security practices and
-                procedures:
+                Technology SPDI Rules 2011, Flunked.online implements reasonable security practices
+                and procedures:
               </p>
               <ul className="list-disc list-inside space-y-1.5 text-xs sm:text-sm pl-2 font-medium text-black/85">
                 <li>
@@ -575,10 +575,10 @@ export default function PrivacyPage() {
             </h2>
             <div className="space-y-3 text-black/80 font-medium leading-relaxed pl-1">
               <p>
-                Flunked.online prioritizes Indian domestic cloud edge infrastructure. Any operational
-                transmission of technical telemetry complies with Section 16 of the DPDP Act, 2023.
-                We do NOT transfer student personal data to any foreign country or territory
-                blacklisted or restricted by the Central Government of India.
+                Flunked.online prioritizes Indian domestic cloud edge infrastructure. Any
+                operational transmission of technical telemetry complies with Section 16 of the DPDP
+                Act, 2023. We do NOT transfer student personal data to any foreign country or
+                territory blacklisted or restricted by the Central Government of India.
               </p>
             </div>
           </section>

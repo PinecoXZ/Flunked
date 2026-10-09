@@ -134,13 +134,7 @@ export function AuthenticatedHub() {
                 key={tool.id}
                 tool={tool}
                 isFeatured={isFirstFeatured || isLastFeatured}
-                featuredSpan={
-                  isFirstFeatured
-                    ? "first"
-                    : isLastFeatured
-                    ? "last"
-                    : undefined
-                }
+                featuredSpan={isFirstFeatured ? "first" : isLastFeatured ? "last" : undefined}
               />
             );
           })}

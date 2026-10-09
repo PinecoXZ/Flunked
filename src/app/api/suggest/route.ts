@@ -84,7 +84,9 @@ export async function POST(request: Request) {
     if (!validation.success) {
       const issue = validation.error.issues?.[0];
       const errorMessage = issue
-        ? (issue.path.length > 0 ? `${issue.path.join(".")}: ${issue.message}` : issue.message)
+        ? issue.path.length > 0
+          ? `${issue.path.join(".")}: ${issue.message}`
+          : issue.message
         : validation.error.message || "Invalid suggestion input.";
       serverLogger.warn("Tool suggestion rejected by Zod validation", {
         ip,
