@@ -41,7 +41,7 @@ export function LoadingWindow({
   ],
   state = "connecting",
   badgeText = "[ACTIVE]",
-  duration = 1000,
+  duration = 2200,
   onComplete,
   className,
 }: LoadingWindowProps) {
@@ -64,7 +64,32 @@ export function LoadingWindow({
     const startTime = Date.now();
     const interval = setInterval(() => {
       const elapsed = Date.now() - startTime;
-      const pct = Math.min(100, Math.round((elapsed / duration) * 100));
+
+      if (elapsed >= duration) {
+        if (onCompleteRef.current) {
+          setProgress(100);
+          if (steps.length > 0) {
+            setCurrentStepIndex(steps.length - 1);
+          }
+          clearInterval(interval);
+          onCompleteRef.current();
+          return;
+        }
+
+        // If continuous inline loader without onComplete callback, keep cycling steps nicely
+        const loopElapsed = elapsed - duration;
+        const loopProgress = 75 + Math.round((Math.sin(loopElapsed / 400) + 1) * 11);
+        setProgress(Math.min(98, loopProgress));
+
+        if (steps.length > 0) {
+          const stepIndex = Math.floor(elapsed / (duration / steps.length)) % steps.length;
+          setCurrentStepIndex(stepIndex);
+        }
+        return;
+      }
+
+      // Smooth progression up to 98% during active duration
+      const pct = Math.min(98, Math.max(10, Math.round((elapsed / duration) * 98)));
       setProgress(pct);
 
       if (steps.length > 0) {
@@ -74,17 +99,10 @@ export function LoadingWindow({
         );
         setCurrentStepIndex(stepIndex);
       }
-
-      if (elapsed >= duration) {
-        clearInterval(interval);
-        if (onCompleteRef.current) {
-          onCompleteRef.current();
-        }
-      }
     }, 40);
 
     return () => clearInterval(interval);
-  }, [isOpen, duration, steps.length]);
+  }, [isOpen, duration, steps.length, steps]);
 
   if (!isOpen && !inline) return null;
 

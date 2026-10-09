@@ -23,7 +23,7 @@ export function CgpaMarriage() {
         "Cross-checking Sharma Ji's son's package...",
         "Generating arranged marriage biodata prospects...",
       ],
-      duration: 850,
+      duration: 2100,
     });
   };
 

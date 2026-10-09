@@ -65,7 +65,7 @@ export function LoginForm({ onSuccess, redirectTo, className }: LoginFormProps) 
         "Unlocking 19 student survival calculators...",
         "Welcome to Flunked! 🎓",
       ],
-      duration: 1100,
+      duration: 5500,
     });
 
     login(trimmedName, trimmedCampus);

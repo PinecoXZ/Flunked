@@ -63,7 +63,7 @@ export function PlacementQuiz() {
           "Benchmarking against tier-1 campus averages...",
           "Synthesizing customized triage prescriptions...",
         ],
-        duration: 950,
+        duration: 2200,
       }).then(() => {
         setShowResults(true);
         // Trigger confetti if high score
@@ -103,7 +103,7 @@ export function PlacementQuiz() {
         "Sampling random questions across 6 categories...",
         "Resetting triage timer...",
       ],
-      duration: 750,
+      duration: 1600,
     }).then(() => {
       setActiveQuestions(getRandomQuizQuestions(DEFAULT_QUIZ_QUESTION_COUNT));
       setAnswers({});

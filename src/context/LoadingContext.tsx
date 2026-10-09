@@ -68,7 +68,7 @@ export function LoadingProvider({ children }: { children: ReactNode }) {
           steps={activeOptions.steps}
           state={activeOptions.state}
           badgeText={activeOptions.badgeText}
-          duration={activeOptions.duration ?? 950}
+          duration={activeOptions.duration ?? 2200}
           onComplete={activeOptions.onComplete}
         />
       )}

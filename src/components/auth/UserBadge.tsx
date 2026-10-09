@@ -119,7 +119,7 @@ export function UserBadge({ className }: UserBadgeProps) {
                     "Flushing cached tool state...",
                     "Returning to guest mode...",
                   ],
-                  duration: 850,
+                  duration: 2000,
                 });
                 logout();
               }}

@@ -35,7 +35,7 @@ export function SuggestForm() {
         "Dispatching idea to developer queue...",
         "Recording campus contribution...",
       ],
-      duration: 1100,
+      duration: 2200,
     });
 
     try {
