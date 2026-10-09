@@ -120,7 +120,7 @@ export async function POST(request: Request) {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(forwardPayload),
-          signal: AbortSignal.timeout(5000),
+          signal: AbortSignal.timeout(15000),
         });
 
         const resultText = await response.text();
