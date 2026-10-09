@@ -10,7 +10,7 @@ interface ShareSiteModalProps {
 
 const SHARE_URL = "https://flunked.online";
 const SHARE_TEXT =
-  "Flunked — 19 free attendance, placement & academic calculators built for college students: https://flunked.online";
+  "Flunked — 19 tools for college students: 75% Bunk calculator, Placement readiness quiz, LinkedIn bio auditor & CGPA marriage prospects: https://flunked.online";
 
 // Safe cross-browser rounded rectangle helper
 function drawRoundRect(
@@ -156,7 +156,7 @@ export function ShareSiteModal({ isOpen, onClose }: ShareSiteModalProps) {
 
     ctx.font = "800 24px monospace";
     ctx.fillStyle = "#000000";
-    ctx.fillText("ATTENDANCE · CTC SALARY · BACKLOGS · HOSTEL", 540, 362);
+    ctx.fillText("ATTENDANCE · PLACEMENTS · LINKEDIN · RISHTA INDEX", 540, 362);
 
     // White Pill in Hero
     drawNeoCard(240, 400, 600, 56, 14, "#FFFFFF", 4, 4);
@@ -186,28 +186,28 @@ export function ShareSiteModal({ isOpen, onClose }: ShareSiteModalProps) {
       },
       {
         bg: "#D1FAE5", // Mint green
-        title: "💼 REAL IN-HAND CTC",
-        sub: "Post-tax take-home salary",
-        sample: "Offer: ₹12 LPA CTC",
-        badge: "💰 Monthly In-Hand: ₹84,200",
+        title: "🎯 PLACEMENT READINESS",
+        sub: "DSA, resume & core mock quiz",
+        sample: "Tier: Product Ready (78/100)",
+        badge: "⚡ 5 high-priority fix areas",
         badgeBg: "#CFFAFE",
         badgeColor: "#0E7490",
       },
       {
         bg: "#FEF3C7", // Amber
-        title: "🏠 HOSTEL SPLITTER",
-        sub: "Room expenses & groceries",
-        sample: "Wi-Fi, Food, Late Swiggy",
-        badge: "⚡ 1-Click UPI Payment Links",
+        title: "💼 LINKEDIN BIO AUDITOR",
+        sub: "Scores cringe About sections",
+        sample: "Paste bio → Instant audit",
+        badge: "🔥 Score: 4.5/10 · Actionable fixes",
         badgeBg: "#FFEDD5",
         badgeColor: "#C2410C",
       },
       {
         bg: "#FCE7F3", // Soft rose
-        title: "🔥 AM I COOKED?",
-        sub: "Academic reality check",
-        sample: "Internals & Missed Midsems",
-        badge: "🛡️ Instant Damage Control",
+        title: "💍 MARRIAGE PROSPECTS",
+        sub: "CGPA to arranged rishta index",
+        sample: "CGPA 7.8 · Tier 2 · CS Branch",
+        badge: "😂 Rishta Score: 68/100 (Satire)",
         badgeBg: "#FEE2E2",
         badgeColor: "#B91C1C",
       },
@@ -338,9 +338,13 @@ export function ShareSiteModal({ isOpen, onClose }: ShareSiteModalProps) {
   // 3. WhatsApp Direct Share
   const handleWhatsAppShare = () => {
     const text = encodeURIComponent(
-      `*Flunked.online — College Survival Calculators* 🎓\n\n` +
-        `19 free tools for college students: safe 75% attendance bunk limits, real in-hand CTC salary breakdown, hostel expense splitter, and backlog planning.\n\n` +
-        `Check it out: ${SHARE_URL}`
+      `*Flunked.online — College Survival Suite* 🎓\n\n` +
+        `Tools every Indian student needs right now:\n` +
+        `• 📚 *Bunk Calculator*: Safe 75% attendance limits & skippable classes\n` +
+        `• 🎯 *Placement Readiness Quiz*: Test your DSA, resume & project readiness\n` +
+        `• 💼 *LinkedIn Bio Auditor*: Scores & roasts cringe About sections out of 10\n` +
+        `• 💍 *CGPA → Marriage Prospects*: Satirical arranged rishta readiness index\n\n` +
+        `Check your scores here: ${SHARE_URL}`
     );
     window.open(`https://api.whatsapp.com/send?text=${text}`, "_blank");
   };
@@ -496,7 +500,7 @@ export function ShareSiteModal({ isOpen, onClose }: ShareSiteModalProps) {
               <span>WhatsApp</span>
             </button>
 
-            {/* Copy Image / Text */}
+            {/* Copy Image */}
             <button
               type="button"
               onClick={handleCopyImage}
@@ -515,6 +519,25 @@ export function ShareSiteModal({ isOpen, onClose }: ShareSiteModalProps) {
               )}
             </button>
           </div>
+
+          {/* Copy Full Message Bar */}
+          <button
+            type="button"
+            onClick={handleCopyText}
+            className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-[#F0EFEB] hover:bg-[#E5E3DC] border-2 border-black text-black font-mono font-black text-xs shadow-neo-sm hover:translate-x-[-1px] hover:translate-y-[-1px] active:shadow-none transition cursor-pointer"
+          >
+            {copiedText ? (
+              <>
+                <Check className="w-3.5 h-3.5 text-[#00C853] stroke-[3]" />
+                <span>Message Copied!</span>
+              </>
+            ) : (
+              <>
+                <Copy className="w-3.5 h-3.5 stroke-[2.5]" />
+                <span>Copy Share Message</span>
+              </>
+            )}
+          </button>
         </div>
       </div>
     </div>
