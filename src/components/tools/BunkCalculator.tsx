@@ -336,23 +336,27 @@ export function BunkCalculator() {
       >
         {/* Additional contextual breakdown */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2 text-xs font-mono">
-          <div className="p-3 rounded-xl bg-flunked-bg border-2 border-black shadow-neo-sm">
-            <div className="text-flunked-muted text-[10px] uppercase font-bold">Classes Held</div>
-            <div className="text-base font-black text-black mt-0.5">{numHeld}</div>
+          <div className="p-3.5 rounded-xl bg-flunked-bg border-2 border-black shadow-neo-sm">
+            <div className="text-flunked-muted text-[10px] uppercase font-bold tracking-wider">Classes Held</div>
+            <div className="text-base font-black text-black mt-0.5 tabular-nums">{numHeld}</div>
           </div>
-          <div className="p-3 rounded-xl bg-flunked-bg border-2 border-black shadow-neo-sm">
-            <div className="text-flunked-muted text-[10px] uppercase font-bold">Attended</div>
-            <div className="text-base font-black text-black mt-0.5">{safeAttended}</div>
+          <div className="p-3.5 rounded-xl bg-flunked-bg border-2 border-black shadow-neo-sm">
+            <div className="text-flunked-muted text-[10px] uppercase font-bold tracking-wider">Attended</div>
+            <div className="text-base font-black text-black mt-0.5 tabular-nums">{safeAttended}</div>
           </div>
-          <div className="p-3 rounded-xl bg-flunked-bg border-2 border-black shadow-neo-sm col-span-2 sm:col-span-1">
-            <div className="text-flunked-muted text-[10px] uppercase font-bold">
+          <div
+            className={`p-3.5 rounded-xl border-2 border-black shadow-neo-sm col-span-2 sm:col-span-1 ${
+              result.canBunk
+                ? "bg-flunked-mint"
+                : result.isReachable === false
+                ? "bg-flunked-pink"
+                : "bg-flunked-yellow"
+            }`}
+          >
+            <div className="text-black text-[10px] uppercase font-black tracking-wider">
               {result.canBunk ? "Margin to Bunk" : "Back-to-back Needed"}
             </div>
-            <div
-              className={`text-base font-black mt-0.5 ${
-                result.canBunk ? "text-[#00A843]" : "text-[#FF3333]"
-              }`}
-            >
+            <div className="text-base font-black text-black mt-0.5 tabular-nums">
               {result.isReachable === false
                 ? "Not reachable"
                 : `${result.classesCount} lecture${result.classesCount !== 1 ? "s" : ""}`}
@@ -361,11 +365,11 @@ export function BunkCalculator() {
         </div>
 
         {/* Practical tip */}
-        <div className="mt-3 text-xs text-black font-mono font-bold flex items-center gap-2">
+        <div className="mt-3.5 p-3 rounded-xl bg-flunked-bg border-2 border-black text-xs text-black font-mono font-bold flex items-center gap-2.5 shadow-neo-sm">
           {result.canBunk ? (
-            <CheckCircle2 className="w-4 h-4 text-[#00C853] shrink-0 stroke-[3]" />
+            <CheckCircle2 className="w-4 h-4 text-[#00A843] shrink-0 stroke-[3]" />
           ) : (
-            <ShieldAlert className="w-4 h-4 text-[#FF3333] shrink-0 stroke-[2.5]" />
+            <ShieldAlert className="w-4 h-4 text-flunked-danger shrink-0 stroke-[2.5]" />
           )}
           <span>
             {result.canBunk

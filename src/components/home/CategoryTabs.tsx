@@ -19,6 +19,14 @@ interface CategoryTabsProps {
   className?: string;
 }
 
+const CATEGORY_ACTIVE_STYLES: Record<string, string> = {
+  all: "bg-flunked-yellow text-black",
+  academics: "bg-flunked-yellow text-black",
+  placement: "bg-flunked-cyan text-black",
+  fun: "bg-flunked-pink text-black",
+  daily: "bg-flunked-mint text-black",
+};
+
 export function CategoryTabs({
   selectedCategory,
   onSelectCategory,
@@ -36,6 +44,7 @@ export function CategoryTabs({
         const isSelected = selectedCategory === cat.id;
         const count = counts ? counts[cat.id] : undefined;
         const Icon = CATEGORY_ICON_MAP[cat.id] || Sparkles;
+        const activeColor = CATEGORY_ACTIVE_STYLES[cat.id] || "bg-flunked-yellow text-black";
 
         return (
           <button
@@ -43,9 +52,9 @@ export function CategoryTabs({
             type="button"
             onClick={() => onSelectCategory(cat.id)}
             className={cn(
-              "flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-mono whitespace-nowrap transition-all duration-150 border-2 border-black cursor-pointer",
+              "flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-mono whitespace-nowrap transition-all duration-150 border-2 border-black cursor-pointer",
               isSelected
-                ? "bg-flunked-yellow text-black font-black shadow-neo hover:translate-x-[-1px] hover:translate-y-[-1px]"
+                ? `${activeColor} font-black shadow-neo hover:translate-x-[-1px] hover:translate-y-[-1px]`
                 : "bg-white text-black font-bold shadow-neo-sm hover:bg-flunked-bg"
             )}
           >
@@ -55,7 +64,7 @@ export function CategoryTabs({
               <span
                 className={cn(
                   "px-1.5 py-0.2 rounded text-[10px] font-mono border border-black font-black",
-                  isSelected ? "bg-white text-black" : "bg-flunked-yellow text-black"
+                  isSelected ? "bg-white text-black" : "bg-flunked-bg text-black"
                 )}
               >
                 {count}

@@ -17,8 +17,12 @@ const config: Config = {
           border: "#000000",     // Solid bold black border
           borderSubtle: "#333333",
           borderActive: "#000000",
-          yellow: "#FFE600",     // Electric Canary Yellow (THE ONE bold accent)
+          yellow: "#FFE600",     // Electric Canary Yellow (primary brand accent)
           yellowHover: "#FFDD00",
+          cyan: "#00F0FF",       // Acid Cyan (Placement / CTC / Career)
+          pink: "#FF6EA7",       // Neon Bubblegum Pink (Campus Life / Fun)
+          mint: "#00E599",       // Mint Green (Success / Safe Zone)
+          purple: "#A388EE",     // Lavender Purple (Academics / SGPA)
           text: "#000000",       // Jet black
           muted: "#4A4A4A",      // Legible dark charcoal
           mutedLight: "#262626", // Deep charcoal
@@ -32,6 +36,10 @@ const config: Config = {
         "neo-lg": "6px 6px 0px 0px #000000",
         "neo-xl": "8px 8px 0px 0px #000000",
         "neo-yellow": "4px 4px 0px 0px #FFE600",
+        "neo-cyan": "4px 4px 0px 0px #00F0FF",
+        "neo-pink": "4px 4px 0px 0px #FF6EA7",
+        "neo-mint": "4px 4px 0px 0px #00E599",
+        "neo-purple": "4px 4px 0px 0px #A388EE",
       },
       fontFamily: {
         serif: ["Georgia", "serif"],

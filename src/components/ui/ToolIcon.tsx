@@ -36,7 +36,7 @@ const TOOL_ICON_MAP: Record<string, ToolIconStyle> = {
   },
   "cgpa-calculator": {
     icon: GraduationCap,
-    bg: "bg-white",
+    bg: "bg-flunked-purple",
   },
   "semester-survival": {
     icon: ShieldAlert,
@@ -44,15 +44,15 @@ const TOOL_ICON_MAP: Record<string, ToolIconStyle> = {
   },
   "backlog-planner": {
     icon: CalendarClock,
-    bg: "bg-white",
+    bg: "bg-flunked-purple",
   },
   "ctc-calculator": {
     icon: IndianRupee,
-    bg: "bg-flunked-yellow",
+    bg: "bg-flunked-cyan",
   },
   "placement-quiz": {
     icon: Briefcase,
-    bg: "bg-white",
+    bg: "bg-flunked-cyan",
   },
   "attend-or-skip": {
     icon: Compass,
@@ -60,51 +60,51 @@ const TOOL_ICON_MAP: Record<string, ToolIconStyle> = {
   },
   "am-i-cooked": {
     icon: Flame,
-    bg: "bg-white",
+    bg: "bg-flunked-pink",
   },
   "expense-splitter": {
     icon: Receipt,
-    bg: "bg-flunked-yellow",
+    bg: "bg-flunked-mint",
   },
   "assignment-panic": {
     icon: AlarmClock,
-    bg: "bg-white",
+    bg: "bg-flunked-purple",
   },
   "grade-to-pass": {
     icon: Target,
-    bg: "bg-flunked-yellow",
+    bg: "bg-flunked-purple",
   },
   "stipend-checker": {
     icon: Banknote,
-    bg: "bg-white",
+    bg: "bg-flunked-cyan",
   },
   "linkedin-auditor": {
     icon: FileSearch,
-    bg: "bg-flunked-yellow",
+    bg: "bg-flunked-cyan",
   },
   "mess-calories": {
     icon: Utensils,
-    bg: "bg-white",
+    bg: "bg-flunked-pink",
   },
   "sleep-debt": {
     icon: Moon,
-    bg: "bg-flunked-yellow",
+    bg: "bg-flunked-pink",
   },
   "tier-engineer": {
     icon: Terminal,
-    bg: "bg-white",
+    bg: "bg-flunked-mint",
   },
   "startup-match": {
     icon: Rocket,
-    bg: "bg-flunked-yellow",
+    bg: "bg-flunked-mint",
   },
   "how-indian-are-you": {
     icon: Coffee,
-    bg: "bg-white",
+    bg: "bg-flunked-pink",
   },
   "cgpa-marriage": {
     icon: HeartHandshake,
-    bg: "bg-flunked-yellow",
+    bg: "bg-flunked-pink",
   },
 };
 

@@ -44,7 +44,7 @@ export function ResultCard({
   const [isStoryOpen, setIsStoryOpen] = useState(false);
   const statusStyles = {
     safe: {
-      badgeBg: "bg-white text-black border-2 border-black shadow-neo-sm",
+      badgeBg: "bg-flunked-mint text-black border-2 border-black shadow-neo-sm",
       accentText: "text-[#00A843]",
       barColor: "bg-[#00C853]",
       icon: CheckCircle2,
@@ -58,14 +58,14 @@ export function ResultCard({
       label: "Thin Ice",
     },
     danger: {
-      badgeBg: "bg-[#FFF0F0] text-black border-2 border-black shadow-neo-sm",
+      badgeBg: "bg-flunked-pink text-black border-2 border-black shadow-neo-sm",
       accentText: "text-[#D90429]",
       barColor: "bg-[#FF3333]",
       icon: ShieldAlert,
       label: "Danger",
     },
     critical: {
-      badgeBg: "bg-[#FF3333] text-white border-2 border-black shadow-neo-sm font-black",
+      badgeBg: "bg-flunked-danger text-white border-2 border-black shadow-neo-sm font-black",
       accentText: "text-[#FF3333]",
       barColor: "bg-[#FF3333]",
       icon: Flame,
@@ -78,14 +78,14 @@ export function ResultCard({
   return (
     <div
       className={cn(
-        "relative rounded-2xl bg-white p-6 sm:p-7 border-2 border-black shadow-neo transition-all duration-150",
+        "relative rounded-2xl bg-white p-6 sm:p-7 border-2 border-black shadow-neo transition-all duration-150 overflow-hidden",
         className
       )}
     >
       {/* Header with Title and Badge */}
       <div className="flex items-center justify-between gap-3 mb-4">
         <span className="text-[11px] font-mono tracking-widest uppercase text-flunked-muted font-black">
-          {title}
+          [{title}]
         </span>
         <span
           className={cn(
@@ -111,17 +111,20 @@ export function ResultCard({
               {metric}
             </span>
             {metricLabel && (
-              <span className="text-sm font-mono text-flunked-muted font-bold">{metricLabel}</span>
+              <span className="text-sm font-mono text-flunked-muted font-bold">
+                {metricLabel}
+              </span>
             )}
           </div>
         )}
         <h3 className="text-xl sm:text-2xl font-black text-black leading-snug">{headline}</h3>
       </div>
 
-      {/* Brutal Verdict Box */}
-      <div className="p-4 sm:p-5 rounded-xl bg-flunked-bg border-2 border-black shadow-neo-sm mb-5">
-        <div className="text-[10px] font-mono text-black uppercase tracking-wider mb-1 font-black">
-          Honest Student Verdict
+      {/* Brutal Verdict Box with dot matrix accent */}
+      <div className="p-4 sm:p-5 rounded-xl bg-flunked-bg border-2 border-black shadow-neo-sm mb-5 relative overflow-hidden">
+        <div className="flex items-center justify-between text-[10px] font-mono text-black uppercase tracking-wider mb-1.5 font-black">
+          <span>Honest Student Verdict</span>
+          <span className="text-flunked-muted">[VERIFIED MATH]</span>
         </div>
         <div className="text-sm sm:text-base font-bold text-black italic">
           &ldquo;{verdict}&rdquo;
@@ -132,6 +135,25 @@ export function ResultCard({
           </div>
         )}
       </div>
+
+      {/* Utilitarian Breakdown Bento Grid if breakdown provided without custom children */}
+      {!children && breakdown && breakdown.length > 0 && (
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 mb-5">
+          {breakdown.map((item, idx) => (
+            <div
+              key={idx}
+              className="p-3 rounded-xl bg-flunked-bg border-2 border-black shadow-neo-sm text-xs font-mono"
+            >
+              <div className="text-[10px] text-flunked-muted uppercase tracking-wider font-bold">
+                {item.label}
+              </div>
+              <div className="text-base font-black text-black mt-0.5 tabular-nums">
+                {item.value}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
 
       {/* Extra children / breakdown details if any */}
       {children && <div className="mb-5">{children}</div>}
