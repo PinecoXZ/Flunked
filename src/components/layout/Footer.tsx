@@ -2,9 +2,45 @@
 
 import React from "react";
 import Link from "next/link";
-import { Coffee } from "lucide-react";
+import { Coffee, Share2, Check } from "lucide-react";
 
 export function Footer() {
+  const [copied, setCopied] = React.useState(false);
+
+  const handleShare = async () => {
+    const origin =
+      typeof window !== "undefined" && window.location.origin
+        ? window.location.origin
+        : "https://flunked.online";
+
+    const shareData = {
+      title: "Flunked.online — College Survival Calculators",
+      text: "Bro, check out Flunked! Bunk calculator, real in-hand CTC salary calc, backlog planner, and 19 tools built for Indian college students: ",
+      url: origin,
+    };
+
+    if (typeof navigator !== "undefined" && navigator.share) {
+      try {
+        await navigator.share(shareData);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2500);
+        return;
+      } catch (err: unknown) {
+        if ((err as Error)?.name === "AbortError") return;
+      }
+    }
+
+    if (typeof navigator !== "undefined" && navigator.clipboard) {
+      try {
+        await navigator.clipboard.writeText(`${shareData.text}${shareData.url}`);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2500);
+      } catch {
+        // clipboard write fallback error ignored
+      }
+    }
+  };
+
   return (
     <footer className="w-full border-t-2 border-black bg-[#1E1E22] text-zinc-300 py-10 sm:py-12 mt-auto transition-colors">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -19,8 +55,8 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Navigation Links */}
-          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-5 text-xs font-mono text-zinc-300 font-bold">
+          {/* Navigation Links & Action Buttons */}
+          <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 text-xs font-mono text-zinc-300 font-bold">
             <Link
               href="/about"
               className="hover:text-black hover:bg-flunked-yellow px-2 py-1 rounded transition-colors"
@@ -34,6 +70,28 @@ export function Footer() {
             >
               Suggest a Tool
             </Link>
+            <span className="text-zinc-600">/</span>
+
+            {/* Share With Friends Button */}
+            <button
+              type="button"
+              onClick={handleShare}
+              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-cyan-300 hover:bg-cyan-200 text-black font-mono font-black border border-black shadow-neo-sm hover:translate-x-[-1px] hover:translate-y-[-1px] active:translate-x-[1px] active:translate-y-[1px] transition-all cursor-pointer select-none"
+              title="Share Flunked with your college group"
+            >
+              {copied ? (
+                <>
+                  <Check className="w-3.5 h-3.5 stroke-[3] text-black" />
+                  <span>Copied! 🎉</span>
+                </>
+              ) : (
+                <>
+                  <Share2 className="w-3.5 h-3.5 stroke-[2.5]" />
+                  <span>Share with friends</span>
+                </>
+              )}
+            </button>
+
             <span className="text-zinc-600">/</span>
             <a
               href="https://buymeacoffee.com/fayezahmad"
