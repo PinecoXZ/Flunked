@@ -195,6 +195,20 @@ describe("/api/suggest POST route handler validation & hardening", () => {
     fetchSpy.mockRestore();
   });
 
+  it("accepts all UI categories including 'fun', 'daily', and 'placement'", async () => {
+    for (const cat of ["fun", "daily", "placement", "academics"]) {
+      const req = createRequest({
+        category: cat,
+        campus: "KIIT",
+        idea: `Idea for ${cat} category`,
+      });
+      const res = await POST(req);
+      expect(res.status).toBe(201);
+      const data = await res.json();
+      expect(data.success).toBe(true);
+    }
+  });
+
   it("rejects body larger than 2 KB with 413 Payload Too Large", async () => {
     const bigIdea = "x".repeat(3000);
     const req = createRequest({

@@ -164,7 +164,16 @@ export function sanitizeForSheets(value: string): string {
 export const suggestSchema = z
   .object({
     category: z
-      .enum(["academics", "attendance", "placements", "lifestyle", "other"])
+      .enum([
+        "academics",
+        "placement",
+        "placements",
+        "fun",
+        "daily",
+        "attendance",
+        "lifestyle",
+        "other",
+      ])
       .default("academics"),
     campus: z
       .string()
