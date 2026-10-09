@@ -95,12 +95,13 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: errorMessage }, { status: 400 });
     }
 
-    const { idea, category, campus } = validation.data;
+    const { idea, category, campus, name } = validation.data;
 
     // 5. Google Sheets formula injection defense (prefix =, +, -, @, \t, \r with ')
     const sanitizedIdea = sanitizeForSheets(idea);
     const sanitizedCategory = sanitizeForSheets(category);
     const sanitizedCampus = sanitizeForSheets(campus);
+    const sanitizedName = sanitizeForSheets(name);
 
     // 6. Forward to Google Sheets Apps Script Webhook with shared secret and 5s timeout
     const webhookUrl = process.env.SUGGESTIONS_WEBHOOK_URL;
@@ -109,6 +110,7 @@ export async function POST(request: Request) {
         secret: process.env.SUGGESTIONS_WEBHOOK_SECRET,
         category: sanitizedCategory,
         campus: sanitizedCampus,
+        name: sanitizedName,
         idea: sanitizedIdea,
         timestamp: new Date().toISOString(),
       };
@@ -152,6 +154,7 @@ export async function POST(request: Request) {
       path: "/api/suggest",
       category: sanitizedCategory,
       campus: sanitizedCampus || "unspecified",
+      name: sanitizedName,
       idea: sanitizedIdea,
     });
 

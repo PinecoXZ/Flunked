@@ -9,7 +9,6 @@
  */
 
 import { z } from "zod";
-import { POPULAR_CAMPUSES } from "@/data/campuses";
 
 // Regex patterns to detect malicious injection attempts
 const EXPLICIT_SQLI_PATTERN =
@@ -58,28 +57,31 @@ export function sanitizeString(input: unknown, maxLength = 500): string {
 export function validateSuggestion(
   idea: unknown,
   category: unknown,
-  campus?: unknown
-): ValidationResult<{ idea: string; category: string; campus: string }> {
+  campus?: unknown,
+  name?: unknown
+): ValidationResult<{ idea: string; category: string; campus: string; name: string }> {
   const rawIdea = typeof idea === "string" ? idea : "";
   const rawCampus = typeof campus === "string" ? campus : "";
+  const rawName = typeof name === "string" ? name : "";
 
   const sanitizedIdea = sanitizeString(idea, 1000);
   const sanitizedCategory = sanitizeString(category, 30);
   const sanitizedCampus = sanitizeString(campus, 100);
+  const sanitizedName = sanitizeString(name, 60) || "Anonymous";
 
   if (!sanitizedIdea || sanitizedIdea.length < 5) {
     return {
       isValid: false,
-      sanitized: { idea: "", category: "", campus: "" },
+      sanitized: { idea: "", category: "", campus: "", name: "Anonymous" },
       error: "Please describe your tool idea in at least 5 characters.",
     };
   }
 
-  const validCategories = ["academics", "placement", "fun", "daily", "all"];
+  const validCategories = ["academics", "placement", "fun", "daily", "all", "attendance", "lifestyle", "other"];
   if (!validCategories.includes(sanitizedCategory.toLowerCase())) {
     return {
       isValid: false,
-      sanitized: { idea: sanitizedIdea, category: "academics", campus: sanitizedCampus },
+      sanitized: { idea: sanitizedIdea, category: "academics", campus: sanitizedCampus, name: sanitizedName },
       error: "Invalid category selected.",
     };
   }
@@ -95,7 +97,7 @@ export function validateSuggestion(
   ) {
     return {
       isValid: false,
-      sanitized: { idea: "", category: "", campus: "" },
+      sanitized: { idea: "", category: "", campus: "", name: "Anonymous" },
       error: "Malicious characters or injection patterns detected.",
     };
   }
@@ -110,8 +112,23 @@ export function validateSuggestion(
   ) {
     return {
       isValid: false,
-      sanitized: { idea: "", category: "", campus: "" },
+      sanitized: { idea: "", category: "", campus: "", name: "Anonymous" },
       error: "Invalid characters detected in campus name.",
+    };
+  }
+
+  if (
+    rawName &&
+    (EXPLICIT_SQLI_PATTERN.test(rawName) ||
+      SCRIPT_INJECTION_PATTERN.test(rawName) ||
+      PATH_TRAVERSAL_PATTERN.test(rawName) ||
+      EXPLICIT_SQLI_PATTERN.test(sanitizedName) ||
+      SCRIPT_INJECTION_PATTERN.test(sanitizedName))
+  ) {
+    return {
+      isValid: false,
+      sanitized: { idea: "", category: "", campus: "", name: "Anonymous" },
+      error: "Invalid characters detected in student name.",
     };
   }
 
@@ -121,6 +138,7 @@ export function validateSuggestion(
       idea: sanitizedIdea,
       category: sanitizedCategory.toLowerCase(),
       campus: sanitizedCampus,
+      name: sanitizedName,
     },
   };
 }
@@ -145,15 +163,25 @@ export function sanitizeForSheets(value: string): string {
 
 export const suggestSchema = z
   .object({
-    category: z.enum(["academics", "attendance", "placements", "lifestyle", "other"]).default("academics"),
+    category: z
+      .enum(["academics", "attendance", "placements", "lifestyle", "other"])
+      .default("academics"),
     campus: z
       .string()
       .trim()
-      .refine(
-        (val) => val === "" || POPULAR_CAMPUSES.includes(val) || val === "Other",
-        { message: "Campus must be a recognized campus from allowlist or 'Other'" }
-      ),
-    idea: z.string().trim().min(1, "Idea cannot be empty").max(500, "Idea cannot exceed 500 characters"),
+      .min(1, "College / University name is required")
+      .max(100, "College name cannot exceed 100 characters"),
+    name: z
+      .string()
+      .trim()
+      .max(60, "Name cannot exceed 60 characters")
+      .optional()
+      .transform((val) => (val && val.length > 0 ? val : "Anonymous")),
+    idea: z
+      .string()
+      .trim()
+      .min(1, "Idea cannot be empty")
+      .max(500, "Idea cannot exceed 500 characters"),
   })
   .strict();
 

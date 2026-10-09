@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     description:
       "Explore all 19 free academic, attendance, placement, and hostel calculators for Indian college students. Zero ads. Instant calculations.",
     url: `${env.NEXT_PUBLIC_BASE_URL}/tools`,
-    siteName: "Flunked.online",
+    siteName: "Flunked",
     type: "website",
   },
 };

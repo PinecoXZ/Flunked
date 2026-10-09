@@ -4,12 +4,12 @@ import { useState } from "react";
 import Link from "next/link";
 import { Send, CheckCircle2, Lightbulb, AlertCircle } from "lucide-react";
 import { CATEGORIES, ToolCategory } from "@/data/tools";
-import { POPULAR_CAMPUSES } from "@/data/campuses";
 import { cn } from "@/lib/utils";
 
 export function SuggestForm() {
   const [idea, setIdea] = useState("");
   const [category, setCategory] = useState<ToolCategory>("academics");
+  const [name, setName] = useState("");
   const [campus, setCampus] = useState("");
   const [honeypot, setHoneypot] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -18,7 +18,7 @@ export function SuggestForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!idea.trim()) return;
+    if (!idea.trim() || !campus.trim()) return;
 
     setIsSubmitting(true);
     setErrorMessage(null);
@@ -33,6 +33,7 @@ export function SuggestForm() {
           idea: idea.trim(),
           category,
           campus: campus.trim(),
+          name: name.trim() || "Anonymous",
           _honeypot: honeypot,
         }),
       });
@@ -92,6 +93,8 @@ export function SuggestForm() {
               onClick={() => {
                 setSubmitted(false);
                 setIdea("");
+                setName("");
+                setCampus("");
                 setHoneypot("");
               }}
               className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-white hover:bg-flunked-bg border-2 border-black text-xs font-mono font-black text-black transition-all shadow-neo-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-neo active:translate-x-[1px] active:translate-y-[1px] active:shadow-none cursor-pointer"
@@ -175,36 +178,54 @@ export function SuggestForm() {
             </div>
           </div>
 
-          {/* Campus Name (Optional) */}
-          <div className="space-y-2">
-            <label
-              htmlFor="campus-name"
-              className="block text-xs font-mono uppercase tracking-wider text-black font-black"
-            >
-              Your College / University{" "}
-              <span className="text-black/40 font-normal font-sans">(optional)</span>
-            </label>
-            <select
-              id="campus-name"
-              value={campus}
-              onChange={(e) => setCampus(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl bg-flunked-bg border-2 border-black text-black text-sm font-sans focus:outline-none focus:ring-2 focus:ring-flunked-yellow transition-all font-medium cursor-pointer"
-            >
-              <option value="">Select your college / university (optional)</option>
-              {POPULAR_CAMPUSES.map((c) => (
-                <option key={c} value={c}>
-                  {c}
-                </option>
-              ))}
-              <option value="Other">Other</option>
-            </select>
+          {/* Submitter Name & College / University */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {/* Student Name (Optional, defaults to Anonymous) */}
+            <div className="space-y-2">
+              <label
+                htmlFor="student-name"
+                className="block text-xs font-mono uppercase tracking-wider text-black font-black"
+              >
+                Your Name{" "}
+                <span className="text-black/40 font-normal font-sans">(optional)</span>
+              </label>
+              <input
+                type="text"
+                id="student-name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                maxLength={60}
+                placeholder="Anonymous"
+                className="w-full px-4 py-3 rounded-xl bg-flunked-bg border-2 border-black text-black placeholder:text-black/40 text-sm font-sans focus:outline-none focus:ring-2 focus:ring-flunked-yellow transition-all font-medium"
+              />
+            </div>
+
+            {/* Campus / University (Required) */}
+            <div className="space-y-2">
+              <label
+                htmlFor="campus-name"
+                className="block text-xs font-mono uppercase tracking-wider text-black font-black"
+              >
+                Your College / University <span className="text-flunked-danger">*</span>
+              </label>
+              <input
+                type="text"
+                id="campus-name"
+                required
+                value={campus}
+                onChange={(e) => setCampus(e.target.value)}
+                maxLength={100}
+                placeholder="e.g. VIT, IIT Bombay, DU, etc."
+                className="w-full px-4 py-3 rounded-xl bg-flunked-bg border-2 border-black text-black placeholder:text-black/40 text-sm font-sans focus:outline-none focus:ring-2 focus:ring-flunked-yellow transition-all font-medium"
+              />
+            </div>
           </div>
 
           {/* Submit Button */}
           <div className="pt-2">
             <button
               type="submit"
-              disabled={isSubmitting || !idea.trim()}
+              disabled={isSubmitting || !idea.trim() || !campus.trim()}
               className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-flunked-yellow hover:bg-[#FFD000] disabled:opacity-50 disabled:cursor-not-allowed border-2 border-black font-black text-sm text-black shadow-neo hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-neo-lg active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer select-none"
             >
               {isSubmitting ? (

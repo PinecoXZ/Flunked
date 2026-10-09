@@ -47,35 +47,72 @@ describe("/api/suggest POST route handler validation & hardening", () => {
     });
   }
 
-  it("rejects unlisted campus with 400", async () => {
+  it("accepts free-text college / university name and custom student name", async () => {
     const req = createRequest({
       category: "academics",
-      campus: "HackerUniversity",
-      idea: "Need a new tool",
+      campus: "College of Engineering Guindy",
+      name: "Aman",
+      idea: "Need a new lab bunk tool",
+    });
+
+    const res = await POST(req);
+    expect(res.status).toBe(201);
+    const data = await res.json();
+    expect(data.success).toBe(true);
+  });
+
+  it("auto-fills name to 'Anonymous' when name is omitted or empty", async () => {
+    const req = createRequest({
+      category: "academics",
+      campus: "IIT Bombay",
+      name: "",
+      idea: "Need a new tool idea",
+    });
+
+    const res = await POST(req);
+    expect(res.status).toBe(201);
+    const data = await res.json();
+    expect(data.success).toBe(true);
+  });
+
+  it("rejects empty or whitespace campus with 400", async () => {
+    const req = createRequest({
+      category: "academics",
+      campus: "   ",
+      idea: "Need a new tool idea",
     });
 
     const res = await POST(req);
     expect(res.status).toBe(400);
     const data = await res.json();
-    expect(data.error).toMatch(/campus/i);
+    expect(data.error).toMatch(/college.*required/i);
   });
 
-  it("accepts recognized allowlist campus or 'Other' or empty string", async () => {
-    const req1 = createRequest({
+  it("rejects campus name exceeding 100 characters with 400", async () => {
+    const req = createRequest({
       category: "academics",
-      campus: "VIT",
+      campus: "c".repeat(101),
       idea: "Valid idea",
     });
-    const res1 = await POST(req1);
-    expect(res1.status).toBe(201);
 
-    const req2 = createRequest({
-      category: "attendance",
-      campus: "Other",
-      idea: "Another valid idea",
+    const res = await POST(req);
+    expect(res.status).toBe(400);
+    const data = await res.json();
+    expect(data.error).toMatch(/college name/i);
+  });
+
+  it("rejects name exceeding 60 characters with 400", async () => {
+    const req = createRequest({
+      category: "academics",
+      campus: "VIT",
+      name: "n".repeat(61),
+      idea: "Valid idea",
     });
-    const res2 = await POST(req2);
-    expect(res2.status).toBe(201);
+
+    const res = await POST(req);
+    expect(res.status).toBe(400);
+    const data = await res.json();
+    expect(data.error).toMatch(/name/i);
   });
 
   it("rejects idea with 0 characters or only whitespace with 400", async () => {
