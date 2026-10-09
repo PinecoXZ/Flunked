@@ -2,13 +2,16 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import { UserBadge } from "@/components/auth/UserBadge";
 import { launchOnboardingTutorial } from "@/components/tutorial/OnboardingTutorial";
 import { SearchModal } from "@/components/search/SearchModal";
-import { LogIn, Compass } from "lucide-react";
+import { LogIn, Compass, Info } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export function Header() {
+  const pathname = usePathname();
   const { user, isLoading } = useAuth();
   const [mounted, setMounted] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -45,8 +48,23 @@ export function Header() {
           </span>
         </div>
 
-        {/* Right Section: Tour & Auth */}
+        {/* Right Section: About Link, Tour & Auth */}
         <div className="flex items-center gap-2 sm:gap-2.5">
+          {/* About Page Link */}
+          <Link
+            href="/about"
+            title="About Flunked"
+            className={cn(
+              "flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg border-2 border-black text-xs font-mono font-black text-black transition-all shadow-neo-sm hover:translate-x-[-1px] hover:translate-y-[-1px] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none cursor-pointer",
+              pathname === "/about"
+                ? "bg-flunked-yellow hover:bg-[#FFD000] shadow-neo"
+                : "bg-white hover:bg-flunked-yellow hover:shadow-neo"
+            )}
+          >
+            <Info className="w-3.5 h-3.5 stroke-[2.5]" />
+            <span>About</span>
+          </Link>
+
           {/* App Tour Button */}
           <button
             type="button"
@@ -56,7 +74,7 @@ export function Header() {
             className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg bg-white hover:bg-flunked-yellow border-2 border-black text-xs font-mono font-black text-black transition-all shadow-neo-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-neo active:translate-x-[1px] active:translate-y-[1px] active:shadow-none cursor-pointer"
           >
             <Compass className="w-3.5 h-3.5 stroke-[2.5]" />
-            <span className="hidden xs:inline sm:inline">Tour</span>
+            <span className="hidden sm:inline">Tour</span>
           </button>
 
           {/* Campus Hub Auth Button / Badge */}
