@@ -2,44 +2,11 @@
 
 import React from "react";
 import Link from "next/link";
-import { Coffee, Share2, Check } from "lucide-react";
+import { Coffee, Share2 } from "lucide-react";
+import { ShareSiteModal } from "@/components/ui/ShareSiteModal";
 
 export function Footer() {
-  const [copied, setCopied] = React.useState(false);
-
-  const handleShare = async () => {
-    const origin =
-      typeof window !== "undefined" && window.location.origin
-        ? window.location.origin
-        : "https://flunked.online";
-
-    const shareData = {
-      title: "Flunked.online — College Survival Calculators",
-      text: "Bro, check out Flunked! Bunk calculator, real in-hand CTC salary calc, backlog planner, and 19 tools built for Indian college students: ",
-      url: origin,
-    };
-
-    if (typeof navigator !== "undefined" && navigator.share) {
-      try {
-        await navigator.share(shareData);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2500);
-        return;
-      } catch (err: unknown) {
-        if ((err as Error)?.name === "AbortError") return;
-      }
-    }
-
-    if (typeof navigator !== "undefined" && navigator.clipboard) {
-      try {
-        await navigator.clipboard.writeText(`${shareData.text}${shareData.url}`);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2500);
-      } catch {
-        // clipboard write fallback error ignored
-      }
-    }
-  };
+  const [isShareModalOpen, setIsShareModalOpen] = React.useState(false);
 
   return (
     <footer className="w-full border-t-2 border-black bg-[#1E1E22] text-zinc-300 py-10 sm:py-12 mt-auto transition-colors">
@@ -75,21 +42,12 @@ export function Footer() {
             {/* Share With Friends Button */}
             <button
               type="button"
-              onClick={handleShare}
+              onClick={() => setIsShareModalOpen(true)}
               className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-cyan-300 hover:bg-cyan-200 text-black font-mono font-black border border-black shadow-neo-sm hover:translate-x-[-1px] hover:translate-y-[-1px] active:translate-x-[1px] active:translate-y-[1px] transition-all cursor-pointer select-none"
               title="Share Flunked with your college group"
             >
-              {copied ? (
-                <>
-                  <Check className="w-3.5 h-3.5 stroke-[3] text-black" />
-                  <span>Copied! 🎉</span>
-                </>
-              ) : (
-                <>
-                  <Share2 className="w-3.5 h-3.5 stroke-[2.5]" />
-                  <span>Share with friends</span>
-                </>
-              )}
+              <Share2 className="w-3.5 h-3.5 stroke-[2.5]" />
+              <span>Share with friends</span>
             </button>
 
             <span className="text-zinc-600">/</span>
@@ -147,6 +105,8 @@ export function Footer() {
           </div>
         </div>
       </div>
+
+      <ShareSiteModal isOpen={isShareModalOpen} onClose={() => setIsShareModalOpen(false)} />
     </footer>
   );
 }
