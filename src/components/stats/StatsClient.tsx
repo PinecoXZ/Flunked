@@ -68,7 +68,7 @@ const TOOL_STATS: ToolStat[] = [
   },
   {
     name: "Placement Readiness Quiz",
-    slug: "placement-readiness",
+    slug: "placement-quiz",
     count: 5410,
     percentage: 11.2,
     category: "placement",
@@ -79,7 +79,7 @@ const TOOL_STATS: ToolStat[] = [
   },
   {
     name: "LinkedIn Bio Auditor & Roast",
-    slug: "linkedin-bio-auditor",
+    slug: "linkedin-auditor",
     count: 3140,
     percentage: 6.5,
     category: "placement",
