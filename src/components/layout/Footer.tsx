@@ -32,6 +32,13 @@ export function Footer() {
             </Link>
             <span className="text-zinc-600">/</span>
             <Link
+              href="/stats"
+              className="hover:text-black hover:bg-flunked-yellow px-2 py-1 rounded transition-colors"
+            >
+              Live Stats
+            </Link>
+            <span className="text-zinc-600">/</span>
+            <Link
               href="/suggest"
               className="hover:text-black hover:bg-flunked-yellow px-2 py-1 rounded transition-colors"
             >
