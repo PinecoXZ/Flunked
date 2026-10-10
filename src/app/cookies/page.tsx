@@ -78,12 +78,17 @@ export default function CookiePage() {
           </div>
           <p className="text-xs sm:text-sm text-black/85 font-medium leading-relaxed font-sans">
             Flunked.online refuses to compromise student devices. We do not use third-party
-            marketing cookies, cross-site analytics beacons, or behavioral fingerprinting scripts.
-            We use modern, client-side{" "}
+            marketing cookies, cross-site tracking beacons, or behavioral fingerprinting scripts. We
+            use modern, client-side{" "}
             <strong className="text-black font-black">HTML5 Local Storage</strong> strictly to keep
             your session authenticated between tool clicks and remember if you have dismissed the
             onboarding tutorial. You can audit, inspect, and completely wipe this data from your
             browser at any time with a single click.
+          </p>
+          <p className="text-xs sm:text-sm text-black/85 font-medium leading-relaxed font-sans">
+            We use Vercel Web Analytics to count page views and visitors. It does not use cookies
+            and does not follow users across sites. It records page views, referrer, browser and
+            device type, and approximate country. Vercel acts as the data processor.
           </p>
         </section>
 
@@ -240,6 +245,24 @@ export default function CookiePage() {
                         Flushed upon page reload or tab closure.
                       </td>
                     </tr>
+                    <tr>
+                      <td className="p-3 font-bold font-mono">Vercel Web Analytics</td>
+                      <td className="p-3">None (Cookieless)</td>
+                      <td className="p-3">
+                        <span className="px-1.5 py-0.5 bg-cyan-200 text-black rounded text-[10px] uppercase font-bold">
+                          Privacy Metrics
+                        </span>
+                      </td>
+                      <td className="p-3 font-sans text-xs">
+                        We use Vercel Web Analytics to count page views and visitors. It does not
+                        use cookies and does not follow users across sites. It records page views,
+                        referrer, browser and device type, and approximate country. Vercel acts as
+                        the data processor.
+                      </td>
+                      <td className="p-3 font-sans text-xs">
+                        Zero client persistence (No cookies or persistent identifiers stored).
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -278,7 +301,8 @@ export default function CookiePage() {
                 <li>
                   <strong className="text-black">No Third-Party Data Brokers:</strong> No analytics
                   software embedded on Flunked.online transmits your device data to data
-                  aggregators.
+                  aggregators. Vercel Web Analytics is used solely for aggregate visitor metrics
+                  without cookies, with Vercel acting as the data processor.
                 </li>
               </ul>
             </div>

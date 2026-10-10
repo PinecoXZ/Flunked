@@ -12,6 +12,7 @@ import {
   Server,
   ChevronRight,
   Cpu,
+  BarChart2,
 } from "lucide-react";
 import { LegalNav } from "@/components/layout/LegalNav";
 import { SubpageHeader } from "@/components/layout/SubpageHeader";
@@ -97,6 +98,11 @@ export default function PrivacyPage() {
               locally inside your browser&apos;s runtime memory
             </strong>
             . It is never transmitted to, inspected by, or stored in our backend databases.
+          </p>
+          <p className="text-xs sm:text-sm text-black/85 font-medium leading-relaxed font-sans">
+            We use Vercel Web Analytics to count page views and visitors. It does not use cookies
+            and does not follow users across sites. It records page views, referrer, browser and
+            device type, and approximate country. Vercel acts as the data processor.
           </p>
         </section>
 
@@ -262,6 +268,20 @@ export default function PrivacyPage() {
                     standard HTTP request headers—including your IP address, browser User-Agent,
                     device type, and referring URL—strictly for socket transmission, rate-limiting,
                     and volumetric DDoS defense. IP logs are automatically rotated and purged.
+                  </p>
+                </div>
+
+                {/* Vercel Web Analytics */}
+                <div className="p-4 rounded-xl bg-white border-2 border-black shadow-neo-sm space-y-2">
+                  <div className="flex items-center gap-2 font-mono text-xs font-black text-black uppercase">
+                    <BarChart2 className="w-3.5 h-3.5 text-black" />
+                    <span>Tier 4: Vercel Web Analytics (Cookieless Site Metrics)</span>
+                  </div>
+                  <p className="text-xs sm:text-sm text-black/80">
+                    We use Vercel Web Analytics to count page views and visitors. It does not use
+                    cookies and does not follow users across sites. It records page views, referrer,
+                    browser and device type, and approximate country. Vercel acts as the data
+                    processor.
                   </p>
                 </div>
 
@@ -578,7 +598,8 @@ export default function PrivacyPage() {
                 Flunked.online prioritizes Indian domestic cloud edge infrastructure. Any
                 operational transmission of technical telemetry complies with Section 16 of the DPDP
                 Act, 2023. We do NOT transfer student personal data to any foreign country or
-                territory blacklisted or restricted by the Central Government of India.
+                territory blacklisted or restricted by the Central Government of India. For
+                aggregated, cookieless web analytics, Vercel acts as the data processor.
               </p>
             </div>
           </section>

@@ -133,8 +133,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
           </LoadingProvider>
         </AuthProvider>
-        <Analytics />
-        <SpeedInsights />
+        {process.env.NODE_ENV === "production" && (
+          <>
+            <Analytics />
+            <SpeedInsights />
+          </>
+        )}
       </body>
     </html>
   );

@@ -511,6 +511,10 @@ function doPost(e) {
 - [ ] **Step 3: Show diff & commit**
   - Review diff with user.
   - Commit message: `fix(sec): apply strict production CSP and comprehensive security headers`
+- [ ] **Step 4: Manual Vercel Preview Analytics Verification:**
+  1. Open the site with DevTools Network tab open.
+  2. Confirm requests to `/_vercel/insights/script.js` and `/_vercel/insights/view` return 200 and show no CSP errors in the console.
+  3. Confirm the Vercel dashboard Analytics page still counts the visit within a few minutes.
 
 ---
 
@@ -993,3 +997,7 @@ Upon completion of code tasks and deployment to production, perform these manual
    - Launch production build, open Chrome DevTools Console, navigate through every primary route (`/`, `/tools`, `/tools/bunk-calculator`, `/suggest`, `/login`, `/about`, `/terms`, `/privacy`) -> Verify **0 CSP violation warnings**.
 8. [ ] **Search Console:**
    - Submit `https://flunked.online/sitemap.xml` in Google Search Console.
+9. [ ] **Vercel Web Analytics Verification:**
+   - Open the site with DevTools Network tab open.
+   - Confirm requests to `/_vercel/insights/script.js` and `/_vercel/insights/view` return 200 and show no CSP errors in the console.
+   - Confirm the Vercel dashboard Analytics page still counts the visit within a few minutes.

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { X, Download, Share2, Copy, Check, MessageSquare, Sparkles } from "lucide-react";
 
 interface ShareSiteModalProps {
@@ -46,7 +46,6 @@ export function ShareSiteModal({ isOpen, onClose }: ShareSiteModalProps) {
   const [copiedLink, setCopiedLink] = useState(false);
   const [copiedText, setCopiedText] = useState(false);
   const [isGenerating, setIsGenerating] = useState(true);
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
     if (!isOpen) {
