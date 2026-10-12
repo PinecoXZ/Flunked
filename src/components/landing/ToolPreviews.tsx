@@ -110,10 +110,10 @@ export function ToolPreviews() {
                   {spotlightTools[0].tagline}
                 </span>
                 <Link
-                  href={`/login?redirect=/tools/${spotlightTools[0].slug}`}
+                  href={`/tools/${spotlightTools[0].slug}`}
                   className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-flunked-yellow hover:bg-[#FFD000] border-2 border-black text-xs font-mono font-black text-black shadow-neo-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-neo active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer"
                 >
-                  <span>Unlock Tool</span>
+                  <span>Open Tool</span>
                   <ArrowRight className="w-4 h-4 stroke-[2.5]" />
                 </Link>
               </div>
@@ -153,10 +153,10 @@ export function ToolPreviews() {
                   {spotlightTools[1].tagline}
                 </span>
                 <Link
-                  href={`/login?redirect=/tools/${spotlightTools[1].slug}`}
+                  href={`/tools/${spotlightTools[1].slug}`}
                   className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-flunked-cyan hover:bg-[#00D8E6] border-2 border-black text-xs font-mono font-black text-black shadow-neo-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-neo active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer"
                 >
-                  <span>Unlock</span>
+                  <span>Open Tool</span>
                   <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
                 </Link>
               </div>
@@ -191,7 +191,7 @@ export function ToolPreviews() {
 
             <div className="relative z-10 flex items-center gap-4 shrink-0">
               <Link
-                href={`/login?redirect=/tools/${spotlightTools[2].slug}`}
+                href={`/tools/${spotlightTools[2].slug}`}
                 className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-flunked-pink hover:bg-[#FF5595] border-2 border-black text-xs font-mono font-black text-black shadow-neo hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-neo-lg active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer"
               >
                 <span>Check Crisis Level</span>
@@ -226,7 +226,7 @@ export function ToolPreviews() {
             <div className="pt-2 space-y-2.5">
               <div className="text-xs font-mono font-bold text-flunked-muted flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5 text-black" />
-                <span>Trending inside the vault (click to unlock):</span>
+                <span>Trending inside the vault (click to open):</span>
               </div>
 
               <div className="flex flex-wrap gap-2.5">
@@ -235,7 +235,7 @@ export function ToolPreviews() {
                   return (
                     <Link
                       key={t.id}
-                      href={`/login?redirect=/tools/${t.slug}`}
+                      href={`/tools/${t.slug}`}
                       className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-flunked-bg hover:bg-flunked-yellow border-2 border-black text-xs font-mono font-black text-black shadow-neo-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-neo active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all group cursor-pointer"
                       title={t.tagline}
                     >
@@ -250,7 +250,7 @@ export function ToolPreviews() {
                 })}
 
                 <Link
-                  href="/login"
+                  href="/tools"
                   className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-flunked-yellow hover:bg-[#FFD000] border-2 border-black text-xs font-mono font-black text-black shadow-neo-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-neo active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer"
                 >
                   <span>+{remainingVaultCount} more in vault</span>

@@ -6,16 +6,16 @@ import { env } from "@/lib/env";
 import { safeJsonLd } from "@/lib/jsonLd";
 
 export const metadata: Metadata = {
-  title: "Flunked — Academic Survival Tools Built for Indian College Chaos",
+  title: "Flunked — College Survival Tools",
   description:
-    "Free, student-only calculators for Indian colleges: 75% bunk limits, official university CGPA conversion, in-hand placement take-home, and semester survival tools. Zero ads.",
+    "Free student calculators for Indian colleges: 75% attendance bunk limits, university CGPA converter, CTC in-hand salary, and survival tools. Zero ads.",
   alternates: {
     canonical: env.NEXT_PUBLIC_BASE_URL,
   },
   openGraph: {
-    title: "Flunked — Academic Survival Tools Built for Indian College Chaos",
+    title: "Flunked — College Survival Tools",
     description:
-      "Free student-only calculators for Indian colleges: 75% bunk attendance, official university CGPA conversion, CTC to in-hand salary, and semester survival.",
+      "Free student calculators for Indian colleges: 75% attendance bunk limits, university CGPA converter, CTC in-hand salary, and survival tools. Zero ads.",
     url: env.NEXT_PUBLIC_BASE_URL,
     siteName: "Flunked",
     type: "website",
