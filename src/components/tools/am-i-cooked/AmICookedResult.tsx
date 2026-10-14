@@ -2,6 +2,7 @@ import React from "react";
 import { type AmICookedResult as AmICookedResultType } from "@/lib/calculations";
 import { Flame, Copy, Check, LifeBuoy, ChevronRight, Camera } from "lucide-react";
 import { NeoButton } from "@/components/ui/NeoButton";
+import { ProxyMascot, type MascotMood } from "@/components/mascot/ProxyMascot";
 
 export interface AmICookedResultProps {
   result: AmICookedResultType;
@@ -22,6 +23,20 @@ export const AmICookedResult = React.memo(function AmICookedResult({
   onShare,
   onOpenStory,
 }: AmICookedResultProps) {
+  const mascotMood: MascotMood =
+    result.cookedPercentage >= 75
+      ? "panic"
+      : result.cookedPercentage < 35
+        ? "smug"
+        : "thinking";
+
+  const mascotQuip =
+    result.cookedPercentage >= 75
+      ? "Bhai tu bohot zyada cooked hai! Don't skip a single lecture."
+      : result.cookedPercentage < 35
+        ? "Safe zone unlocked. Sip cutting chai and relax."
+        : "Borderline zone. One unexcused absence away from danger.";
+
   return (
     <div className="rounded-2xl p-6 sm:p-9 border-2 border-black transition-all relative overflow-hidden shadow-neo-lg bg-white">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b-2 border-black pb-6">
@@ -68,7 +83,7 @@ export const AmICookedResult = React.memo(function AmICookedResult({
 
       {/* Cooked Meter Gauge & Flames */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-6 pt-2 items-center">
-        {/* Flame Visual Indicator */}
+        {/* Flame Visual Indicator & Proxy Reaction */}
         <div className="text-center md:text-left">
           <div className="flex items-center justify-center md:justify-start gap-1 mb-2">
             {Array.from({ length: 4 }).map((_, idx) => (
@@ -96,17 +111,35 @@ export const AmICookedResult = React.memo(function AmICookedResult({
           </div>
         </div>
 
-        {/* Verdict Text & Description */}
-        <div className="md:col-span-2 space-y-2.5">
-          <h4 className="text-xl sm:text-2xl font-black text-black leading-tight">
-            {result.verdict}
-          </h4>
-          <p className="text-sm text-black/80 leading-relaxed font-sans font-medium">
-            {result.subtext}
-          </p>
+        {/* Verdict Text & Description + Proxy Companion */}
+        <div className="md:col-span-2 space-y-3">
+          <div className="flex items-start justify-between gap-3">
+            <div className="space-y-1">
+              <h4 className="text-xl sm:text-2xl font-black text-black leading-tight">
+                {result.verdict}
+              </h4>
+              <p className="text-sm text-black/80 leading-relaxed font-sans font-medium">
+                {result.subtext}
+              </p>
+            </div>
+            <div className="shrink-0 hidden sm:block">
+              <ProxyMascot size="sm" mood={mascotMood} showSpeech={false} />
+            </div>
+          </div>
+
+          {/* Proxy Student Verdict Quip */}
+          <div className="p-3 rounded-xl bg-flunked-bg border-2 border-black flex items-center gap-2.5 shadow-neo-sm">
+            <div className="sm:hidden shrink-0">
+              <ProxyMascot size="xs" mood={mascotMood} showSpeech={false} />
+            </div>
+            <p className="text-xs font-mono font-bold text-black">
+              <span className="font-black uppercase text-flunked-muted mr-1.5">[Proxy verdict]:</span>
+              {mascotQuip}
+            </p>
+          </div>
 
           {/* Linear Flame Meter Bar */}
-          <div className="pt-2">
+          <div className="pt-1">
             <div className="w-full h-4 bg-white rounded-full overflow-hidden p-0.5 border-2 border-black">
               <div
                 className="h-full rounded-full transition-all duration-500 bg-flunked-yellow border-r-2 border-black"

@@ -41,7 +41,7 @@ export function LoadingWindow({
   ],
   state = "connecting",
   badgeText = "[ACTIVE]",
-  duration = 5500,
+  duration = 1800,
   onComplete,
   className,
 }: LoadingWindowProps) {
@@ -179,7 +179,7 @@ export function LoadingWindow({
         <div className="relative z-10 p-3 rounded-xl bg-flunked-bg border-2 border-black text-[11px] font-mono space-y-1 shadow-neo-sm">
           <div className="text-black/60 font-bold flex items-center justify-between">
             <span>&gt; status: runtime_ok</span>
-            <span className="text-[10px] text-black bg-white px-1.5 py-0.2 rounded border border-black">
+            <span className="text-[10px] text-black bg-white px-1.5 py-0.5 rounded border border-black">
               200 OK
             </span>
           </div>
@@ -196,7 +196,7 @@ export function LoadingWindow({
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs select-none">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm select-none">
       {windowContent}
     </div>
   );

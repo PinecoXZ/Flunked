@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ShareButton } from "@/components/ui/ShareButton";
 import { HeartHandshake, AlertCircle, RefreshCw } from "lucide-react";
 import { useLoading } from "@/context/LoadingContext";
+import { ProxyMascot } from "@/components/mascot/ProxyMascot";
 
 export function CgpaMarriage() {
   const { showLoading } = useLoading();
@@ -23,7 +24,7 @@ export function CgpaMarriage() {
         "Cross-checking Sharma Ji's son's package...",
         "Generating arranged marriage biodata prospects...",
       ],
-      duration: 5500,
+      duration: 1800,
     });
   };
 
@@ -220,6 +221,24 @@ export function CgpaMarriage() {
           >
             Arranged Marriage Index
           </span>
+        </div>
+
+        {/* Proxy Reaction */}
+        <div className="flex justify-center pt-1">
+          <ProxyMascot
+            size="md"
+            mood={finalScore >= 75 ? "smug" : finalScore >= 50 ? "thinking" : "panic"}
+            action={finalScore >= 75 ? "shades_drop" : finalScore >= 50 ? "waddle" : "hop"}
+            showSpeech
+            bubblePlacement="inflow"
+            customQuip={
+              finalScore >= 75
+                ? "Rishta Auntie approves! Shaadi.com profile is gold standard."
+                : finalScore >= 50
+                  ? "Decent score. Add one more internship or learn German."
+                  : "Cooked in the matrimonial bio-data. Start preparing for CAT/GATE!"
+            }
+          />
         </div>
 
         <div>

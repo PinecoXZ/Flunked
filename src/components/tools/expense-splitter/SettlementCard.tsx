@@ -3,6 +3,7 @@ import { type DebtSettlement } from "@/lib/calculations";
 import { formatCurrencyINR } from "@/lib/utils";
 import { Sparkles, Copy, Check, ArrowRight } from "lucide-react";
 import { NeoButton } from "@/components/ui/NeoButton";
+import { ProxyMascot } from "@/components/mascot/ProxyMascot";
 
 export interface SettlementCardProps {
   settlements: DebtSettlement[];
@@ -51,11 +52,31 @@ export const SettlementCard = React.memo(function SettlementCard({
         </NeoButton>
       </div>
 
+      {/* Proxy Advice Banner */}
+      <div className="p-3.5 rounded-xl bg-flunked-bg border-2 border-black flex items-center gap-3 my-5 shadow-neo-sm">
+        <ProxyMascot
+          size="xs"
+          mood={settlements.length === 0 ? "smug" : "chill"}
+          showSpeech={false}
+          className="shrink-0"
+        />
+        <p className="text-xs font-mono font-bold text-black">
+          <span className="font-black uppercase text-flunked-muted mr-1.5">[Proxy split advice]:</span>
+          {settlements.length === 0
+            ? "Zero outstanding balances! The wing is at complete financial peace."
+            : "Settle these UPI transfers clean before someone screenshot-audits the canteen receipts!"}
+        </p>
+      </div>
+
       {/* Transactions List */}
       <div className="my-6">
         {settlements.length === 0 ? (
-          <div className="p-6 text-center rounded-xl bg-flunked-bg border-2 border-black text-black font-mono font-bold text-sm shadow-neo-sm">
-            All settled up! Nobody owes anything.
+          <div className="p-6 text-center rounded-xl bg-flunked-bg border-2 border-black text-black font-mono font-bold text-sm shadow-neo-sm flex flex-col items-center gap-3">
+            <ProxyMascot size="sm" mood="smug" showSpeech={false} />
+            <div>
+              <span className="font-black block text-base">All settled up clean!</span>
+              <span className="text-xs text-flunked-muted">Nobody owes anyone anything. Zero canteen debt drama.</span>
+            </div>
           </div>
         ) : (
           <div className="space-y-3">

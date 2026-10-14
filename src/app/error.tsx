@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { AlertOctagon, RefreshCw, Home } from "lucide-react";
+import { ProxyMascot } from "@/components/mascot/ProxyMascot";
 
 interface ErrorProps {
   error: Error & { digest?: string };
@@ -23,6 +24,19 @@ export default function GlobalErrorBoundary({ error, reset }: ErrorProps) {
 
   return (
     <div className="flex-1 flex flex-col items-center justify-center px-4 py-16 sm:py-24 max-w-lg mx-auto w-full text-center space-y-6">
+      {/* Proxy Mascot Reaction */}
+      <div className="flex flex-col items-center">
+        <ProxyMascot
+          size="lg"
+          mood="panic"
+          action="hop"
+          showSpeech
+          bubblePlacement="inflow"
+          customQuip="Arey! Calculation server stumbled. Hit 'Try Again' to re-run."
+          interactive
+        />
+      </div>
+
       {/* Error Badge */}
       <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFF0F0] border-2 border-flunked-danger text-xs font-mono font-black text-flunked-danger shadow-neo-sm uppercase">
         <AlertOctagon className="w-4 h-4 text-flunked-danger stroke-[2.5]" />

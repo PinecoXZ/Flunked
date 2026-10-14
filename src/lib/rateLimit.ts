@@ -178,13 +178,40 @@ export async function checkDistributedRateLimit(
   // Use Upstash Redis when configured
   if (upstashUrl && upstashToken) {
     try {
-      const windowSeconds = Math.ceil(config.windowMs / 1000);
+      const windowSeconds = Math.max(1, Math.ceil(config.windowMs / 1000));
+      const blockSeconds = config.blockDurationMs
+        ? Math.max(1, Math.ceil(config.blockDurationMs / 1000))
+        : 0;
+      const now = Date.now();
+      const windowStart = now - config.windowMs;
+
       const luaScript = `
-        local current = redis.call('INCR', KEYS[1])
-        if tonumber(current) == 1 then
-          redis.call('EXPIRE', KEYS[1], ARGV[1])
+        local blockKey = KEYS[1] .. ':blocked'
+        if redis.call('EXISTS', blockKey) == 1 then
+          local ttl = redis.call('TTL', blockKey)
+          return {-1, ttl}
         end
-        return current
+
+        local now = tonumber(ARGV[1])
+        local windowStart = tonumber(ARGV[2])
+        local maxRequests = tonumber(ARGV[3])
+        local windowSeconds = tonumber(ARGV[4])
+        local blockSeconds = tonumber(ARGV[5])
+
+        redis.call('ZREMRANGEBYSCORE', KEYS[1], '-inf', windowStart)
+        local currentCount = redis.call('ZCARD', KEYS[1])
+
+        if currentCount >= maxRequests then
+          if blockSeconds > 0 then
+            redis.call('SET', blockKey, '1', 'EX', blockSeconds)
+            return {-1, blockSeconds}
+          end
+          return {-1, windowSeconds}
+        end
+
+        redis.call('ZADD', KEYS[1], now, now)
+        redis.call('EXPIRE', KEYS[1], windowSeconds)
+        return {currentCount + 1, 0}
       `.trim();
 
       const response = await fetch(`${upstashUrl.replace(/\/$/, "")}`, {
@@ -193,7 +220,17 @@ export async function checkDistributedRateLimit(
           Authorization: `Bearer ${upstashToken}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(["EVAL", luaScript, "1", rateKey, String(windowSeconds)]),
+        body: JSON.stringify([
+          "EVAL",
+          luaScript,
+          "1",
+          rateKey,
+          String(now),
+          String(windowStart),
+          String(config.maxRequests),
+          String(windowSeconds),
+          String(blockSeconds),
+        ]),
       });
 
       if (!response.ok) {
@@ -209,16 +246,35 @@ export async function checkDistributedRateLimit(
       }
 
       const data = await response.json();
-      const currentCount =
-        typeof data.result === "number" ? data.result : parseInt(data.result, 10) || 1;
+      let currentCount: number;
+      let isBlocked = false;
+      let retryAfter = windowSeconds;
 
-      if (currentCount > config.maxRequests) {
+      if (Array.isArray(data.result)) {
+        const statusOrCount = Number(data.result[0]);
+        const sec = Number(data.result[1]);
+        if (statusOrCount < 0) {
+          isBlocked = true;
+          currentCount = config.maxRequests + 1;
+          retryAfter = sec > 0 ? sec : windowSeconds;
+        } else {
+          currentCount = statusOrCount;
+        }
+      } else {
+        currentCount =
+          typeof data.result === "number" ? data.result : parseInt(data.result, 10) || 1;
+        if (currentCount > config.maxRequests) {
+          isBlocked = true;
+        }
+      }
+
+      if (isBlocked || currentCount > config.maxRequests) {
         return {
           success: false,
           limit: config.maxRequests,
           remaining: 0,
-          resetMs: config.windowMs,
-          retryAfterSeconds: windowSeconds,
+          resetMs: retryAfter * 1000,
+          retryAfterSeconds: retryAfter,
         };
       }
 

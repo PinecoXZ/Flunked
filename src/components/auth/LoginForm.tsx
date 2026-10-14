@@ -1,12 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "@/context/AuthContext";
 import { useLoading } from "@/context/LoadingContext";
 import {
-  GraduationCap,
   ArrowRight,
   Sparkles,
   User as UserIcon,
@@ -16,6 +15,7 @@ import {
 import { cn } from "@/lib/utils";
 import { POPULAR_CAMPUSES } from "@/data/campuses";
 import { safeRedirect } from "@/lib/redirect";
+import { ProxyMascot, type MascotMood, type MascotAction } from "@/components/mascot/ProxyMascot";
 
 interface LoginFormProps {
   onSuccess?: () => void;
@@ -36,6 +36,14 @@ export function LoginForm({ onSuccess, redirectTo, className }: LoginFormProps) 
   const [campusName, setCampusName] = useState(user?.campusName || "");
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Sync state if user session loads from localStorage after initial render
+  useEffect(() => {
+    if (user) {
+      setName((prev) => (prev ? prev : user.name));
+      setCampusName((prev) => (prev ? prev : user.campusName));
+    }
+  }, [user]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -65,7 +73,7 @@ export function LoginForm({ onSuccess, redirectTo, className }: LoginFormProps) 
         "Unlocking 19 student survival calculators...",
         "Welcome to Flunked! 🎓",
       ],
-      duration: 5500,
+      duration: 1500,
     });
 
     login(trimmedName, trimmedCampus);
@@ -76,6 +84,30 @@ export function LoginForm({ onSuccess, redirectTo, className }: LoginFormProps) 
       router.push(targetRedirect);
     }
   };
+
+  const mascotMood: MascotMood = error
+    ? "panic"
+    : isSubmitting
+      ? "thinking"
+      : user
+        ? "smug"
+        : "chill";
+
+  const mascotAction: MascotAction = error
+    ? "hop"
+    : isSubmitting
+      ? "waddle"
+      : user
+        ? "celebrate"
+        : "wave";
+
+  const mascotQuip = error
+    ? "Arey! Don't leave name or college blank, proxy will fail!"
+    : isSubmitting
+      ? "Connecting to campus wifi & session DB... zero OTPs!"
+    : user
+      ? "Profile ready! All 19 calculators unlocked for your campus."
+      : "Zero passwords. No OTP spam. What college are we bunking at?";
 
   return (
     <div
@@ -88,9 +120,17 @@ export function LoginForm({ onSuccess, redirectTo, className }: LoginFormProps) 
       <div className="absolute top-0 left-0 right-0 h-2.5 bg-flunked-yellow border-b-2 border-black" />
 
       <form onSubmit={handleSubmit} className="space-y-5">
-        <div className="space-y-2 text-center">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-flunked-yellow border-2 border-black text-black shadow-neo-sm mb-1">
-            <GraduationCap className="w-6 h-6 stroke-[2.5]" />
+        <div className="space-y-3 text-center">
+          <div className="flex flex-col items-center justify-center">
+            <ProxyMascot
+              size="md"
+              mood={mascotMood}
+              action={mascotAction}
+              showSpeech
+              customQuip={mascotQuip}
+              bubblePlacement="inflow"
+              className="hover:scale-105 transition-transform"
+            />
           </div>
           <h1 className="text-xl sm:text-2xl font-black tracking-tight text-black">
             {user ? "Update Campus Profile" : "Enter Flunked"}

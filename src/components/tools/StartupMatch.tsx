@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ShareButton } from "@/components/ui/ShareButton";
 import { Rocket, Lightbulb } from "lucide-react";
+import { ProxyMascot } from "@/components/mascot/ProxyMascot";
 
 interface StartupArchetype {
   type: string;
@@ -229,10 +230,23 @@ export function StartupMatch() {
           </span>
         </div>
 
-        <div className="space-y-2">
-          <h3 className="text-xl sm:text-2xl font-black text-black">&quot;{startup.idea}&quot;</h3>
-          <p className="text-xs sm:text-sm font-sans text-flunked-muted font-medium">
-            {startup.tagline}
+        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+          <div className="space-y-2">
+            <h3 className="text-xl sm:text-2xl font-black text-black">&quot;{startup.idea}&quot;</h3>
+            <p className="text-xs sm:text-sm font-sans text-flunked-muted font-medium">
+              {startup.tagline}
+            </p>
+          </div>
+          <div className="shrink-0 self-center sm:self-auto">
+            <ProxyMascot size="sm" mood="smug" showSpeech={false} />
+          </div>
+        </div>
+
+        {/* Proxy Founder Quip */}
+        <div className="p-3 rounded-xl bg-flunked-bg border-2 border-black flex items-center gap-2.5 shadow-neo-sm">
+          <p className="text-xs font-mono font-bold text-black">
+            <span className="font-black uppercase text-flunked-muted mr-1.5">[Proxy incubation]:</span>
+            Pitch deck ready. Don't stress attendance once your angel round clears!
           </p>
         </div>
 

@@ -212,7 +212,7 @@ export function BunkCalculator() {
                       {preset.shortName}
                     </span>
                     <span
-                      className={`text-[9px] font-mono px-1 py-0.2 rounded border border-black ${
+                      className={`text-[9px] font-mono px-1 py-0.5 rounded border border-black ${
                         isSelected ? "bg-black text-white" : "bg-flunked-bg text-black"
                       }`}
                     >

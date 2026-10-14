@@ -4,6 +4,7 @@ import { formatCurrencyINR } from "@/lib/utils";
 import { Copy, Check, TrendingDown, Info, Sparkles, Camera } from "lucide-react";
 import { NeoButton } from "@/components/ui/NeoButton";
 import { NeoCard } from "@/components/ui/NeoCard";
+import { ProxyMascot, type MascotMood } from "@/components/mascot/ProxyMascot";
 
 export interface CtcBreakdownTableProps {
   breakdown: CtcBreakdown;
@@ -20,6 +21,21 @@ export const CtcBreakdownTable = React.memo(function CtcBreakdownTable({
   onShare,
   onOpenStory,
 }: CtcBreakdownTableProps) {
+  const inHandRatio = ctc > 0 ? (breakdown.netTakeHomeAnnual / ctc) * 100 : 0;
+  const mascotMood: MascotMood =
+    inHandRatio >= 75
+      ? "smug"
+      : inHandRatio < 55
+        ? "panic"
+        : "thinking";
+
+  const mascotVerdict =
+    inHandRatio >= 75
+      ? "High in-hand ratio! HR didn't bury you in paper ESOPs or phantom bonuses."
+      : inHandRatio < 55
+        ? "CTC haircut alert! Nearly half this package is taxes, PF & phantom paper stocks."
+        : "Standard corporate haircut: PF + Gratuity + TDS chopped off every month.";
+
   return (
     <>
       {/* Main Result Card */}
@@ -67,8 +83,19 @@ export const CtcBreakdownTable = React.memo(function CtcBreakdownTable({
           </div>
         </div>
 
+        {/* Proxy Reality Verdict Banner */}
+        <div className="p-4 rounded-xl bg-flunked-bg border-2 border-black flex items-center gap-3.5 my-6 shadow-neo-sm">
+          <ProxyMascot size="sm" mood={mascotMood} showSpeech={false} className="shrink-0" />
+          <div className="space-y-0.5">
+            <span className="text-[11px] font-mono font-black uppercase text-flunked-muted block">
+              Proxy Salary Verdict ({inHandRatio.toFixed(0)}% In-Hand Retention)
+            </span>
+            <p className="text-xs sm:text-sm font-mono font-bold text-black">{mascotVerdict}</p>
+          </div>
+        </div>
+
         {/* Big Numbers Comparison */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-6 pt-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 pt-2">
           {/* Monthly In-Hand */}
           <div className="p-6 rounded-2xl bg-[#E8F8F0] border-2 border-black shadow-neo">
             <div className="text-xs font-mono uppercase text-black font-black flex items-center gap-1.5">

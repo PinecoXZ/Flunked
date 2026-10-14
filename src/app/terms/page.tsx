@@ -12,13 +12,14 @@ import {
 } from "lucide-react";
 import { LegalNav } from "@/components/layout/LegalNav";
 import { SubpageHeader } from "@/components/layout/SubpageHeader";
+import { env } from "@/lib/env";
 
 export const metadata = {
   title: "Terms of Service & End-User Agreement",
   description:
     "Comprehensive, legally binding Terms of Service and End-User Agreement governing all access, tools, and calculators on Flunked.online.",
   alternates: {
-    canonical: "https://flunked.online/terms",
+    canonical: `${env.NEXT_PUBLIC_BASE_URL}/terms`,
   },
 };
 

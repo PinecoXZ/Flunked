@@ -9,6 +9,7 @@ import {
   Home,
   ShieldCheck,
 } from "lucide-react";
+import { ProxyMascot } from "@/components/mascot/ProxyMascot";
 
 export const metadata = {
   title: "404 — Page Flunked / Not Found",
@@ -46,6 +47,19 @@ const POPULAR_TOOLS = [
 export default function NotFound() {
   return (
     <div className="flex-1 flex flex-col items-center justify-center px-4 py-16 sm:py-24 max-w-2xl mx-auto w-full text-center space-y-8">
+      {/* 404 Mascot Feature */}
+      <div className="flex flex-col items-center">
+        <ProxyMascot
+          mood="panic"
+          action="hop"
+          size="xl"
+          showSpeechBubble
+          bubblePlacement="inflow"
+          speechText="404: Even Proxy couldn't find this page! Attendance shortage detected."
+          interactive
+        />
+      </div>
+
       {/* 404 Badge */}
       <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-flunked-yellow border-2 border-black text-xs font-mono font-black text-black shadow-neo-sm uppercase tracking-wider">
         <AlertTriangle className="w-4 h-4 text-black stroke-[2.5]" />

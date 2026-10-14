@@ -317,3 +317,390 @@ input[type="number"] {
   background-image: radial-gradient(rgba(0, 0, 0, 0.12) 1.5px, transparent 1.5px);
   background-size: 16px 16px;
 }
+
+/* ==========================================================================
+   Proxy the Bunk Duck Mascot - Living Micro-Animations
+   ========================================================================== */
+
+@keyframes proxy-idle-bob {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-4.5px) rotate(1.2deg);
+  }
+}
+
+@keyframes proxy-panic-jitter {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  20% {
+    transform: translate(-2px, 1.2px) rotate(-2deg);
+  }
+  40% {
+    transform: translate(2px, -1.2px) rotate(2deg);
+  }
+  60% {
+    transform: translate(-1.5px, -1.8px) rotate(-1.5deg);
+  }
+  80% {
+    transform: translate(1.5px, 1.8px) rotate(1.5deg);
+  }
+}
+
+@keyframes proxy-smug-sway {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  30% {
+    transform: translateY(-3.5px) rotate(2.5deg);
+  }
+  70% {
+    transform: translateY(-3.5px) rotate(-2.5deg);
+  }
+}
+
+@keyframes proxy-thinking-tilt {
+  0%, 100% {
+    transform: rotate(0deg) translateY(0);
+  }
+  50% {
+    transform: rotate(-4deg) translateY(-2.5px);
+  }
+}
+
+@keyframes proxy-wing-flap-left {
+  0%, 100% {
+    transform: rotate(0deg);
+    transform-origin: 55px 125px;
+  }
+  50% {
+    transform: rotate(-22deg);
+    transform-origin: 55px 125px;
+  }
+}
+
+@keyframes proxy-wing-flap-right {
+  0%, 100% {
+    transform: rotate(0deg);
+    transform-origin: 145px 125px;
+  }
+  50% {
+    transform: rotate(22deg);
+    transform-origin: 145px 125px;
+  }
+}
+
+@keyframes proxy-steam-rise-1 {
+  0% {
+    transform: translateY(0) scaleY(1);
+    opacity: 0;
+  }
+  35% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(-12px) translateX(2.5px) scaleY(1.35);
+    opacity: 0;
+  }
+}
+
+@keyframes proxy-steam-rise-2 {
+  0% {
+    transform: translateY(0) scaleY(1);
+    opacity: 0;
+  }
+  35% {
+    opacity: 0.75;
+  }
+  100% {
+    transform: translateY(-14px) translateX(-2.5px) scaleY(1.4);
+    opacity: 0;
+  }
+}
+
+@keyframes proxy-sweat-drip {
+  0% {
+    transform: translateY(-4px);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  85% {
+    transform: translateY(11px);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(16px);
+    opacity: 0;
+  }
+}
+
+@keyframes proxy-shades-sheen {
+  0%, 70% {
+    transform: translateX(-45px);
+    opacity: 0;
+  }
+  75% {
+    opacity: 0.95;
+  }
+  90% {
+    transform: translateX(45px);
+    opacity: 0.95;
+  }
+  96%, 100% {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+}
+
+@keyframes proxy-shadow-breathe {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.18;
+    transform-origin: 100px 184px;
+  }
+  50% {
+    transform: scale(0.88);
+    opacity: 0.10;
+    transform-origin: 100px 184px;
+  }
+}
+
+@keyframes proxy-star-spin {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    transform-origin: 130px 46px;
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.4) rotate(45deg);
+    transform-origin: 130px 46px;
+    opacity: 1;
+  }
+}
+
+@keyframes proxy-hop {
+  0% {
+    transform: scale(1, 1) translateY(0);
+  }
+  18% {
+    transform: scale(1.18, 0.82) translateY(2px);
+  }
+  45% {
+    transform: scale(0.9, 1.18) translateY(-14px) rotate(4deg);
+  }
+  72% {
+    transform: scale(1.08, 0.94) translateY(0);
+  }
+  100% {
+    transform: scale(1, 1) translateY(0);
+  }
+}
+
+.animate-proxy-chill {
+  animation: proxy-idle-bob 2.8s ease-in-out infinite;
+  transform-origin: 100px 150px;
+}
+
+.animate-proxy-panic {
+  animation: proxy-panic-jitter 0.32s infinite;
+  transform-origin: 100px 150px;
+}
+
+.animate-proxy-smug {
+  animation: proxy-smug-sway 2.4s ease-in-out infinite;
+  transform-origin: 100px 150px;
+}
+
+.animate-proxy-thinking {
+  animation: proxy-thinking-tilt 3.2s ease-in-out infinite;
+  transform-origin: 100px 150px;
+}
+
+.animate-proxy-wing-left {
+  animation: proxy-wing-flap-left 0.28s ease-in-out infinite;
+}
+
+.animate-proxy-wing-right {
+  animation: proxy-wing-flap-right 0.28s ease-in-out infinite;
+}
+
+.animate-proxy-steam-1 {
+  animation: proxy-steam-rise-1 1.8s ease-out infinite;
+}
+
+.animate-proxy-steam-2 {
+  animation: proxy-steam-rise-2 1.8s ease-out infinite 0.7s;
+}
+
+.animate-proxy-sweat {
+  animation: proxy-sweat-drip 1.3s ease-in infinite;
+}
+
+.animate-proxy-glint {
+  animation: proxy-shades-sheen 3.6s ease-in-out infinite;
+}
+
+.animate-proxy-shadow {
+  animation: proxy-shadow-breathe 2.8s ease-in-out infinite;
+}
+
+.animate-proxy-star {
+  animation: proxy-star-spin 2s ease-in-out infinite;
+}
+
+.animate-proxy-hop {
+  animation: proxy-hop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Expressive Action Animations */
+@keyframes proxy-waddle {
+  0%, 100% {
+    transform: rotate(0deg) translateX(0);
+  }
+  25% {
+    transform: rotate(-6deg) translateX(-4px) translateY(-3px);
+  }
+  75% {
+    transform: rotate(6deg) translateX(4px) translateY(-3px);
+  }
+}
+
+@keyframes proxy-celebrate {
+  0%, 100% {
+    transform: translateY(0) scale(1, 1);
+  }
+  25% {
+    transform: translateY(-16px) scale(0.92, 1.15) rotate(-3deg);
+  }
+  50% {
+    transform: translateY(0) scale(1.15, 0.85);
+  }
+  75% {
+    transform: translateY(-12px) scale(0.95, 1.1) rotate(3deg);
+  }
+}
+
+@keyframes proxy-snooze {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(3.5px) rotate(-4.5deg);
+  }
+}
+
+@keyframes proxy-zzz-float {
+  0% {
+    transform: translate(0, 0) scale(0.6);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.95;
+  }
+  75% {
+    transform: translate(14px, -22px) scale(1.05);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(22px, -34px) scale(1.25);
+    opacity: 0;
+  }
+}
+
+@keyframes proxy-wave-wing {
+  0%, 100% {
+    transform: rotate(0deg);
+    transform-origin: 145px 125px;
+  }
+  25% {
+    transform: rotate(-32deg);
+    transform-origin: 145px 125px;
+  }
+  75% {
+    transform: rotate(-8deg);
+    transform-origin: 145px 125px;
+  }
+}
+
+@keyframes proxy-shades-drop {
+  0% {
+    transform: translateY(-30px) rotate(-10deg);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(2px) rotate(2deg);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(-1px) rotate(-1deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.animate-proxy-waddle {
+  animation: proxy-waddle 1.1s ease-in-out infinite;
+  transform-origin: 100px 180px;
+}
+
+.animate-proxy-celebrate {
+  animation: proxy-celebrate 0.75s ease-in-out infinite;
+  transform-origin: 100px 180px;
+}
+
+.animate-proxy-snooze {
+  animation: proxy-snooze 3.4s ease-in-out infinite;
+  transform-origin: 100px 180px;
+}
+
+.animate-proxy-zzz-1 {
+  animation: proxy-zzz-float 2.4s ease-out infinite;
+}
+
+.animate-proxy-zzz-2 {
+  animation: proxy-zzz-float 2.4s ease-out infinite 0.8s;
+}
+
+.animate-proxy-zzz-3 {
+  animation: proxy-zzz-float 2.4s ease-out infinite 1.6s;
+}
+
+.animate-proxy-wave {
+  animation: proxy-wave-wing 0.5s ease-in-out infinite;
+}
+
+.animate-proxy-shades-drop {
+  animation: proxy-shades-drop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-proxy-chill,
+  .animate-proxy-panic,
+  .animate-proxy-smug,
+  .animate-proxy-thinking,
+  .animate-proxy-waddle,
+  .animate-proxy-celebrate,
+  .animate-proxy-snooze,
+  .animate-proxy-zzz-1,
+  .animate-proxy-zzz-2,
+  .animate-proxy-zzz-3,
+  .animate-proxy-wave,
+  .animate-proxy-shades-drop,
+  .animate-proxy-wing-left,
+  .animate-proxy-wing-right,
+  .animate-proxy-steam-1,
+  .animate-proxy-steam-2,
+  .animate-proxy-sweat,
+  .animate-proxy-glint,
+  .animate-proxy-shadow,
+  .animate-proxy-star,
+  .animate-proxy-hop {
+    animation: none !important;
+  }
+}

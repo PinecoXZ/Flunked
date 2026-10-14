@@ -16,13 +16,14 @@ import {
 } from "lucide-react";
 import { LegalNav } from "@/components/layout/LegalNav";
 import { SubpageHeader } from "@/components/layout/SubpageHeader";
+import { env } from "@/lib/env";
 
 export const metadata = {
   title: "Privacy Policy & Student Data Protection Standards",
   description:
     "Official Privacy Policy and Data Protection Standards for Flunked.online, fully compliant with India's Digital Personal Data Protection Act, 2023 (DPDP Act).",
   alternates: {
-    canonical: "https://flunked.online/privacy",
+    canonical: `${env.NEXT_PUBLIC_BASE_URL}/privacy`,
   },
 };
 

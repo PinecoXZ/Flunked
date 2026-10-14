@@ -125,7 +125,7 @@ export function ToolIcon({ toolSlug, size = "md", className }: ToolIconProps) {
   const sizeClasses = {
     sm: "w-8 h-8 rounded-md p-1.5",
     md: "w-11 h-11 rounded-lg p-2",
-    lg: "w-13 h-13 rounded-xl p-3",
+    lg: "w-14 h-14 rounded-xl p-3",
     xl: "w-16 h-16 rounded-xl p-3.5",
   };
 

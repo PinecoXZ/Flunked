@@ -109,7 +109,7 @@ export function OnboardingTutorial() {
       role="dialog"
       aria-modal="true"
       aria-labelledby="tutorial-title"
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-xs animate-in fade-in duration-150"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-sm animate-in fade-in duration-150"
     >
       {/* Click outside backdrop to dismiss */}
       <div className="fixed inset-0" onClick={handleClose} />

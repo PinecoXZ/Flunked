@@ -482,7 +482,7 @@ export function StatsClient() {
                         style={{ height: `${item.share * 4.8}px` }}
                       >
                         {item.isPeak && (
-                          <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-black text-white text-[9px] font-mono font-bold px-1.5 py-0.2 rounded whitespace-nowrap shadow-sm">
+                          <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-black text-white text-[9px] font-mono font-bold px-1.5 py-0.5 rounded whitespace-nowrap shadow-sm">
                             ★ PEAK
                           </div>
                         )}
@@ -604,7 +604,7 @@ export function StatsClient() {
                         style={{ height: `${item.share * 7.5}px` }}
                       >
                         {item.isPeak && (
-                          <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-black text-white text-[8px] font-mono font-bold px-1 py-0.2 rounded whitespace-nowrap">
+                          <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-black text-white text-[8px] font-mono font-bold px-1 py-0.5 rounded whitespace-nowrap">
                             PEAK
                           </div>
                         )}

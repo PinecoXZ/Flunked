@@ -7,7 +7,8 @@ import { TOOLS, ToolCategory } from "@/data/tools";
 import { CategoryTabs } from "./CategoryTabs";
 import { SearchBar } from "./SearchBar";
 import { ToolCard } from "./ToolCard";
-import { GraduationCap, HelpCircle, Plus } from "lucide-react";
+import { GraduationCap, Plus } from "lucide-react";
+import { ProxyMascot } from "@/components/mascot/ProxyMascot";
 
 export function AuthenticatedHub() {
   const { user } = useAuth();
@@ -81,22 +82,37 @@ export function AuthenticatedHub() {
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-            {/* Quick stats bento pill */}
-            <div className="hidden sm:flex items-center gap-3 px-3.5 py-2 rounded-xl bg-flunked-bg border-2 border-black shadow-neo-sm text-xs font-mono font-black text-black">
-              <span className="text-flunked-muted">Status:</span>
-              <span className="text-black bg-flunked-yellow px-1.5 py-0.5 rounded border border-black text-[11px]">
-                100% Client-Side
+          <div className="flex items-center gap-4">
+            {/* Proxy Mascot Banner Reaction */}
+            <div className="flex flex-col items-center">
+              <ProxyMascot
+                mood="smug"
+                size="md"
+                interactive
+                bubblePlacement="top"
+              />
+              <span className="text-[8px] font-mono font-black uppercase text-black/60 mt-0.5">
+                Proxy
               </span>
             </div>
 
-            <Link
-              href="/suggest"
-              className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-flunked-yellow hover:bg-[#FFD000] text-xs font-mono font-black text-black border-2 border-black shadow-neo-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-neo active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all select-none"
-            >
-              <Plus className="w-3.5 h-3.5 stroke-[3]" />
-              <span>Suggest Tool</span>
-            </Link>
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+              {/* Quick stats bento pill */}
+              <div className="hidden sm:flex items-center gap-3 px-3.5 py-2 rounded-xl bg-flunked-bg border-2 border-black shadow-neo-sm text-xs font-mono font-black text-black">
+                <span className="text-flunked-muted">Status:</span>
+                <span className="text-black bg-flunked-yellow px-1.5 py-0.5 rounded border border-black text-[11px]">
+                  100% Client-Side
+                </span>
+              </div>
+
+              <Link
+                href="/suggest"
+                className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-flunked-yellow hover:bg-[#FFD000] text-xs font-mono font-black text-black border-2 border-black shadow-neo-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-neo active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all select-none"
+              >
+                <Plus className="w-3.5 h-3.5 stroke-[3]" />
+                <span>Suggest Tool</span>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
@@ -140,11 +156,15 @@ export function AuthenticatedHub() {
           })}
         </div>
       ) : (
-        /* Empty State */
-        <div className="p-10 text-center rounded-2xl bg-white border-2 border-black space-y-4 max-w-lg mx-auto my-12 shadow-neo">
-          <div className="w-12 h-12 mx-auto rounded-xl bg-flunked-yellow border-2 border-black flex items-center justify-center text-black shadow-neo-sm">
-            <HelpCircle className="w-6 h-6 stroke-[2.5]" />
-          </div>
+        /* Empty State with Mascot */
+        <div className="p-8 text-center rounded-2xl bg-white border-2 border-black space-y-4 max-w-lg mx-auto my-12 shadow-neo flex flex-col items-center">
+          <ProxyMascot
+            mood="thinking"
+            size="lg"
+            showSpeechBubble
+            speechText="Did someone bunk this tool? Try searching for 'bunk' or 'cgpa'!"
+            interactive
+          />
 
           <div className="space-y-1">
             <h3 className="text-lg font-black text-black">No tools found</h3>

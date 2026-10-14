@@ -217,7 +217,7 @@ export function SemesterSurvival() {
               <label htmlFor={minPassPercentId} className="text-black font-black">
                 Overall Aggregate Pass Cutoff
               </label>
-              <span className="text-black font-black bg-flunked-yellow border border-black px-1.5 py-0.2 rounded shadow-neo-sm">
+              <span className="text-black font-black bg-flunked-yellow border border-black px-1.5 py-0.5 rounded shadow-neo-sm">
                 {minPassPercent}%
               </span>
             </div>
@@ -242,7 +242,7 @@ export function SemesterSurvival() {
               <label htmlFor={minEndSemPercentId} className="text-black font-black">
                 End-Sem Paper Individual Cutoff
               </label>
-              <span className="text-black font-black bg-flunked-yellow border border-black px-1.5 py-0.2 rounded shadow-neo-sm">
+              <span className="text-black font-black bg-flunked-yellow border border-black px-1.5 py-0.5 rounded shadow-neo-sm">
                 {minEndSemPercent}%
               </span>
             </div>

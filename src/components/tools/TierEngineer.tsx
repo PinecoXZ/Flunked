@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ShareButton } from "@/components/ui/ShareButton";
 import { Terminal, ArrowRight, RotateCcw, Sparkles } from "lucide-react";
+import { ProxyMascot } from "@/components/mascot/ProxyMascot";
 
 interface Question {
   id: number;
@@ -187,8 +188,8 @@ export function TierEngineer() {
             <span>Engineer Tier Verification</span>
           </div>
 
-          {/* Huge Dominant Tier Letter */}
-          <div className="py-2">
+          {/* Huge Dominant Tier Letter & Proxy Reaction */}
+          <div className="py-2 flex flex-col items-center gap-4">
             <div
               className={`w-32 h-32 sm:w-40 sm:h-40 mx-auto rounded-3xl border-4 border-black flex flex-col items-center justify-center shadow-neo-lg ${tierColor}`}
             >
@@ -199,6 +200,21 @@ export function TierEngineer() {
                 TIER
               </span>
             </div>
+
+            <ProxyMascot
+              size="md"
+              mood={tier === "S" || tier === "A" ? "smug" : tier === "B" ? "chill" : "panic"}
+              action={tier === "S" || tier === "A" ? "celebrate" : tier === "B" ? "waddle" : "hop"}
+              showSpeech
+              bubblePlacement="inflow"
+              customQuip={
+                tier === "S" || tier === "A"
+                  ? "Top tier engineer detected! FAANG/Startup hiring managers salute."
+                  : tier === "B"
+                    ? "Solid builder! Polish your system design and you'll hit Tier A."
+                    : "Tier crisis! Stop bingeing anime and push real commits to GitHub."
+              }
+            />
           </div>
 
           <div className="space-y-2 max-w-lg mx-auto">

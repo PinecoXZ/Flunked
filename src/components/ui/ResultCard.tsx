@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { ShareButton } from "./ShareButton";
 import { ShareStoryModal } from "./ShareStoryModal";
 import { AlertTriangle, CheckCircle2, Flame, ShieldAlert, Camera } from "lucide-react";
+import { ProxyMascot, type MascotMood } from "@/components/mascot/ProxyMascot";
 
 export type ResultStatus = "safe" | "warning" | "danger" | "critical";
 
@@ -49,6 +50,7 @@ export function ResultCard({
       barColor: "bg-[#00C853]",
       icon: CheckCircle2,
       label: "Safe Zone",
+      mascotMood: "smug" as MascotMood,
     },
     warning: {
       badgeBg: "bg-flunked-yellow text-black border-2 border-black shadow-neo-sm",
@@ -56,6 +58,7 @@ export function ResultCard({
       barColor: "bg-flunked-yellow",
       icon: AlertTriangle,
       label: "Thin Ice",
+      mascotMood: "thinking" as MascotMood,
     },
     danger: {
       badgeBg: "bg-flunked-pink text-black border-2 border-black shadow-neo-sm",
@@ -63,6 +66,7 @@ export function ResultCard({
       barColor: "bg-[#FF3333]",
       icon: ShieldAlert,
       label: "Danger",
+      mascotMood: "panic" as MascotMood,
     },
     critical: {
       badgeBg: "bg-flunked-danger text-white border-2 border-black shadow-neo-sm font-black",
@@ -70,6 +74,7 @@ export function ResultCard({
       barColor: "bg-[#FF3333]",
       icon: Flame,
       label: "Cooked",
+      mascotMood: "panic" as MascotMood,
     },
   }[status];
 
@@ -78,7 +83,7 @@ export function ResultCard({
   return (
     <div
       className={cn(
-        "relative rounded-2xl bg-white p-6 sm:p-7 border-2 border-black shadow-neo transition-all duration-150 overflow-hidden",
+        "relative rounded-2xl bg-white p-6 sm:p-7 border-2 border-black shadow-neo transition-all duration-150",
         className
       )}
     >
@@ -118,20 +123,35 @@ export function ResultCard({
         <h3 className="text-xl sm:text-2xl font-black text-black leading-snug">{headline}</h3>
       </div>
 
-      {/* Brutal Verdict Box with dot matrix accent */}
-      <div className="p-4 sm:p-5 rounded-xl bg-flunked-bg border-2 border-black shadow-neo-sm mb-5 relative overflow-hidden">
-        <div className="flex items-center justify-between text-[10px] font-mono text-black uppercase tracking-wider mb-1.5 font-black">
-          <span>Honest Student Verdict</span>
-          <span className="text-flunked-muted">[VERIFIED MATH]</span>
-        </div>
-        <div className="text-sm sm:text-base font-bold text-black italic">
-          &ldquo;{verdict}&rdquo;
-        </div>
-        {description && (
-          <div className="text-xs text-flunked-muted mt-2 leading-relaxed font-sans font-medium">
-            {description}
+      {/* Brutal Verdict Box with Proxy Mascot Reaction */}
+      <div className="p-4 sm:p-5 rounded-xl bg-flunked-bg border-2 border-black shadow-neo-sm mb-5 relative">
+        <div className="flex items-start justify-between gap-4">
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center justify-between text-[10px] font-mono text-black uppercase tracking-wider mb-1.5 font-black">
+              <span>Honest Student Verdict</span>
+              <span className="text-flunked-muted">[VERIFIED MATH]</span>
+            </div>
+            <div className="text-sm sm:text-base font-bold text-black italic leading-snug">
+              &ldquo;{verdict}&rdquo;
+            </div>
+            {description && (
+              <div className="text-xs text-flunked-muted mt-2 leading-relaxed font-sans font-medium">
+                {description}
+              </div>
+            )}
           </div>
-        )}
+          <div className="shrink-0 flex flex-col items-center pt-0.5">
+            <ProxyMascot
+              mood={statusStyles.mascotMood}
+              size="md"
+              interactive
+              bubblePlacement="top"
+            />
+            <span className="text-[9px] font-mono font-black text-black/60 uppercase mt-1 tracking-wider">
+              Proxy
+            </span>
+          </div>
+        </div>
       </div>
 
       {/* Utilitarian Breakdown Bento Grid if breakdown provided without custom children */}

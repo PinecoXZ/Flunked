@@ -2,13 +2,14 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import { LoginForm } from "@/components/auth/LoginForm";
 import { SubpageHeader } from "@/components/layout/SubpageHeader";
+import { env } from "@/lib/env";
 
 export const metadata: Metadata = {
   title: "Enter Campus Hub",
   description:
     "Instant, frictionless campus onboarding. Enter your nickname and college to unlock 19 academic and placement survival calculators.",
   alternates: {
-    canonical: "https://flunked.online/login",
+    canonical: `${env.NEXT_PUBLIC_BASE_URL}/login`,
   },
 };
 

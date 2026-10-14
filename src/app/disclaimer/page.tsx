@@ -16,13 +16,14 @@ import {
 } from "lucide-react";
 import { LegalNav } from "@/components/layout/LegalNav";
 import { SubpageHeader } from "@/components/layout/SubpageHeader";
+import { env } from "@/lib/env";
 
 export const metadata = {
   title: "Academic & Operational Disclaimer",
   description:
     "Official Academic Disclaimer, Institutional Non-Affiliation Declaration, and Tool-by-Tool Regulatory Assumptions for Flunked.online.",
   alternates: {
-    canonical: "https://flunked.online/disclaimer",
+    canonical: `${env.NEXT_PUBLIC_BASE_URL}/disclaimer`,
   },
 };
 

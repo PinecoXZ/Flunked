@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Coffee, ShieldCheck, Sparkles } from "lucide-react";
 import { SubpageHeader } from "@/components/layout/SubpageHeader";
+import { env } from "@/lib/env";
 
 export const metadata: Metadata = {
   title: "About the Project — Manifesto & Story",
   description:
     "Why Flunked was built: 19 free, zero-friction academic & campus survival calculators created by Indian students, for Indian students. No corporate BS.",
   alternates: {
-    canonical: "https://flunked.online/about",
+    canonical: `${env.NEXT_PUBLIC_BASE_URL}/about`,
   },
 };
 

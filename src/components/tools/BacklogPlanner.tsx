@@ -119,7 +119,7 @@ export function BacklogPlanner() {
                 <label htmlFor={maxPerSemId} className="text-black font-black">
                   Max Supplementary Papers Allowed / Sem
                 </label>
-                <span className="text-black font-black bg-flunked-yellow border border-black px-1.5 py-0.2 rounded shadow-neo-sm">
+                <span className="text-black font-black bg-flunked-yellow border border-black px-1.5 py-0.5 rounded shadow-neo-sm">
                   {maxPerSem} papers
                 </span>
               </div>
@@ -144,7 +144,7 @@ export function BacklogPlanner() {
                 <label htmlFor={weeksToExamId} className="text-black font-black">
                   Weeks Left to Exam Session
                 </label>
-                <span className="text-black font-black bg-flunked-yellow border border-black px-1.5 py-0.2 rounded shadow-neo-sm">
+                <span className="text-black font-black bg-flunked-yellow border border-black px-1.5 py-0.5 rounded shadow-neo-sm">
                   {weeksToExam} weeks
                 </span>
               </div>
@@ -273,7 +273,7 @@ export function BacklogPlanner() {
           <div className="space-y-3 pt-4 border-t-2 border-black">
             <div className="text-xs font-mono uppercase tracking-wider text-black font-black flex items-center justify-between">
               <span>Semester Clearance Timeline</span>
-              <span className="text-[10px] text-black font-black bg-flunked-yellow border border-black px-1.5 py-0.2 rounded">
+              <span className="text-[10px] text-black font-black bg-flunked-yellow border border-black px-1.5 py-0.5 rounded">
                 Max {maxPerSem} papers / sem
               </span>
             </div>

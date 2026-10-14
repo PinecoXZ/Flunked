@@ -63,7 +63,7 @@ export function CategoryTabs({
             {count !== undefined && (
               <span
                 className={cn(
-                  "px-1.5 py-0.2 rounded text-[10px] font-mono border border-black font-black",
+                  "px-1.5 py-0.5 rounded text-[10px] font-mono border border-black font-black",
                   isSelected ? "bg-white text-black" : "bg-flunked-bg text-black"
                 )}
               >

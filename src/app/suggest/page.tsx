@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { SuggestForm } from "@/components/suggest/SuggestForm";
 import { SubpageHeader } from "@/components/layout/SubpageHeader";
+import { env } from "@/lib/env";
 
 export const metadata: Metadata = {
   title: "Suggest a Student Tool",
   description:
     "Have an idea for a college calculator or academic survival tool? Suggest it here. Built by students, for students.",
   alternates: {
-    canonical: "https://flunked.online/suggest",
+    canonical: `${env.NEXT_PUBLIC_BASE_URL}/suggest`,
   },
 };
 

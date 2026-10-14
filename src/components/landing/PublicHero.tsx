@@ -1,6 +1,9 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { ArrowRight, ShieldCheck, Zap, Sparkles, CheckCircle2, Crosshair } from "lucide-react";
+import { ProxyMascot } from "@/components/mascot/ProxyMascot";
 
 export function PublicHero() {
   return (
@@ -66,7 +69,7 @@ export function PublicHero() {
 
         {/* Right Column: Live Teaser Card */}
         <div className="w-full lg:w-[420px] shrink-0">
-          <div className="rounded-2xl bg-white border-2 border-black p-6 sm:p-7 shadow-neo-lg relative overflow-hidden">
+          <div className="rounded-2xl bg-white border-2 border-black p-6 sm:p-7 shadow-neo-lg relative">
             <div className="flex items-center justify-between border-b-2 border-black pb-4 mb-5">
               <div className="flex items-center gap-2.5">
                 <div className="w-9 h-9 rounded-md bg-flunked-yellow border-2 border-black flex items-center justify-center text-black shadow-neo-sm">
@@ -101,17 +104,30 @@ export function PublicHero() {
               </div>
             </div>
 
-            {/* Calculated Result Verdict Box */}
-            <div className="mt-5 p-4 rounded-xl bg-flunked-yellow border-2 border-black shadow-neo flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-black shrink-0 mt-0.5 stroke-[3]" />
-              <div className="space-y-0.5">
-                <div className="text-[11px] font-mono font-black text-black uppercase tracking-wider">
-                  Status: You Can Safely Bunk
+            {/* Calculated Result Verdict Box with Proxy Reaction */}
+            <div className="mt-5 p-4 rounded-xl bg-flunked-yellow border-2 border-black shadow-neo flex items-center justify-between gap-3 relative">
+              <div className="flex items-start gap-3 flex-1 min-w-0">
+                <CheckCircle2 className="w-5 h-5 text-black shrink-0 mt-0.5 stroke-[3]" />
+                <div className="space-y-0.5">
+                  <div className="text-[11px] font-mono font-black text-black uppercase tracking-wider">
+                    Status: You Can Safely Bunk
+                  </div>
+                  <div className="text-2xl font-black font-mono text-black">6 Lectures</div>
+                  <p className="text-[11px] font-mono text-black font-bold leading-tight">
+                    Skip next 6 classes in a row and attendance stays at 75.9%. Sleep in.
+                  </p>
                 </div>
-                <div className="text-2xl font-black font-mono text-black">6 Lectures</div>
-                <p className="text-[11px] font-mono text-black font-bold leading-tight">
-                  Skip next 6 classes in a row and attendance stays at 75.9%. Sleep in.
-                </p>
+              </div>
+              <div className="shrink-0 flex flex-col items-center">
+                <ProxyMascot
+                  mood="chill"
+                  size="md"
+                  interactive
+                  bubblePlacement="top"
+                />
+                <span className="text-[8px] font-mono font-black uppercase text-black/70 mt-0.5">
+                  Proxy
+                </span>
               </div>
             </div>
           </div>

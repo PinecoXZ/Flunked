@@ -5,12 +5,12 @@ const isProd = process.env.NODE_ENV === "production";
 const cspDirectives = [
   "default-src 'self'",
   isProd
-    ? "script-src 'self' 'unsafe-inline'"
-    : "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+    ? "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com"
+    : "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com",
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' https://fonts.gstatic.com",
   "img-src 'self' blob: data: https:",
-  "connect-src 'self'",
+  "connect-src 'self' https://vitals.vercel-insights.com https://*.vercel-insights.com https://va.vercel-scripts.com",
   "object-src 'none'",
   "frame-ancestors 'none'",
   "form-action 'self'",

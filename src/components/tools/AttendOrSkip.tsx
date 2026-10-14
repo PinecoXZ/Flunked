@@ -18,6 +18,7 @@ import {
   Skull,
   Zap,
 } from "lucide-react";
+import { ProxyMascot, type MascotMood } from "@/components/mascot/ProxyMascot";
 
 export function AttendOrSkip() {
   const [attendance, setAttendance] = useState<number>(78);
@@ -30,6 +31,20 @@ export function AttendOrSkip() {
   const result = useMemo(() => {
     return attendOrSkipDecider(attendance, proxy, strictness, important, tiredness);
   }, [attendance, proxy, strictness, important, tiredness]);
+
+  const mascotMood: MascotMood =
+    result.decision === "proxy"
+      ? "smug"
+      : result.decision === "skip"
+        ? "chill"
+        : "thinking";
+
+  const mascotQuip =
+    result.decision === "proxy"
+      ? "Proxy engaged! Your wingmate has your back. Go back to sleep."
+      : result.decision === "skip"
+        ? "Attendance buffer is green. Sip your cutting chai in peace."
+        : "Prof has eagle eyes and credits are high. Drag yourself to class!";
 
   const handleShare = () => {
     const text = `*Should I Attend This Lecture?* [Flunked.online]\nDecision: ${result.headline}\nAttendance: ${attendance}% → If skipped: ${result.projectedAttendanceAfterSkip}%\nReasoning: ${result.reasoning}\nAction: ${result.actionText}\n\nCalculated on Flunked.online · flunked.online/tools/attend-or-skip`;
@@ -240,13 +255,26 @@ export function AttendOrSkip() {
           </button>
         </div>
 
-        {/* Big Verdict Headline */}
-        <div className="my-6">
-          <h3 className="text-2xl sm:text-3xl font-black text-black tracking-tight leading-tight">
-            {result.headline}
-          </h3>
-          <p className="text-sm text-black/80 mt-2 leading-relaxed font-sans font-medium">
-            {result.subtext}
+        {/* Big Verdict Headline with Proxy */}
+        <div className="my-6 flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+          <div className="space-y-2">
+            <h3 className="text-2xl sm:text-3xl font-black text-black tracking-tight leading-tight">
+              {result.headline}
+            </h3>
+            <p className="text-sm text-black/80 mt-2 leading-relaxed font-sans font-medium">
+              {result.subtext}
+            </p>
+          </div>
+          <div className="shrink-0 self-center sm:self-auto">
+            <ProxyMascot size="sm" mood={mascotMood} showSpeech={false} />
+          </div>
+        </div>
+
+        {/* Proxy Campus Quip Callout */}
+        <div className="p-3.5 rounded-xl bg-flunked-bg border-2 border-black flex items-center gap-2.5 shadow-neo-sm mb-5">
+          <p className="text-xs font-mono font-bold text-black">
+            <span className="font-black uppercase text-flunked-muted mr-1.5">[Proxy verdict]:</span>
+            {mascotQuip}
           </p>
         </div>
 

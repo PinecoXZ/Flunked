@@ -23,6 +23,7 @@ import {
   Target,
   Shuffle,
 } from "lucide-react";
+import { ProxyMascot } from "@/components/mascot/ProxyMascot";
 
 export function PlacementQuiz() {
   const { showLoading } = useLoading();
@@ -186,14 +187,57 @@ export function PlacementQuiz() {
               </div>
             </div>
 
-            <div className="md:col-span-2 space-y-2.5">
-              <h4 className="text-lg sm:text-xl font-black text-black leading-snug">
-                {results.tier.verdict}
-              </h4>
-              <p className="text-sm text-black/80 leading-relaxed font-sans font-medium">
-                {results.tier.description}
-              </p>
-              <div className="pt-2 flex flex-wrap gap-2 text-xs font-mono">
+            <div className="md:col-span-2 space-y-3">
+              <div className="flex items-start justify-between gap-3">
+                <div className="space-y-1">
+                  <h4 className="text-lg sm:text-xl font-black text-black leading-snug">
+                    {results.tier.verdict}
+                  </h4>
+                  <p className="text-sm text-black/80 leading-relaxed font-sans font-medium">
+                    {results.tier.description}
+                  </p>
+                </div>
+                <div className="shrink-0 hidden sm:block">
+                  <ProxyMascot
+                    size="sm"
+                    mood={
+                      results.percentage >= 70
+                        ? "smug"
+                        : results.percentage >= 45
+                          ? "thinking"
+                          : "panic"
+                    }
+                    showSpeech={false}
+                  />
+                </div>
+              </div>
+
+              {/* Proxy Placement Advice Callout */}
+              <div className="p-3 rounded-xl bg-flunked-bg border-2 border-black flex items-center gap-2.5 shadow-neo-sm">
+                <div className="sm:hidden shrink-0">
+                  <ProxyMascot
+                    size="xs"
+                    mood={
+                      results.percentage >= 70
+                        ? "smug"
+                        : results.percentage >= 45
+                          ? "thinking"
+                          : "panic"
+                    }
+                    showSpeech={false}
+                  />
+                </div>
+                <p className="text-xs font-mono font-bold text-black">
+                  <span className="font-black uppercase text-flunked-muted mr-1.5">[Proxy verdict]:</span>
+                  {results.percentage >= 70
+                    ? "Placement cell favorite! Resume is looking formidable."
+                    : results.percentage >= 45
+                      ? "Grind DSA medium and clean up your GitHub repositories."
+                      : "Emergency triage needed! Focus on fixing the top 3 weak areas below."}
+                </p>
+              </div>
+
+              <div className="pt-1 flex flex-wrap gap-2 text-xs font-mono">
                 <span className="px-2.5 py-1 rounded bg-flunked-yellow border-2 border-black text-black font-black shadow-neo-sm">
                   Target: {results.tier.salaryExpectation}
                 </span>

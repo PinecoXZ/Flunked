@@ -12,13 +12,14 @@ import {
 } from "lucide-react";
 import { LegalNav } from "@/components/layout/LegalNav";
 import { SubpageHeader } from "@/components/layout/SubpageHeader";
+import { env } from "@/lib/env";
 
 export const metadata = {
   title: "Cookie & Local Storage Policy",
   description:
     "Official Cookie, HTML5 Web Storage, and Client-Side Data Transparency Statement for Flunked.online.",
   alternates: {
-    canonical: "https://flunked.online/cookies",
+    canonical: `${env.NEXT_PUBLIC_BASE_URL}/cookies`,
   },
 };
 

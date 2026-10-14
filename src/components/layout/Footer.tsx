@@ -45,6 +45,13 @@ export function Footer() {
               Suggest a Tool
             </Link>
             <span className="text-zinc-600">/</span>
+            <Link
+              href="/mascot"
+              className="hover:text-black hover:bg-flunked-yellow px-2 py-1 rounded transition-colors"
+            >
+              Mascot Lab
+            </Link>
+            <span className="text-zinc-600">/</span>
 
             {/* Share With Friends Button */}
             <button

@@ -2,6 +2,7 @@ import React from "react";
 import { type AssignmentPanicResult as AssignmentPanicResultType } from "@/lib/calculations";
 import { Copy, Check, ChevronRight, Zap } from "lucide-react";
 import { NeoButton } from "@/components/ui/NeoButton";
+import { ProxyMascot, type MascotMood } from "@/components/mascot/ProxyMascot";
 
 export interface AssignmentPanicResultProps {
   result: AssignmentPanicResultType;
@@ -14,6 +15,20 @@ export const AssignmentPanicResult = React.memo(function AssignmentPanicResult({
   copied,
   onShare,
 }: AssignmentPanicResultProps) {
+  const mascotMood: MascotMood =
+    result.feasibilityPercentage < 35
+      ? "panic"
+      : result.feasibilityPercentage >= 70
+        ? "chill"
+        : "thinking";
+
+  const mascotVerdict =
+    result.feasibilityPercentage < 35
+      ? "Impossible sprint! Beg your CR for a 2-hour portal extension."
+      : result.feasibilityPercentage >= 70
+        ? "Achievable deadline! Keep your phone facedown and submit early."
+        : "Intense typing sprint ahead. Close Instagram Reels immediately.";
+
   return (
     <div className="rounded-2xl p-6 sm:p-8 border-2 border-black transition-all relative overflow-hidden shadow-neo-lg bg-white">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b-2 border-black pb-5">
@@ -62,16 +77,34 @@ export const AssignmentPanicResult = React.memo(function AssignmentPanicResult({
           </div>
         </div>
 
-        <div className="md:col-span-2 space-y-2">
-          <h4 className="text-xl sm:text-2xl font-black text-black leading-tight">
-            {result.headline}
-          </h4>
-          <p className="text-sm text-black/80 leading-relaxed font-sans font-medium">
-            {result.tacticalVerdict}
-          </p>
+        <div className="md:col-span-2 space-y-3">
+          <div className="flex items-start justify-between gap-3">
+            <div className="space-y-1">
+              <h4 className="text-xl sm:text-2xl font-black text-black leading-tight">
+                {result.headline}
+              </h4>
+              <p className="text-sm text-black/80 leading-relaxed font-sans font-medium">
+                {result.tacticalVerdict}
+              </p>
+            </div>
+            <div className="shrink-0 hidden sm:block">
+              <ProxyMascot size="sm" mood={mascotMood} showSpeech={false} />
+            </div>
+          </div>
+
+          {/* Proxy Mascot Deadline Callout */}
+          <div className="p-3 rounded-xl bg-flunked-bg border-2 border-black flex items-center gap-2.5 shadow-neo-sm">
+            <div className="sm:hidden shrink-0">
+              <ProxyMascot size="xs" mood={mascotMood} showSpeech={false} />
+            </div>
+            <p className="text-xs font-mono font-bold text-black">
+              <span className="font-black uppercase text-flunked-muted mr-1.5">[Proxy advice]:</span>
+              {mascotVerdict}
+            </p>
+          </div>
 
           {/* Feasibility Bar */}
-          <div className="pt-2">
+          <div className="pt-1">
             <div className="w-full h-3.5 bg-white rounded-full overflow-hidden p-0.5 border-2 border-black">
               <div
                 className="h-full rounded-full transition-all duration-500 bg-flunked-yellow border-r-2 border-black"

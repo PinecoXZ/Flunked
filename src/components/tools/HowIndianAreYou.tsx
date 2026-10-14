@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ShareButton } from "@/components/ui/ShareButton";
 import { Coffee, CheckCircle2 } from "lucide-react";
+import { ProxyMascot } from "@/components/mascot/ProxyMascot";
 
 interface CultureQuestion {
   id: number;
@@ -165,6 +166,24 @@ export function HowIndianAreYou() {
           >
             {archetype}
           </span>
+        </div>
+
+        {/* Proxy Reaction */}
+        <div className="flex justify-center pt-1">
+          <ProxyMascot
+            size="md"
+            mood={totalScore >= 75 ? "smug" : totalScore >= 45 ? "chill" : "thinking"}
+            action={totalScore >= 75 ? "celebrate" : totalScore >= 45 ? "waddle" : "snooze"}
+            showSpeech
+            bubblePlacement="inflow"
+            customQuip={
+              totalScore >= 75
+                ? "Peak Desi Engineering DNA! You can survive on any Indian campus."
+                : totalScore >= 45
+                  ? "Balanced desi lifestyle. Tapri cutting chai sessions recommended."
+                  : "Too disciplined! Have you even bunked an 8 AM lab yet?"
+            }
+          />
         </div>
 
         <div>
